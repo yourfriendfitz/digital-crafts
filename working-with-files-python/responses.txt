@@ -1,0 +1,4 @@
+-------Why do you like programming?-------
+I love to build things
+I love working with other programmers.
+The reward of a working program.
