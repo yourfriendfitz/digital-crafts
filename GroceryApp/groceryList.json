@@ -1,0 +1,14 @@
+[
+  {
+    "Kroger, Midtown": [
+      { "name": "milk", "price": 1.25, "quantity": 1 },
+      { "name": "eggs", "price": 1.24, "quantity": 1 }
+    ]
+  },
+  {
+    "HEB, Spring Branch": [
+      { "name": "beer", "price": 8.99, "quantity": 1 },
+      { "name": "bread", "price": 1.5, "quantity": 1 }
+    ]
+  }
+]

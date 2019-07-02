@@ -2,6 +2,12 @@ from ShoppingList import ShoppingList
 from GroceryItem import GroceryItem
 
 
+def add_json_to_file(file_name, write_content):
+    import json
+    with open(f"{file_name}.json", "w") as file_object:
+        print(f"adding list to {file_name}.json")
+        json.dump(write_content, file_object)
+
 def prompt_item_info(class_object):
     item = input(
         f"What Item would you like to add to the list for {class_object.store}, {class_object.storeLoc}: ")
@@ -44,12 +50,17 @@ def add_item_list(class_object):
     item, price, quantity = prompt_item_info(class_object)
     class_object.items.append(GroceryItem(
         item, float(price), int(quantity)))
+    class_object.items_to_json.append(GroceryItem(
+        item, float(price), int(quantity)).__dict__)
 
 
 def edit_list(index, array):
     item, price, quantity = prompt_item_info(array[index])
     array[index].items.append(GroceryItem(
         item, float(price), int(quantity)))
+    array[index].items_to_json.append(GroceryItem(
+        item, float(price), int(quantity)).__dict__)
+    
 
 
 def menu_ui():
@@ -110,6 +121,7 @@ def printStoreListsCondensed(array):
 
 def groceryApp():
     groceries = []
+    groceries_to_json = []
     app_running = True
     first_run = True
     skip_menu = False
@@ -143,6 +155,7 @@ def groceryApp():
             if not keep_adding:
                 adding_items_in_list = False
         groceries.append(shoppingList)
+        groceries_to_json.append({f"{shoppingList.store}, {shoppingList.storeLoc}": shoppingList.items_to_json})
         printStoreLists(groceries)
         user_input = app_continue()
         keep_running = True
@@ -154,6 +167,7 @@ def groceryApp():
             keep_running = False
         if not keep_running:
             app_running = False
+        add_json_to_file("groceryList", groceries_to_json)
 
 
 groceryApp()

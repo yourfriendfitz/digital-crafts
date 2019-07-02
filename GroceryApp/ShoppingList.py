@@ -3,3 +3,6 @@ class ShoppingList:
         self.store = store
         self.storeLoc = location
         self.items = []
+        self.items_to_json = []
+
+

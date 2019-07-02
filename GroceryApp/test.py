@@ -13,9 +13,11 @@ class GroceryAppTestCase(unittest.TestCase):
 
     def testAddShoppingList(self):
         self.assertIsNotNone(self.shoppingList)
+        print("test1")
     
     def testAddGroceryItem(self):
         self.assertIsNotNone(self.groceryItem)
+        print("test2")
 
     def tearDown(self):  # ran after each test
         pass
