@@ -1,0 +1,5 @@
+[
+  { "task1": { "walk the dog": "with a priority of 3" } },
+  { "task2": { "make the bed": "with a priority of 2" } },
+  { "task3": { "get beer": "with a priority of 1" } }
+]
