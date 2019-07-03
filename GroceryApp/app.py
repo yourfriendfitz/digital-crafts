@@ -124,7 +124,6 @@ def groceryApp():
     groceries_to_json = []
     app_running = True
     first_run = True
-    skip_menu = False
     while app_running:
         if first_run:
             choice = first_menu()
