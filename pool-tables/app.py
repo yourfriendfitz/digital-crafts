@@ -24,7 +24,7 @@ def menu(array):
 
 
 def prompt_choice():
-    choice = input("Which table would you like to occupy or release? ")
+    choice = input("Which table would you like to occupy or release?\nPress q to quit: ")
     try:
         choice = int(choice)
     except:
@@ -123,8 +123,7 @@ while app_running:
         to_json = free_table(pool_tables, table_choice)
         table_log.append(to_json)
     add_json_to_file("tables_log.json", table_log)
-    contiune_app = prompt_continue()
-    if contiune_app:
+    if table_choice == "q"
         app_running = False
 email_choice = prompt_send_email()
 if not email_choice:
