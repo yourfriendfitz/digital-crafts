@@ -1,4 +1,5 @@
 from pool_table import Pool_Table
+from sending_email import send_email
 
 tables_ids = range(1, 13)
 
@@ -81,34 +82,6 @@ def prompt_continue():
     if choice != "q":
         boolean = False
     return boolean
-
-
-def send_email(content):
-    import smtplib
-    import ssl
-    import getpass
-
-    smtp_server = "smtp.gmail.com"
-    port = 465  # use 587 with the second method try/except
-
-    sender = "fitzdevtest@gmail.com"
-    print(sender)
-    password = getpass.getpass("Enter your password: ")
-
-    recipient = "testdevfitz2@gmail.com"
-    message = f"""
-    
-    {content}
-    
-    """
-
-    context = ssl.create_default_context()
-
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender, password)
-        print("Login Successful")
-        server.sendmail(sender, recipient, message)
-        print(f"Email sent to {sender}")
 
 
 table_log = []
