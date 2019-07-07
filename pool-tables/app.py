@@ -29,3 +29,4 @@ while app_running:
 email_choice = prompt_send_email()
 if not email_choice:
     send_email(table_log)
+print("Goodbye")
