@@ -53,9 +53,14 @@ def menu(array):
 
 
 def prompt_choice():
-    choice = input("Which table would you like to occupy or release?\nPress q to quit: ")
+    print("-------Select--------")
+    choice = input(
+        "Which table would you like to occupy or release?\nPress q to quit: ")
     try:
-        choice = int(choice)
+        if choice != "q":
+            choice = int(choice)
+        else:
+            return choice
     except:
         print("Please enter a valid table number")
         prompt_choice()
@@ -79,6 +84,7 @@ def add_json_to_file(file_name, write_content):
 
 def occupy_table(array, index, user_id):
     array[index].start(user_id)
+    print("--------------")
     print(
         f"Pool table {array[index].id} is now in use by {user_id} since {array[index].start_time}")
 
@@ -86,6 +92,7 @@ def occupy_table(array, index, user_id):
 def free_table(array, index):
     user = array[index].user
     end, elapsed = array[index].end()
+    print("--------------")
     print(f"Pool table {array[index].id} is now free from {user} since {end}")
     print(f"Total time of use is: {elapsed}")
     cost = '${:,.2f}'.format(elapsed.seconds * 0.003)
@@ -96,6 +103,7 @@ def free_table(array, index):
 
 def prompt_send_email():
     boolean = False
+    print("-------Email Log-------")
     choice = input(
         "Would you like to send the log as an email?\nPress q to quit. Press any other key to send email:  ")
     if choice == "q":

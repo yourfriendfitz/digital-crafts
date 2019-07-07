@@ -14,15 +14,17 @@ table_log = []
 app_running = True
 while app_running:
     menu(pool_tables)
-    table_choice = prompt_choice() - 1
-    if pool_tables[table_choice].occupied == False:
-        user = define_user()
-        occupy_table(pool_tables, table_choice, user)
+    menu_choice = prompt_choice()
+    if menu_choice != "q":
+        table_choice = menu_choice - 1
+        if pool_tables[table_choice].occupied == False:
+            user = define_user()
+            occupy_table(pool_tables, table_choice, user)
+        else:
+            to_json = free_table(pool_tables, table_choice)
+            table_log.append(to_json)
+        add_json_to_file("tables_log.json", table_log)
     else:
-        to_json = free_table(pool_tables, table_choice)
-        table_log.append(to_json)
-    add_json_to_file("tables_log.json", table_log)
-    if table_choice == "q"
         app_running = False
 email_choice = prompt_send_email()
 if not email_choice:
