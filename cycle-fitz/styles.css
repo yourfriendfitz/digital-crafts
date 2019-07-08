@@ -2,6 +2,27 @@
   font-family: "Rubik", sans-serif;
 }
 
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh;
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .navbar {
+    margin: auto;
+  }
+  #input-text {
+    max-width: 60vw;
+  }
+}
+
 body {
   padding: 2vw;
   font-size: 2vh;
@@ -98,8 +119,8 @@ img {
   align-items: center;
   flex-direction: column;
   background: linear-gradient(25deg, red, blue);
-  width: 35vw;
-  height: 25vh;
+  width: 40vw;
+  height: 30vh;
 }
 
 .cart-item {
@@ -128,13 +149,22 @@ img {
 
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  width: 90vw;
 }
 
 #input-text {
   height: auto;
   width: 80vw;
+}
+
+#user-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .about {
@@ -146,7 +176,6 @@ img {
   margin: auto;
   padding: 5vh;
 }
-
 
 #services-header,
 #employees-header,
