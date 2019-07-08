@@ -4,40 +4,84 @@
     <meta name="keywords" content="hello, world" />
   </head>
   <body>
-    <div class="logo">
-      <h1>CycleFitz</h1>
+    <div class="container">
+      <div class="logo">
+        <h1>CycleFitz</h1>
+      </div>
+      <div class="navbar">
+        <ul>
+          <a href="index.html">Home</a>
+        </ul>
+        <ul>
+          <a href="about.html">About Us</a>
+        </ul>
+        <ul>
+          <a href="services.html">Services</a>
+        </ul>
+      </div>
     </div>
-    <div class="navbar">
-      <ul>
-        <a href="index.html">Home</a>
-      </ul>
-      <ul>
-        <a href="about.html">About Us</a>
-      </ul>
-      <ul>
-        <a href="services.html">Services</a>
-      </ul>
+    <div class="product">
+      <div class="buy-product">
+        <button onclick="cartAdd(this)" id="red bike">
+          <img src="redbike.jpg" alt="red bike" />Add to Cart
+        </button>
+      </div>
+      <div class="buy-product">
+        <button onclick="cartAdd(this)" id="blue bike">
+          <img src="bluebike.jpg" alt="blue bike" />Add to Cart
+        </button>
+      </div>
     </div>
   </body>
   <style>
     body {
+      padding: 2vw;
+      font-size: 2vh;
+      background: bisque;
+    }
+    .container {
       display: flex;
       justify-content: space-evenly;
       align-items: flex-start;
-      padding: 2vw;
-      font-size: 2vh;
     }
     .logo {
       background: linear-gradient(25deg, red, blue);
+      border-radius: 50%;
     }
-    h1 {
-        padding: 1vw;
+    h1,
+    ul {
+      padding: 1vw;
     }
     .navbar {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: red;
+      background: gray;
+      border: 1vh solid blue;
+      border-radius: 25%;
+    }
+    .product {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10vh;
+    }
+    .buy-product {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+    }
+    img {
+      max-width: 30vw;
+      padding: 5vh;
     }
   </style>
+  <script>
+    const cart = [];
+    const cartAdd = e => {
+      cart.push(`${e.id} `);
+      alert(`Cart contains ${cart}`);
+    };
+  </script>
 </html>
