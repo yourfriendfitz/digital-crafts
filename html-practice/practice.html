@@ -1,9 +1,43 @@
 <html>
-    <head>
-        <meta name="description" content="This is a Hello World">
-        <meta name="keywords" content="hello, world">
-    </head>
-    <body>
-        <h1 style="display: flex; justify-content: center; align-items: center; padding: 10vh">Hello World!</h1>
-    </body>
+  <head>
+    <meta name="description" content="This is a Hello World" />
+    <meta name="keywords" content="hello, world" />
+  </head>
+  <body>
+    <div class="logo">
+      <h1>CycleFitz</h1>
+    </div>
+    <div class="navbar">
+      <ul>
+        <a href="index.html">Home</a>
+      </ul>
+      <ul>
+        <a href="about.html">About Us</a>
+      </ul>
+      <ul>
+        <a href="services.html">Services</a>
+      </ul>
+    </div>
+  </body>
+  <style>
+    body {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      padding: 2vw;
+      font-size: 2vh;
+    }
+    .logo {
+      background: linear-gradient(25deg, red, blue);
+    }
+    h1 {
+        padding: 1vw;
+    }
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: red;
+    }
+  </style>
 </html>
