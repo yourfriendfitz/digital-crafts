@@ -1,7 +1,8 @@
 <html>
   <head>
-    <meta name="description" content="This is a Hello World" />
-    <meta name="keywords" content="hello, world" />
+    <meta name="description" content="This is a bike shop" />
+    <meta name="keywords" content="bike, red bike, blue bike" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
@@ -18,17 +19,23 @@
         <ul>
           <a href="services.html">Services</a>
         </ul>
+        <ul>
+          <a href="employees.html">Our Team</a>
+        </ul>
+        <ul>
+                <a href="events.html">Events</a>
+              </ul>
       </div>
     </div>
     <div class="wrapper">
       <div class="product">
         <div class="buy-product">
-          <button onclick="cartAdd(this)" id="red bike">
+          <button class="cart-button" onclick="cartAdd(this)" id="red bike">
             <img src="redbike.jpg" alt="red bike" />Add to Cart
           </button>
         </div>
         <div class="buy-product">
-          <button onclick="cartAdd(this)" id="blue bike">
+          <button class="cart-button" onclick="cartAdd(this)" id="blue bike">
             <img src="bluebike.jpg" alt="blue bike" />Add to Cart
           </button>
         </div>
@@ -38,93 +45,15 @@
         <ul id="cart-list"></ul>
       </div>
     </div>
+    <div id="user-input">
+        <h2>Sign Our Guestbook:</h2>
+      <input
+        id="input-text"
+        type="text"
+        placeholder="Enter your name"
+      />
+      <h3>Guests:</h3>
+    </div>
   </body>
-  <style>
-    body {
-      padding: 2vw;
-      font-size: 2vh;
-      background: linear-gradient(25deg, bisque, blue);
-    }
-    .container {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: flex-start;
-    }
-    .logo {
-      background: linear-gradient(25deg, red, blue);
-      border-radius: 50%;
-    }
-    h1,
-    ul {
-      padding: 1vw;
-    }
-    .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(25deg, bisque, white);
-      border: 1vh solid blue;
-      border-radius: 25%;
-    }
-    .product {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 10vh;
-    }
-    .buy-product {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    img {
-      max-width: 30vw;
-      max-height: 20vh;
-    }
-    #cart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border: 1vh solid black;
-      background: linear-gradient(25deg, bisque, white);
-      margin-right: 5vw;
-    }
-    #cart-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 50%;
-    }
-    button {
-      display: flex;
-      font-size: 4vh;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    #cart-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 3vh;
-    }
-    .wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-  </style>
-  <script>
-    const cart = [];
-    const cartListDiv = document.getElementById("cart-list");
-    const cartAdd = e => {
-      cartItem = document.createElement("ul");
-      cartItem.innerHTML = `- ${e.id} -`;
-      cartListDiv.appendChild(cartItem);
-    };
-  </script>
+  <script src="scripts.js"></script>
 </html>
