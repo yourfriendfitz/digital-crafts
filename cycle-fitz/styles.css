@@ -98,7 +98,7 @@ img {
   flex-direction: column;
   border: 1vh solid;
   background: linear-gradient(25deg, red, blue);
-  margin-right: 5vw;
+  margin: 10vh;
 }
 
 #cart-icon {
