@@ -1,8 +1,13 @@
 <html>
   <head>
+    <title>CycleFitz</title>
     <meta name="description" content="This is a bike shop" />
     <meta name="keywords" content="bike, red bike, blue bike" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
@@ -23,35 +28,32 @@
           <a href="employees.html">Our Team</a>
         </ul>
         <ul>
-                <a href="events.html">Events</a>
-              </ul>
+          <a href="events.html">Events</a>
+        </ul>
       </div>
+    </div>
+    <div id="header">
+      <h2>Buy a Quality Bicycle from a Local Merchant!</h2>
     </div>
     <div class="wrapper">
       <div class="product">
         <div class="buy-product">
           <button class="cart-button" onclick="cartAdd(this)" id="red bike">
-            <img src="redbike.jpg" alt="red bike" />Add to Cart
+            <img src="images/redbike.png" alt="red bike" />Add to Cart
           </button>
-        </div>
-        <div class="buy-product">
           <button class="cart-button" onclick="cartAdd(this)" id="blue bike">
-            <img src="bluebike.jpg" alt="blue bike" />Add to Cart
+            <img src="images/bluebike.png" alt="blue bike" />Add to Cart
           </button>
         </div>
       </div>
       <div id="cart">
-        <img id="cart-icon" src="cart.png" alt="cart icon" />
+        <img id="cart-icon" src="images/cart.png" alt="cart icon" />
         <ul id="cart-list"></ul>
       </div>
     </div>
     <div id="user-input">
-        <h2>Sign Our Guestbook:</h2>
-      <input
-        id="input-text"
-        type="text"
-        placeholder="Enter your name"
-      />
+      <h2>Sign Our Guestbook:</h2>
+      <input id="input-text" type="text" placeholder="Enter your name" />
       <h3>Guests:</h3>
     </div>
   </body>
