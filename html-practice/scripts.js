@@ -7,7 +7,7 @@ const cart = [];
 const cartListDiv = document.getElementById("cart-list");
 
 const cartAdd = e => {
-  cartItem = document.createElement("li");
+  cartItem = document.createElement("span");
   cartItem.setAttribute("class", "cart-item");
   removeButton = document.createElement("button");
   removeButton.setAttribute("onclick", "removeFromCart(this)");
