@@ -7,7 +7,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1vh;
   }
   .logo {
     display: flex;
@@ -17,8 +16,10 @@
   }
   .navbar {
     margin: auto;
+    
   }
   #input-text {
+    font-size: 3vh;
     max-width: 60vw;
   }
 }
