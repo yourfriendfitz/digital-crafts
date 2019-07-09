@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="updateCart()">
     <div class="container">
       <div class="logo">
         <h1>CycleFitz</h1>
@@ -50,11 +50,9 @@
     </div>
     <div class="wrapper">
       <div class="buy-product">
+        <img src="images/redbike.png" alt="red bike" />
         <button class="cart-button" onclick="cartAdd(this)" id="red bike">
-          <img src="images/redbike.png" alt="red bike" />Add to Cart
-        </button>
-        <button class="cart-button" onclick="cartAdd(this)" id="blue bike">
-          <img src="images/bluebike.png" alt="blue bike" />Add to Cart
+          Add to Cart
         </button>
       </div>
     </div>
@@ -65,4 +63,5 @@
     </div>
   </body>
   <script src="scripts.js"></script>
+  <script src="guest.js"></script>
 </html>
