@@ -98,9 +98,9 @@ ul {
 }
 
 img {
-  width: 20vw;
   height: 20vh;
 }
+
 
 #cart {
   display: flex;
@@ -175,7 +175,7 @@ img {
 
 #input-text {
   height: auto;
-  width: 80vw;
+  width: 50vw;
 }
 
 #user-input {
