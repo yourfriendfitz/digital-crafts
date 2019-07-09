@@ -71,6 +71,11 @@ ul {
   border-radius: 25%;
 }
 
+#cart-link {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .product {
   display: flex;
   align-items: center;
