@@ -2,6 +2,10 @@
   font-family: "Rubik", sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 @media only screen and (max-width: 600px) {
   .container {
     flex-direction: column;
@@ -16,7 +20,6 @@
   }
   .navbar {
     margin: auto;
-    
   }
   #input-text {
     font-size: 3vh;
@@ -27,10 +30,14 @@
 body {
   padding: 2vw;
   font-size: 2vh;
-  background: linear-gradient(25deg, bisque, blue);
+  background: linear-gradient(to top, skyblue 80%, gold 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
 }
 
-ul:hover {
+li:hover {
   transform: scale(1.1);
 }
 
@@ -38,22 +45,22 @@ ul:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5vh;
 }
 
 .container {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .logo {
-  background: linear-gradient(25deg, red, blue);
+  background: linear-gradient(25deg, red, gold);
   border-radius: 50%;
 }
 
 .logo:hover {
-  background: linear-gradient(-25deg, red, blue);
+  background: linear-gradient(-25deg, red, gold);
 }
 
 h1,
@@ -62,17 +69,24 @@ ul {
 }
 
 .navbar {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  background: linear-gradient(25deg, skyblue, bisque);
-  background-repeat: no-repeat;
-  border: 1vh solid;
-  border-radius: 25%;
+  align-items: center; */
+  width: 80vw;
+  display: inline-block;
+  border-radius: 10%;
+}
+
+.nav-container {
+  text-decoration: none;
+  list-style-type: none;
+  text-align: center;
 }
 
 #cart-link {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: nowrap;
 }
 
@@ -102,7 +116,7 @@ img {
   align-items: center;
   flex-direction: column;
   border: 1vh solid;
-  background: linear-gradient(25deg, red, blue);
+  background: linear-gradient(25deg, red, gold);
   margin: 10vh;
 }
 
@@ -124,7 +138,7 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(25deg, red, blue);
+  background: linear-gradient(25deg, red, gold);
   width: 40vw;
   height: 30vh;
 }
@@ -155,9 +169,8 @@ img {
 
 .wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 90vw;
 }
 
 #input-text {
@@ -180,7 +193,6 @@ img {
   flex-direction: column;
   max-width: 50vw;
   margin: auto;
-  padding: 5vh;
 }
 
 #services-header,
@@ -208,6 +220,10 @@ img {
 .events {
   margin: auto;
   max-width: 50vw;
+}
+
+.employees {
+  margin-bottom: 10vh;
 }
 
 .service-heading,

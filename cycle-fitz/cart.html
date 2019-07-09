@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Shopping Cart</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Rubik&display=swap"
@@ -12,40 +12,41 @@
     />
   </head>
   <body>
-        <div class="container">
-                <div class="logo">
-                  <h1>CycleFitz</h1>
-                </div>
-                <br />
-                <div class="navbar">
-                  <ul>
-                    <a href="index.html">Home</a>
-                  </ul>
-                  <ul>
-                    <a href="about.html">About Us</a>
-                  </ul>
-                  <ul>
-                    <a href="services.html">Services</a>
-                  </ul>
-                  <ul>
-                    <a href="employees.html">Our Team</a>
-                  </ul>
-                  <ul>
-                    <a href="events.html">Events</a>
-                  </ul>
-                  <ul>
-                    <a href="cart.html"
-                      >Cart
-                      <div id="cart-quantity"></div
-                    ></a>
-                  </ul>
-                </div>
-              </div>
-      <div id="cart">
-        <img id="cart-icon" src="images/cart.png" alt="cart icon" />
-        <div id="cart-list">
-          <span id="cart-header">Shopping Cart:</span>
-        </div>
+    <div class="container">
+      <div class="logo">
+        <h1>CycleFitz</h1>
+      </div>
+      <br />
+      <nav class="navbar">
+        <ul class="nav-container">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="about.html">About Us</a>
+          </li>
+          <li>
+            <a href="services.html">Services</a>
+          </li>
+          <li>
+            <a href="employees.html">Our Team</a>
+          </li>
+          <li>
+            <a href="events.html">Events</a>
+          </li>
+          <li>
+            <a id="cart-link" href="cart.html"
+              >Cart
+              <div id="cart-quantity"></div
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div id="cart">
+      <img id="cart-icon" src="images/cart.png" alt="cart icon" />
+      <div id="cart-list">
+        <span id="cart-header">Shopping Cart:</span>
       </div>
     </div>
   </body>
