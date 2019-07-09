@@ -1,14 +1,13 @@
 const navbar = document.getElementById("navbar");
 
-const LScart = JSON.parse(localStorage.getItem('cart'))
-const cart = LScart ? LScart : []
+const LScart = JSON.parse(localStorage.getItem("cart"));
+const cart = LScart ? LScart : [];
 
 const cartListDiv = document.getElementById("cart-list");
 
 const cartAdd = e => {
   cart.push(e.id);
-  console.log(JSON.stringify(cart))
-  localStorage.setItem('cart', JSON.stringify(cart))
+  localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 };
 
@@ -24,13 +23,12 @@ const updateCart = () => {
     }
   });
   cartQuantity.appendChild(quantity);
-  console.log(cart);
 };
 
 const loadCart = () => {
   cart.forEach(item => {
-    cartItemDiv = document.createElement('div')
-    cartItemDiv.setAttribute("class", "cart-item-div")
+    cartItemDiv = document.createElement("div");
+    cartItemDiv.setAttribute("class", "cart-item-div");
     cartItem = document.createElement("span");
     cartItem.setAttribute("class", "cart-item");
     removeButton = document.createElement("button");
@@ -39,17 +37,26 @@ const loadCart = () => {
     removeButton.setAttribute("class", "removeButton");
     cartItem.innerHTML = item;
     cartListDiv.appendChild(cartItemDiv);
-    cartItemDiv.appendChild(cartItem)
+    cartItemDiv.appendChild(cartItem);
     cartItemDiv.appendChild(removeButton);
   });
   updateCart();
 };
 
 const removeFromCart = e => {
-  const cart = e.parentNode.parentNode;
-  cart.removeChild(e.parentNode);
-  console.log(e.parentNode)
+  const cartElement = e.parentNode.parentNode;
+  cartElement.removeChild(e.parentNode);
+  itemToRem = e.parentNode.childNodes[0].innerHTML;
+  console.log(itemToRem);
+  let searching = true;
+  cart.forEach((item, index) => {
+    while (searching) {
+      if (itemToRem === item) {
+        const removeItem = cart.splice(index, 1);
+        searching = false;
+      }
+    }
+  });
+  localStorage.setItem('cart', JSON.stringify(cart))
+  updateCart()
 };
-
-
-
