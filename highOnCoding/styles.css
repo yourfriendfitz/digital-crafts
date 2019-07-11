@@ -1,11 +1,4 @@
-:root {
-  font-family: "Noto Sans KR", sans-serif;
-}
 
-body {
-  height: 100%;
-  margin: 0;
-}
 
 .container {
   margin: 2vw;
@@ -35,15 +28,12 @@ body {
   display: inline-block;
 }
 
-.links {
+
+.content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.nav-content {
-  display: flex;
-  width: 60%;
 }
 
 .logo {
@@ -174,4 +164,11 @@ a {
     .nav-content {
         font-size: 0.7em;
     }
+}
+
+@media only screen and (min-width: 501px ) {
+  .content {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 }

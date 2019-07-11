@@ -2,66 +2,120 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title>🤪</title>
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar blue">
-        <div class="nav-content">
+    <div class="container-fluid">
+      <nav class="navbar blue nav">
+        <div class="nav-item">
           <div><h1 class="logo">HighOnCoding</h1></div>
-          <div class="links">
-            <div class="link" id="home"><a href="index.html">Home</a></div>
-            <div class="link" id="categories">
+        </div>
+        <div class="links">
+          <div class="link nav-link" id="home">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+          </div>
+          <div class="link nav-link" id="categories">
+            <li class="nav-item">
               <a id="lighter" href="categories.html">Categories</a>
-            </div>
+            </li>
           </div>
         </div>
       </nav>
-      <div class="content-body">
-        <div class="grey-box">
-          <h1>Curse of the Current Reviews</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-        </div>
+      <div class="content">
         <div class="content-box">
-          <h2 class="blue-text">Hello Watchkit</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <div class="yellow-bar">
-            <ul>
-              <li>12 comments</li>
-              <li>124 Likes</li>
-            </ul>
+          <div class="card grey-box" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Curse of the Current Reviews</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <a href="index.html" class="btn btn-primary">Learn More</a>
+            </div>
           </div>
         </div>
         <div class="content-box">
-          <h2 class="blue-text">Introduction to Swift</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <div class="yellow-bar">
-            <ul>
-              <li>15 comments</li>
-              <li>45 Likes</li>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Hello Watchkit</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </li>
+              <div class="yellow-bar">
+                <ul>
+                  <li>12 comments</li>
+                  <li>124 Likes</li>
+                </ul>
+              </div>
             </ul>
+            <div class="card-body">
+              <a href="index.html" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="content-box">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Introduction to Swift</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </li>
+              <div class="yellow-bar">
+                <ul>
+                  <li>15 comments</li>
+                  <li>45 Likes</li>
+                </ul>
+              </div>
+            </ul>
+            <div class="card-body">
+              <a href="index.html" class="btn btn-primary">Learn More</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
