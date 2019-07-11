@@ -1,0 +1,25 @@
+html, .container-fluid {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/templatemo_header_bg.jpg")
+}
+
+.navbar .navbar-expand-lg, .navbar-dark {
+    background-image: url("images/templatemo_header_bg.jpg")
+}
+
+
+.carousel-inner {
+    width: 70vw;
+    margin: auto;
+    height: 70vh;
+    padding: 1%;
+}
+
