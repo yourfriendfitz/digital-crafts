@@ -69,6 +69,19 @@
     padding: 5vh;
 }
 
+.row {
+  max-width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 1%;
+}
+
+.col {
+  margin: 1%;
+}
+
 .grey-box {
   background: grey;
 }
