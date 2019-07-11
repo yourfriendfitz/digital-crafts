@@ -31,8 +31,12 @@ nav a {
   color: black;
 }
 
-#feature-img-container img {
-  padding: 1vh;
+.card {
+    margin: auto;
+}
+
+.content {
+    padding: 2vh;
 }
 
 #feature-header {
