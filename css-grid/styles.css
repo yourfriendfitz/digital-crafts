@@ -27,7 +27,9 @@
 }
 
 .authors {
-  -ms-grid-columns: auto;
-      grid-template-columns: auto;
+  -ms-grid-columns: 40px 50px auto 50px 40px;
+      grid-template-columns: 40px 50px auto 50px 40px;
+  -ms-grid-rows: 25% 100px auto;
+      grid-template-rows: 25% 100px auto;
 }
 /*# sourceMappingURL=styles.css.map */
