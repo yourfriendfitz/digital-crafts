@@ -11,8 +11,8 @@
   #menu {
     color: white; 
     display: grid; 
-    /*grid-template-columns: 1fr 1fr 1fr; */
-    grid-template-columns: repeat(3,1fr); 
+    grid-template-columns: 1fr 1fr 1fr; 
+    // grid-template-columns: auto; 
     justify-items: center; 
     align-items: center; 
     
@@ -21,4 +21,8 @@
   
   #featured {
     padding: 10px; 
+  }
+
+  .authors {
+    grid-template-columns: auto;
   }
