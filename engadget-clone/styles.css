@@ -1,3 +1,13 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+html {
+  background: gray;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
@@ -80,6 +90,11 @@
   padding: 1vw;
 }
 
+button {
+  background: darkgray;
+  border-radius: 10%;
+}
+
 @media screen and (min-width: 601px) {
   .home-icon {
     height: 3.7em;
@@ -99,6 +114,9 @@
     display: none;
   }
   .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     flex-wrap: nowrap;
   }
