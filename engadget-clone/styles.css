@@ -54,10 +54,11 @@
   }
 
   .content {
-    display: flex;
+
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
   }
 
   .product {
@@ -85,8 +86,8 @@
         display: none;
     }
     .content {
-        flex-direction: column;
-        flex-wrap: nowrap;
+        /* flex-direction: column;
+        flex-wrap: nowrap; */
     }
     .product {
         padding: 1vh;
