@@ -1,11 +1,10 @@
-const log = console.log;
 
-palindromeInput = document.getElementById("palindrome");
-testButton = document.getElementById("test");
-const resultElement = document.getElementById("result");
+const palindromeInput = document.getElementById("palindrome");
+const palindromeTestButton = document.getElementById("palindromeTest");
+const palindromeResultElement = document.getElementById("palindromeResult");
 
 let palindromeToTest;
-let testResult;
+let palindromeTestResult;
 
 palindromeInput.addEventListener("change", function(e) {
   palindromeToTest = e.srcElement.value;
@@ -18,10 +17,10 @@ const testPalindrome = str => {
     .split("")
     .reverse()
     .join("");
-  testResult = lowerRegexStr === reverseStr;
+  palindromeTestResult = lowerRegexStr === reverseStr;
 };
 
 const showPalindromeTestResult = () => {
   testPalindrome(palindromeToTest);
-  resultElement.innerHTML = testResult;
+  palindromeResultElement.innerHTML = palindromeTestResult;
 };

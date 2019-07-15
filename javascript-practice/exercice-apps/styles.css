@@ -2,6 +2,7 @@ html {
   height: 100%;
   width: 100%;
   padding: 0;
+  background-color: gray;
 }
 
 html body {
@@ -26,7 +27,25 @@ html body .container {
           align-items: center;
 }
 
-html body .container #palindrome {
+html body .container .box {
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: solid;
+}
+
+html body .container .box input {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -36,10 +55,6 @@ html body .container #palindrome {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 30vh;
-}
-
-html body .container #test {
-  margin: 1vh;
+  width: 37vw;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -4,15 +4,136 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="styles.css">
-    <title>Palindrome</title>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Activity Apps</title>
   </head>
   <body>
     <div class="container">
-      <input type="text" id="palindrome" placeholder="Test for Palindrome" />
-      <button id="test" onclick="showPalindromeTestResult()">Test Palindrome</button>
-      <div><p id="result"></p></div>
+      <!-- Palindrome -->
+      <div class="box">
+        <h5>Palindrome</h5>
+        <input type="text" id="palindrome" placeholder="Test for Palindrome" />
+        <button id="palindromeTest" onclick="showPalindromeTestResult()">
+          Test Palindrome
+        </button>
+        <div><p id="palindromeResult"></p></div>
+      </div>
+
+      <!-- Non Uniques -->
+      <div class="box">
+        <h5>Non Uniques</h5>
+        <input
+          type="text"
+          id="nonUnique"
+          placeholder="Enter Multiple Non-Unique Values to Remove Duplicates"
+        />
+        <button id="nonUniqueTest" onclick="showNonUniqueResult()">
+          Remove Non-Unique Values
+        </button>
+        <div><p id="nonUniqueResult"></p></div>
+      </div>
+
+      <!-- Is In Array -->
+      <div class="box">
+        <h5>Is In Array</h5>
+        <input
+          type="text"
+          id="addToArray"
+          placeholder="Enter Items to Add to Array"
+        />
+        <h3>Enter an Item and then hit enter to add to array</h3>
+        <div>
+          Array:
+          <p id="arrayToCheckAgainst"></p>
+        </div>
+        <input
+          type="text"
+          id="inArray"
+          placeholder="Item to Check Against Array"
+        />
+        <button id="inArrayTest" onclick="showInArrayResult()">
+          Check if in Array
+        </button>
+        <div><p id="inArrayResult"></p></div>
+      </div>
+
+      <!-- Largest Number -->
+      <div class="box">
+        <h5>Largest Number</h5>
+        <input
+          type="text"
+          id="largestArray"
+          placeholder="Enter Numbers to Add to Array"
+        />
+        <h3>Enter an Item and then hit enter to add to array</h3>
+        <div>
+          Array:
+          <p id="arrayToCheckLargest"></p>
+        </div>
+        <button id="largestTest" onclick="showLargestResult()">
+          Check Largest Number
+        </button>
+        <div><p id="largestResult"></p></div>
+      </div>
+
+      <!-- Smallest Number -->
+      <div class="box">
+        <h5>Smallest Number</h5>
+        <input
+          type="text"
+          id="smallestArray"
+          placeholder="Enter Numbers to Add to Array"
+        />
+        <h3>Enter an Item and then hit enter to add to array</h3>
+        <div>
+          Array:
+          <p id="arrayToCheckSmallest"></p>
+        </div>
+        <button id="smallestTest" onclick="showSmallestResult()">
+          Check Smallest Number
+        </button>
+        <div><p id="smallestResult"></p></div>
+      </div>
+
+      <!-- FizzBuzz -->
+      <div class="box">
+        <h5>FizzBuzz</h5>
+        <input
+          type="text"
+          id="fizzbuzz"
+          placeholder="Enter Number to FizzBuzz"
+        />
+        <button id="fizzbuzzTest" onclick="showFizzbuzzResult()">
+          Check FizzBuzz
+        </button>
+        <div><p id="fizzbuzzResult"></p></div>
+      </div>
+
+      <!-- Sort Array -->
+      <div class="box">
+          <h5>Sort</h5>
+        <input
+          type="text"
+          id="sortArray"
+          placeholder="Enter Numbers to Add to Array"
+        />
+        <h3>Enter an Item and then hit enter to add to array</h3>
+        <div>
+          Array:
+          <p id="arrayToSort"></p>
+        </div>
+        <button id="sortTest" onclick="showSortResult()">
+          Sort Sm to Lg
+        </button>
+        <div><p id="sortResult"></p></div>
+      </div>
     </div>
     <script src="palindrome.js"></script>
+    <script src="nonUnique.js"></script>
+    <script src="inArray.js"></script>
+    <script src="largestNumber.js"></script>
+    <script src="smallestNumber.js"></script>
+    <script src="fizzbuzz.js"></script>
+    <script src="sort.js"></script>
   </body>
 </html>
