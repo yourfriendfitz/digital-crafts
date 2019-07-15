@@ -21,4 +21,8 @@ html, body {
 .container p {
   margin: 3vh;
 }
+
+.container button {
+  margin: 1%;
+}
 /*# sourceMappingURL=styles.css.map */
