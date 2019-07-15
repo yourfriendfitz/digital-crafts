@@ -11,11 +11,18 @@ const shortText = "Lorem ipsum dolor sit amet.";
 
 const changeText = e => {
   paragraphId = e.parentNode.childNodes[1].id;
-  if (paragraphId === "one") {
-    if (paragraphOne.innerHTML === longText) {
-      paragraphOne.innerHTML = shortText;
-    } else {
-      paragraphOne.innerHTML = longText;
-    }
+  paragraph = document.getElementById(paragraphId)
+  if (paragraph.innerHTML === longText) {
+    paragraph.innerHTML = shortText;
+  } else {
+    paragraph.innerHTML = longText;
   }
 };
+
+const insertText = element => {
+    element.innerHTML = longText
+}
+
+paragraphOne.addEventListener("load", insertText(paragraphOne))
+paragraphTwo.addEventListener("load", insertText(paragraphTwo))
+paragraphThree.addEventListener("load", insertText(paragraphThree))
