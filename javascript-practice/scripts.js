@@ -5,6 +5,7 @@ const buttonTwo = document.getElementById("two");
 const buttonThree = document.getElementById("three");
 
 const changeText = e => {
-  log(e);
-};
+    console.log(e)
+}
 
+buttonOne.addEventListener("click", changeText(e))
