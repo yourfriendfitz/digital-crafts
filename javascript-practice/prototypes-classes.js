@@ -30,12 +30,15 @@ inputAge.addEventListener("change", function(e) {
 const addPerson = () => {
   const person = new Person(newName, newAge);
   personElement = document.createElement("span");
+  aliveElement = document.createElement("span");
   killButton = document.createElement("button");
   killButton.setAttribute("onclick", "kill(this)");
-  killButton.innerHTML = `Kill ${newName}`
-  personElement.innerHTML = `${person.name}, ${person.age} - Alive: ${person.alive}`;
-  personElement.appendChild(killButton);
+  killButton.innerHTML = `Kill ${newName}`;
+  personElement.innerHTML = `${person.name}, ${person.age} `;
+  aliveElement.innerHTML = `- Alive: ${person.alive}`;
+  aliveElement.appendChild(killButton);
   persons.appendChild(personElement);
+  persons.appendChild(aliveElement);
 };
 
 const kill = e => {

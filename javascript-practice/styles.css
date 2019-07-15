@@ -25,4 +25,9 @@ html, body {
 .container button {
   margin: 1%;
 }
+
+.container .personContainer {
+  margin: auto;
+  text-align: center;
+}
 /*# sourceMappingURL=styles.css.map */
