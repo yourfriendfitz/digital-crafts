@@ -1,8 +1,7 @@
+inputName = document.getElementById("name");
+inputAge = document.getElementById("age");
 
-inputName = document.getElementById("name")
-inputAge = document.getElementById("age")
-
-persons = document.getElementsByClassName("persons")
+persons = document.getElementById("persons");
 
 class Person {
   constructor(name, age) {
@@ -21,16 +20,24 @@ class Person {
 let newName, newAge;
 
 inputName.addEventListener("change", function(e) {
-    newName = e.srcElement.value
-})
+  newName = e.srcElement.value;
+});
 
 inputAge.addEventListener("change", function(e) {
-    newAge = e.srcElement.value
-})
+  newAge = e.srcElement.value;
+});
 
 const addPerson = () => {
-    const person = new Person(newName, newAge)
-    personElement = document.createElement("span")
-    personElement.innerHTML = `${person.name}, ${person.age} - ${person.alive}`
-    persons.appendChild(personElement)
-}
+  const person = new Person(newName, newAge);
+  personElement = document.createElement("span");
+  killButton = document.createElement("button");
+  killButton.setAttribute("onclick", "kill(this)");
+  killButton.innerHTML = `Kill ${newName}`
+  personElement.innerHTML = `${person.name}, ${person.age} - Alive: ${person.alive}`;
+  personElement.appendChild(killButton);
+  persons.appendChild(personElement);
+};
+
+const kill = e => {
+  console.log(e.parentNode);
+};
