@@ -5,15 +5,17 @@ html, body {
 }
 
 .container {
-    height: auto;
-    width: auto;
+    height: 80vh;
+    width: 80vw;
     background-color: gray;
+    margin: auto;
     h1 {
         text-decoration: underline;
         font-weight: 500;
-        margin: auto;
+        margin: 3vh;
+        text-align: center;
     }
     p {
-        margin: auto
+        margin: 3vh
     }
 }
