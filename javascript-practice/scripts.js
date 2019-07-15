@@ -4,6 +4,8 @@ const paragraphOne = document.getElementById("one");
 const paragraphTwo = document.getElementById("two");
 const paragraphThree = document.getElementById("three");
 
+const buttons = document.getElementsByTagName("button")
+
 const longText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -23,6 +25,8 @@ const insertText = element => {
     element.innerHTML = longText
 }
 
+
+// buttons.addEventListener("click", changeText(this))
 paragraphOne.addEventListener("load", insertText(paragraphOne))
 paragraphTwo.addEventListener("load", insertText(paragraphTwo))
 paragraphThree.addEventListener("load", insertText(paragraphThree))
