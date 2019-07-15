@@ -1,4 +1,4 @@
-
+# Prime number check
 number = int(input("Enter a number: "))
 
 if number > 1:
