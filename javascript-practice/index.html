@@ -11,21 +11,26 @@
     <div class="container">
       <h1 id="header">Lorem Ipsum</h1>
       <div class="paragraphContainer">
-        <p id="one">
-        </p>
+        <p id="one"></p>
         <button onclick="changeText(this)">Change</button>
       </div>
       <div class="paragraphContainer">
-        <p id="two">
-        </p>
+        <p id="two"></p>
         <button onclick="changeText(this)">Change</button>
       </div>
       <div class="paragraphContainer">
-        <p id="three">
-        </p>
+        <p id="three"></p>
         <button onclick="changeText(this)">Change</button>
+      </div>
+      <div class="personContainer">
+        <h1>Persons</h1>
+        <input type="text" id="name" placeholder="Name" />
+        <input type="text" id="age" placeholder="Age" />
+        <button onclick="addPerson()">Submit</button>
+        <div class="persons"></div>
       </div>
     </div>
     <script src="scripts.js"></script>
+    <script src="prototypes-classes.js"></script>
   </body>
 </html>
