@@ -1,3 +1,4 @@
+debugger;
 inputName = document.getElementById("name");
 inputAge = document.getElementById("age");
 
@@ -42,5 +43,5 @@ const addPerson = () => {
 };
 
 const kill = e => {
-  console.log(e.parentNode);
+  console.log(e);
 };
