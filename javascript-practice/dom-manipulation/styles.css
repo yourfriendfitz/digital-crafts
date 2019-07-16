@@ -5,9 +5,7 @@ html {
 }
 
 html body {
-  width: 100%;
-  height: 100%;
-  padding: 0;
+  background-color: gray;
 }
 
 html body .container {
@@ -27,7 +25,9 @@ html body .container {
           flex-direction: column;
 }
 
-html body .container #box1, html body .container #box2, html body .container #box3 {
+html body .container #box1,
+html body .container #box2,
+html body .container #box3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
