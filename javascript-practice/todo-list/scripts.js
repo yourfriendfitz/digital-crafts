@@ -1,28 +1,66 @@
 const log = console.log;
 
-taskInput = document.getElementById("enter-task-input");
+const taskInput = document.getElementById("enter-task-input");
 
-addTaskButton = document.getElementById("add-task");
+const addTaskButton = document.getElementById("add-task");
 
-pendingTaskContainer = document.getElementById("pending");
+const removeTaskButtons = document.getElementsByClassName("remove");
 
-compTaskContainer = document.getElementById("completed");
+const pendingTaskContainer = document.getElementById("pending");
+
+const compTaskContainer = document.getElementById("completed");
+
+lorem = [
+  ...new Set(
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+      .toLowerCase()
+      .replace("/[.,]/", "")
+      .split(" ")
+  )
+];
 
 let taskToAdd;
+let loremIndex = 0;
+let checkboxVisible = false;
 
 const addPendingTask = (taskName, taskId) => {
   const task = document.createElement("div");
-  task.outerHTML = `<div class="task">
-    <input type="checkbox" name="moveToComp" id="${taskId}" />
+  pendingTaskContainer.appendChild(task);
+  task.outerHTML = `<div class="task" id="${taskId}">
+    <input type="checkbox" onclick="moveToComp"/>
     <h2>${taskName}</h2>
     <button class="remove" onclick="removeTask(this)">Remove</button>
   </div>`;
-  pendingTaskContainer.appendChild(task)
 };
 
+const removeTask = e => {
+  taskToRemove = document.getElementById(e.parentNode.id);
+  taskToRemove.parentNode.removeChild(taskToRemove);
+};
 
-taskInput.addEventListener("change", (e) => {
-    taskToAdd = e.srcElement.value
-})
+const addCompTask = (taskName, taskId) => {
+  const task = document.createElement("div");
+  compTaskContainer.appendChild(task);
+  task.outerHTML = `<div class="task" id="${taskId}">
+      <input type="checkbox" name="moveToComp(this)"/>
+      <h2>${taskName}</h2>
+      <button class="remove" onclick="removeTask(this)">Remove</button>
+    </div>`;
+};
 
-addTaskButton.addEventListener("click", () =>)
+const moveToComp = e => {
+  const compTaskId = lorem[loremIndex];
+  const compTaskName = e.parentNode.childNode[1].innerHTML;
+  removeTask(e);
+  addCompTask(compTaskName, compTaskId);
+};
+
+taskInput.addEventListener("change", e => {
+  taskToAdd = e.srcElement.value;
+});
+
+addTaskButton.addEventListener("click", () => {
+  const pendTaskId = lorem[loremIndex];
+  addPendingTask(taskToAdd, pendTaskId);
+  loremIndex++;
+});
