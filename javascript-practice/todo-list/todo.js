@@ -27,7 +27,7 @@ const addPendingTask = (taskName, taskId) => {
   const task = document.createElement("div");
   pendingTaskContainer.appendChild(task);
   task.outerHTML = `<div class="task" id="${taskId}">
-    <input type="checkbox" onclick="moveToComp"/>
+    <input type="checkbox" onclick="moveToComp(this)"/>
     <h2>${taskName}</h2>
     <button class="remove" onclick="removeTask(this)">Remove</button>
   </div>`;
