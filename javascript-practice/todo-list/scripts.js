@@ -50,7 +50,7 @@ const addCompTask = (taskName, taskId) => {
 
 const moveToComp = e => {
   const compTaskId = lorem[loremIndex];
-  const compTaskName = e.parentNode.childNode[1].innerHTML;
+  const compTaskName = e.parentNode.childNodes[1].innerHTML;
   removeTask(e);
   addCompTask(compTaskName, compTaskId);
 };
