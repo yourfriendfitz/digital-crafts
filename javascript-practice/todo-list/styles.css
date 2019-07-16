@@ -5,6 +5,8 @@ html {
 }
 
 html body {
+  width: 100%;
+  height: 100%;
   background-color: gray;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,7 +34,19 @@ html body .task {
       -ms-flex-align: center;
           align-items: center;
   background: #2d9bd5;
-  padding: 3%;
+}
+
+html body .task input,
+html body .task h5,
+html body .task button {
+  margin: 2vw;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+html body .task button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 html body h3 {

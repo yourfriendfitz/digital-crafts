@@ -3,17 +3,27 @@ html {
   height: 100%;
   padding: 0%;
   body {
+    width: 100%;
+    height: 100%;
     background-color: gray;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     .task {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: rgb(45, 155, 213);
-        padding: 3%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgb(45, 155, 213);
+      input,
+      h5,
+      button {
+        margin: 2vw;
+        transition: 0.25s;
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
     }
     h3 {
       white-space: nowrap;
