@@ -41,11 +41,12 @@ const createDishElement = dish => {
     <img src="${dish.imageURL}" alt="${dish.title}">
     <h4 class="dishTitle">${dish.title}</h4>
     <p class="dishDesc">${dish.description}</p>
-    <p 
+    <p class="dishPrice">$${dish.price}.00</p>
     </div>`;
 };
 
 const populateDishes = () => {
+  dishesElement.innerHTML = "";
   courseButtonsContainer.style.display = "block";
   dishes.map(dish => {
     const dishElement = createDishElement(dish);
