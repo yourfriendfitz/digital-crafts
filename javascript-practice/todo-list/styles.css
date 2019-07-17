@@ -24,6 +24,7 @@ html body {
 }
 
 html body .task {
+  width: 350px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
