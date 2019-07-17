@@ -34,7 +34,7 @@ const addPendingTask = (taskName) => {
 
 const showTaskPreview = (taskName) => {
   const task = `<div class="task" id="preview" style="opacity: 0.5">
-    <input type="checkbox" onclick="moveToComp(this)">
+    <input type="checkbox">
     <h5>${taskName}</h5>
     <button class="remove" onclick="removeTask(this)">Remove</button>
   </div>`;
@@ -52,7 +52,7 @@ const addCompTask = (taskName) => {
       <h5>${taskName}</h5>
       <button class="remove" onclick="removeTask(this)">Remove</button>
     </div>`;
-  pendingTaskContainer.insertAdjacentHTML("beforeend", task)
+  compTaskContainer.insertAdjacentHTML("beforeend", task)
 };
 
 const moveToComp = e => {
