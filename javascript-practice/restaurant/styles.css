@@ -64,7 +64,7 @@ html body .container .top {
 }
 
 html body .container .top #showMenu {
-  width: 20vw;
+  width: 173px;
   height: 5vh;
   background-color: lightgrey;
 }
@@ -75,12 +75,11 @@ html body .container .top #showMenu h4 {
 
 html body .container .top #courseButtonsContainer {
   margin: auto;
-  width: 43vw;
   display: none;
 }
 
 html body .container .top #courseButtonsContainer .courseButtons {
-  width: 20vw;
+  width: 173px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,10 +92,6 @@ html body .container .top #courseButtonsContainer .courseButtons {
   margin: auto;
   margin-top: 2%;
   margin-bottom: 2%;
-}
-
-html body .container .top #courseButtonsContainer .courseButtons button {
-  margin: 2%;
 }
 
 html body .container .dishes {
