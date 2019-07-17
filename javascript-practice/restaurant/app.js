@@ -41,6 +41,7 @@ const createDishElement = dish => {
     <img src="${dish.imageURL}" alt="${dish.title}">
     <h4 class="dishTitle">${dish.title}</h4>
     <p class="dishDesc">${dish.description}</p>
+    <p 
     </div>`;
 };
 
@@ -59,6 +60,30 @@ const hideCourse = courseArray => {
   });
 };
 
+const showCourse = courseArray => {
+  courseArray.forEach(course => {
+    course.style.display = "flex";
+  });
+};
+
 showMenuButton.addEventListener("click", () => {
   populateDishes();
+});
+
+startersButton.addEventListener("click", () => {
+  showCourse(startersArray);
+  hideCourse(entreesArray);
+  hideCourse(dessertsArray);
+});
+
+entreesButton.addEventListener("click", () => {
+  showCourse(entreesArray);
+  hideCourse(startersArray);
+  hideCourse(dessertsArray);
+});
+
+dessertsButton.addEventListener("click", () => {
+  showCourse(dessertsArray);
+  hideCourse(entreesArray);
+  hideCourse(startersArray);
 });
