@@ -24,23 +24,21 @@ let taskToAdd;
 let checkboxVisible = false;
 
 const addPendingTask = (taskName) => {
-  const task = document.createElement("div");
-  pendingTaskContainer.appendChild(task);
-  task.outerHTML = `<div class="task">
+  const task = `<div class="task">
     <input type="checkbox" onclick="moveToComp(this)">
     <h5>${taskName}</h5>
     <button class="remove" onclick="removeTask(this)">Remove</button>
   </div>`;
+  pendingTaskContainer.insertAdjacentHTML("beforeend", task)
 };
 
 const showTaskPreview = (taskName) => {
-  const task = document.createElement("div");
-  pendingTaskContainer.appendChild(task);
-  task.outerHTML = `<div class="task" id="preview" style="opacity: 0.5">
+  const task = `<div class="task" id="preview" style="opacity: 0.5">
     <input type="checkbox" onclick="moveToComp(this)">
     <h5>${taskName}</h5>
     <button class="remove" onclick="removeTask(this)">Remove</button>
   </div>`;
+  pendingTaskContainer.insertAdjacentHTML("beforeend", task)
 };
 
 const removeTask = e => {
@@ -49,13 +47,12 @@ const removeTask = e => {
 };
 
 const addCompTask = (taskName) => {
-  const task = document.createElement("div");
-  compTaskContainer.appendChild(task);
-  task.outerHTML = `<div class="task">
+  const task = `<div class="task">
       <input type="checkbox" onclick="moveToPend(this)" checked>
       <h5>${taskName}</h5>
       <button class="remove" onclick="removeTask(this)">Remove</button>
     </div>`;
+  pendingTaskContainer.insertAdjacentHTML("beforeend", task)
 };
 
 const moveToComp = e => {
