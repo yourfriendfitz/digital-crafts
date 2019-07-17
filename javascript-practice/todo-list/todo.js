@@ -33,6 +33,16 @@ const addPendingTask = (taskName) => {
   </div>`;
 };
 
+const showTaskPreview = (taskName) => {
+  const task = document.createElement("div");
+  pendingTaskContainer.appendChild(task);
+  task.outerHTML = `<div class="task" id="preview" style="opacity: 0.5">
+    <input type="checkbox" onclick="moveToComp(this)">
+    <h5>${taskName}</h5>
+    <button class="remove" onclick="removeTask(this)">Remove</button>
+  </div>`;
+};
+
 const removeTask = e => {
   taskToRemove = e.parentNode
   taskToRemove.parentNode.removeChild(taskToRemove);
@@ -62,11 +72,24 @@ const moveToPend = e => {
   addPendingTask(compTaskName);
 };
 
+const removePreview = () => {
+  if(document.getElementById("preview")) {
+    pendingTaskContainer.removeChild(document.getElementById("preview"))
+  }
+}
+
+taskInput.addEventListener("input", e => {
+  removePreview()
+  const taskToPreview = e.srcElement.value;
+  showTaskPreview(taskToPreview)
+})
+
 taskInput.addEventListener("change", e => {
   taskToAdd = e.srcElement.value;
 });
 
 addTaskButton.addEventListener("click", () => {
+  removePreview()
   // const pendTaskId = lorem[loremIndex];
   addPendingTask(taskToAdd);
   // loremIndex++;

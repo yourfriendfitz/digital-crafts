@@ -14,15 +14,18 @@ html {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgb(45, 155, 213);
+      background: rgba(45, 155, 213, 1);
       input,
-      h5,
       button {
         margin: 2vw;
-        transition: 0.25s;
       }
-      button:hover {
-        transform: scale(1.1);
+      h5 {
+        margin-left: 1vw;
+        margin-right: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
       }
     }
     h3 {

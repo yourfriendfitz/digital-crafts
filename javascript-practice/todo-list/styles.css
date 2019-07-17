@@ -37,16 +37,23 @@ html body .task {
 }
 
 html body .task input,
-html body .task h5,
 html body .task button {
   margin: 2vw;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
 }
 
-html body .task button:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+html body .task h5 {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
 }
 
 html body h3 {
