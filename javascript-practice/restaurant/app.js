@@ -46,13 +46,18 @@ const createDishElement = dish => {
 };
 
 const populateDishes = () => {
-  dishesElement.innerHTML = "";
-  courseButtonsContainer.style.display = "block";
-  dishes.map(dish => {
-    const dishElement = createDishElement(dish);
-    dishesElement.insertAdjacentHTML("beforeend", dishElement);
-  });
-  updateArrays(startersArray, entreesArray, dessertsArray);
+  if (dishesElement.innerHTML === "") {
+    courseButtonsContainer.style.display = "block";
+    dishes.map(dish => {
+      const dishElement = createDishElement(dish);
+      dishesElement.insertAdjacentHTML("beforeend", dishElement);
+    });
+    updateArrays(startersArray, entreesArray, dessertsArray);
+  } else {
+    showCourse(startersArray);
+    showCourse(entreesArray);
+    showCourse(dessertsArray);
+  }
 };
 
 const hideCourse = courseArray => {
