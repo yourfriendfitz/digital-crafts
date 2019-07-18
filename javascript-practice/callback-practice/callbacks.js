@@ -5,3 +5,10 @@ const htmlCollectionToArray = (htmlCollection, arr) => {
       arr.push(htmlCollection[index]);
     }
   };
+
+const sayHello = () => {
+  log("hello")
+}
+
+window.setTimeout(sayHello, 5000)
+window.setInterval(sayHello, 5000)
