@@ -25,6 +25,7 @@ timerInput.addEventListener("keypress", e => {
 
 stop.addEventListener("click", () => {
   timerRunning = false;
+  timerInput.value = "";
 });
 
 const countdown = time => {
@@ -36,8 +37,8 @@ const timerStart = time => {
   const timerInterval = setInterval(() => {
     countdown(time);
     time--;
-    if (time < 0 | timerRunning === false) {
-      clearInterval(timerInterval)
+    if ((time < 0) | (timerRunning === false)) {
+      clearInterval(timerInterval);
     }
   }, 1000);
 };
