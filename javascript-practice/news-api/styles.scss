@@ -30,6 +30,23 @@ html {
           justify-content: center;
           align-items: center;
           flex-direction: column;
+          .source {
+            text-align: center;
+            margin: auto;
+            width: 70vw;
+          }
+          .article {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: auto;
+            width: 70vw;
+            white-space: nowrap;
+            a {
+              white-space: nowrap;
+            }
+          }
         }
       }
     }

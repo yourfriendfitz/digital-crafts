@@ -52,4 +52,39 @@ html body .container .bottom .content {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+
+html body .container .top .content .source,
+html body .container .middle .content .source,
+html body .container .bottom .content .source {
+  text-align: center;
+  margin: auto;
+  width: 70vw;
+}
+
+html body .container .top .content .article,
+html body .container .middle .content .article,
+html body .container .bottom .content .article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  width: 70vw;
+  white-space: nowrap;
+}
+
+html body .container .top .content .article a,
+html body .container .middle .content .article a,
+html body .container .bottom .content .article a {
+  white-space: nowrap;
+}
 /*# sourceMappingURL=styles.css.map */
