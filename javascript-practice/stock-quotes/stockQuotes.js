@@ -1,3 +1,25 @@
+const [
+  allQuotesButton,
+  appleQuotesButton,
+  amazonQuotesButton,
+  alibabaQuotesButton,
+  googleQuotesButton,
+  facebookQuotesButton,
+  quotesDiv
+] = [
+  document.getElementById("allQuotes"),
+  document.getElementById("appleQuotes"),
+  document.getElementById("amazonlQuotes"),
+  document.getElementById("alibabaQuotes"),
+  document.getElementById("googleQuotes"),
+  document.getElementById("facebookQuotes"),
+  document.getElementById("quotes")
+];
+
+const quoteElement = quote => {
+  `<div class="quote"><h1>${quote.name}</h1><h3>${quote.price}</h3></div>`;
+};
+
 // In order to get the quotes you can call the getStockQuote function as shown below:
 
 // getStockQuote(pass in the symbol of the stock)
@@ -9,13 +31,13 @@
 // GOOG
 // FB
 
-let quotes = {
-  APLE: { name: "Apple", price: 0 },
-  AMAZ: { name: "Amazon", price: 0 },
-  ALBAB: { name: "Ali Baba", price: 0 },
-  GOOG: { name: "Google", price: 0 },
-  FB: { name: "Facebook", price: 0 }
-};
+let quotes = [
+  {APLE: { name: "Apple", price: 0 }},
+  {AMAZ: { name: "Amazon", price: 0 }},
+  {ALBAB: { name: "Ali Baba", price: 0 }},
+  {GOOG: { name: "Google", price: 0 }},
+  {FB: { name: "Facebook", price: 0 }}
+];
 
 function getStockQuote(symbol) {
   let stock = quotes[symbol];
