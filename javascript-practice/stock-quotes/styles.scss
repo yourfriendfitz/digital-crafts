@@ -1,9 +1,9 @@
 :root {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
-      sans-serif;
-    background-color: gray;
-  }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  background-color: gray;
+}
 
 html {
   body {
@@ -23,10 +23,23 @@ html {
         justify-content: center;
         align-items: center;
         .header {
-            text-align: center;
+          text-align: center;
         }
         .content {
-            text-align: justify;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          .quotes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+          }
         }
       }
     }
