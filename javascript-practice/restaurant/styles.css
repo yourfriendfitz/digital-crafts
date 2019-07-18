@@ -126,7 +126,6 @@ html body .container .dishes .dish {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 2%;
-  width: 40vw;
 }
 
 html body .container .dishes .dish img {
