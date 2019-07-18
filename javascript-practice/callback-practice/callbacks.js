@@ -20,3 +20,14 @@ const addImg = () => {
 
 // window.setTimeout(sayHello, 5000)
 // window.setInterval(addImg, 10)
+
+const mkCard = () => {
+  log("card made")
+}
+const firstCallback = (callback) => {
+  debugger;
+  secondCallback(callback)
+}
+const secondCallback = (callback) => {
+  callback()
+}
