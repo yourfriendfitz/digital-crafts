@@ -31,3 +31,10 @@ const firstCallback = (callback) => {
 const secondCallback = (callback) => {
   callback()
 }
+
+const add = (callback) => {
+  callback()
+}
+add(() => {
+  log("callback function called")
+})
