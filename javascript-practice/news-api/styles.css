@@ -8,6 +8,19 @@ html body .container {
   height: 90%;
   padding: 0;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 html body .container .image {
@@ -27,6 +40,12 @@ html body .container .bottom {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+html body .container .top #displayArticles,
+html body .container .middle #displayArticles,
+html body .container .bottom #displayArticles {
+  background-color: darkgray;
 }
 
 html body .container .top .header,
@@ -58,7 +77,6 @@ html body .container .middle .content .source,
 html body .container .bottom .content .source {
   text-align: center;
   margin: auto;
-  width: 70vw;
 }
 
 html body .container .top .content .article,
@@ -78,13 +96,15 @@ html body .container .bottom .content .article {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: auto;
-  width: 70vw;
-  white-space: nowrap;
 }
 
-html body .container .top .content .article a,
-html body .container .middle .content .article a,
-html body .container .bottom .content .article a {
-  white-space: nowrap;
+@media only screen and (max-width: 1000px) {
+  .article {
+    max-width: 300px;
+    font-size: 60%;
+    margin: auto;
+    text-align: center;
+    overflow-x: hidden;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -12,6 +12,10 @@ html {
       height: 90%;
       padding: 0;
       margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       .image {
         height: 20px;
         width: 20px;
@@ -22,6 +26,9 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        #displayArticles {
+            background-color: darkgray;
+        }
         .header {
           text-align: center;
         }
@@ -33,7 +40,6 @@ html {
           .source {
             text-align: center;
             margin: auto;
-            width: 70vw;
           }
           .article {
             display: flex;
@@ -41,14 +47,19 @@ html {
             justify-content: center;
             flex-direction: column;
             margin: auto;
-            width: 70vw;
-            white-space: nowrap;
-            a {
-              white-space: nowrap;
-            }
           }
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .article {
+      max-width: 300px;
+      font-size: 60%;
+      margin: auto;
+      text-align: center;
+      overflow-x: hidden;
   }
 }

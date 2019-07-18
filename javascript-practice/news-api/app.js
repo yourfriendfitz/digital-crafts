@@ -1,10 +1,13 @@
 const newsDiv = document.getElementById("news");
 
+const displayArticlesButton = document.getElementById("displayArticles")
+
 const newsArticles = news.articles;
 
 const sourceNames = sources.sources.name;
 
 const sourceArray = sources.sources;
+
 
 const createArticleElement = (article, index) => {
   return `<div class="article" id="${article.source.id}${index}"><h1>${
@@ -48,3 +51,7 @@ const displayBySource = (sourceId, articlesArray) => {
     }
   });
 };
+
+displayArticlesButton.addEventListener("click", () => {
+    displayArticles(newsArticles)
+})
