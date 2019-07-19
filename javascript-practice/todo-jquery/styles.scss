@@ -16,6 +16,10 @@ html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    pre {
+        margin: auto;
+        text-align: center;
+    }
     .task {
       width: 350px;
       display: flex;

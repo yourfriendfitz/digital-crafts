@@ -27,6 +27,11 @@ html body {
           flex-direction: column;
 }
 
+html body pre {
+  margin: auto;
+  text-align: center;
+}
+
 html body .task {
   width: 350px;
   display: -webkit-box;
