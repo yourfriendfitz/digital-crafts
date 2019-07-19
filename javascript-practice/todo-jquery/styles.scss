@@ -1,0 +1,77 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  padding: 0%;
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .task {
+      width: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(45, 155, 213, 1);
+      input,
+      button {
+        margin: 2vw;
+      }
+      h5 {
+        margin-left: 1vw;
+        margin-right: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+      }
+    }
+    h3 {
+      white-space: nowrap;
+    }
+    .top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5%;
+      h3,
+      input,
+      button {
+        margin: 3%;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+    .middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 5%;
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 5%;
+    }
+  }
+}
