@@ -20,7 +20,7 @@ html body {
           flex-direction: column;
 }
 
-html body #taskList {
+html body .top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,18 +34,12 @@ html body #taskList {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin: 16px;
 }
 
-html body .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+html body .top button,
+html body .top input {
+  margin: 8px;
 }
 
 html body .middle {
@@ -63,6 +57,16 @@ html body .middle {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 5%;
+}
+
+html body .middle #wordList {
+  width: 300px;
+  margin: 8px;
+}
+
+html body .middle #wordList h6 {
+  text-align: center;
+  font-size: 16px;
 }
 
 html body .bottom {
