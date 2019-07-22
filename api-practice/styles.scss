@@ -1,42 +1,49 @@
 :root {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
-      sans-serif;
-      background-color: darkgray;
-  }
-  
-  html {
-    body {
-      background-color: gray;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  background-color: darkgray;
+}
+
+html {
+  body {
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .top {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      #taskList {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-      .top {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .middle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin: 5%;
-      }
-      .bottom {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin: 5%;
+      margin: 16px;
+      button,
+      input {
+        margin: 8px;
       }
     }
+    .middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 5%;
+      #wordList {
+        width: 300px;
+        margin: 8px;
+        h6 {
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 5%;
+    }
   }
-  
+}
