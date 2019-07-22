@@ -1,5 +1,6 @@
 :root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: darkgray;
 }
 
 html body {
@@ -19,7 +20,7 @@ html body {
           flex-direction: column;
 }
 
-html body #wordList {
+html body #taskList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,43 +80,5 @@ html body .bottom {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 5%;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.switch::after {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 18px;
-  background-color: white;
-  top: 1px;
-  left: 1px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-input[type="checkbox"]:checked + .switch::after {
-  -webkit-transform: translateX(20px);
-          transform: translateX(20px);
-}
-
-input[type="checkbox"]:checked + .switch {
-  background-color: #7983ff;
-}
-
-.offscreen {
-  position: absolute;
-  left: -9999px;
 }
 /*# sourceMappingURL=styles.css.map */
