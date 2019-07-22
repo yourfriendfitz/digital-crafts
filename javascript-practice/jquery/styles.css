@@ -19,7 +19,7 @@ html body {
           flex-direction: column;
 }
 
-html body #taskList {
+html body #wordList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
