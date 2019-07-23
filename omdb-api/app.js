@@ -21,32 +21,37 @@ const createMovie = jsonObject => {
       })
       .then(function(jsonData) {
         movieJsonObj = jsonData;
-        newMovie = `
-        <div class="movie">
-        <h6 class="movieTitle">${movie.Title}</h6>
-        <img src="${movie.Poster}" alt="${movie.Title} poster">
-        <button class="showButton" id="show${
-          movie.imdbID
-        }" onclick="showInfo('${movie.imdbID}')">Show Info</button>
-        <ul class="movieInfo" id="${movie.imdbID}">
-        <li>Released: ${movieJsonObj.Released}</li>
-        <li>Director: ${movieJsonObj.Director}</li>
-        <li>MPAA Rating: ${movieJsonObj.Rated}</li>
-        <li>Genre: ${movieJsonObj.Genre}</li>
-        <li>Starring: ${movieJsonObj.Actors}</li>
-        <li>Runtime: ${movieJsonObj.Runtime}</li>
-        <li><a href="https://www.imdb.com/title/${
-          movie.imdbID
-        }/"><img class="imdbIcon" src="imdb.png"></a></li>
-        </ul>
-        </div>
-        `;
+        let newMovie = createMovieElement(movie, movieJsonObj);
         movieList.insertAdjacentHTML("afterbegin", newMovie);
       })
       .catch(function(err) {
         console.log("Opps, Something went wrong!", err);
       });
   });
+};
+
+const createMovieElement = (parentObj, childObj) => {
+  const newMovie = `
+        <div class="movie">
+        <h6 class="movieTitle">${parentObj.Title}</h6>
+        <img src="${parentObj.Poster}" alt="${parentObj.Title} poster">
+        <button class="showButton" id="show${
+          parentObj.imdbID
+        }" onclick="showInfo('${parentObj.imdbID}')">Show Info</button>
+        <ul class="movieInfo" id="${parentObj.imdbID}">
+        <li>Released: ${childObj.Released}</li>
+        <li>Director: ${childObj.Director}</li>
+        <li>MPAA Rating: ${childObj.Rated}</li>
+        <li>Genre: ${childObj.Genre}</li>
+        <li>Starring: ${childObj.Actors}</li>
+        <li>Runtime: ${childObj.Runtime}</li>
+        <li><a href="https://www.imdb.com/title/${
+          parentObj.imdbID
+        }/"><img class="imdbIcon" src="imdb.png"></a></li>
+        </ul>
+        </div>
+        `;
+  return newMovie;
 };
 
 const showInfo = elementId => {
