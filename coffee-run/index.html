@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Coffee Run</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top" id="top">
+        <h1>Coffee Run</h1>
+        <div class="inputs">
+          <input
+            type="text"
+            name="query"
+            id="orderInput"
+            placeholder="Coffee Order"
+          />
+          <button id="addWord">Add Order</button>
+          <input
+            type="text"
+            name="query"
+            id="emailQuery"
+            placeholder="Order Email"
+          />
+          <button id="orderEmailSearchButton">Search Orders By Email</button>
+        </div>
+      </div>
+      <div class="middle" id="middle">
+        <div id="movieList"></div>
+      </div>
+      <div class="bottom" id="bottom">
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

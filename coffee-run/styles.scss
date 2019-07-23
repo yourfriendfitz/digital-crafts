@@ -1,0 +1,77 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  background-color: darkgray;
+}
+
+html {
+  body {
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .container {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+    }
+    .top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 16px;
+      button,
+      input {
+        margin: 8px;
+      }
+    }
+    .middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 5%;
+      #movieList {
+        width: 300px;
+        margin: auto;
+        .movie {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin: 8px;
+          .showButton {
+            margin: 16px;
+          }
+          .movieInfo {
+            display: none;
+          }
+          .movieTitle {
+            text-align: center;
+            font-size: 16px;
+          }
+          ul {
+            list-style: none;
+            text-align: center;
+            margin: 8px;
+            padding: 0;
+            img {
+              height: 32px;
+              width: 48px;
+            }
+          }
+        }
+      }
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 8px;
+      text-align: center;
+    }
+  }
+}
