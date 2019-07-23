@@ -25,16 +25,21 @@ let newCoffee;
 let newEmail;
 let newEmailQuery;
 
-const asyncDisplayOrders = async url => {
+const asyncDisplayOrders = async (url, callback) => {
   clearOrders();
   let response = await fetch(url);
   let json = await response.json();
   let orders = await Object.values(json);
-  await orders.forEach(order => {
+  callback(orders) // should be insert orders
+};
+
+const insertOrders = orders => {
+  orders.forEach(order => {
     let orderElement = createOrderElement(order);
     orderListElement.insertAdjacentHTML("afterbegin", orderElement);
   });
-};
+}
+
 
 const asyncDisplayOrder = async url => {
   clearOrders();
