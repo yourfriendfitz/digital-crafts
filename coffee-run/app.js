@@ -29,15 +29,23 @@ const asyncDisplayOrders = async url => {
   clearOrders();
   let response = await fetch(url);
   let json = await response.json();
-  if ((await json) === null) {
-    orderListElement.innerHTML = `<div><h4 id="noOrder">No Orders by ${newEmailQuery}</h4></div>`;
-    return;
-  }
   let orders = await Object.values(json);
   await orders.forEach(order => {
     let orderElement = createOrderElement(order);
     orderListElement.insertAdjacentHTML("afterbegin", orderElement);
   });
+};
+
+const asyncDisplayOrder = async url => {
+  clearOrders();
+  let response = await fetch(url);
+  let json = await response.json();
+  if ((await json) === null) {
+    orderListElement.innerHTML = `<div><h4 id="noOrder">No Orders by ${newEmailQuery}</h4></div>`;
+    return;
+  }
+  let orderElement = createOrderElement(json);
+  orderListElement.insertAdjacentHTML("afterbegin", orderElement);
 };
 
 const createOrderElement = object => {
@@ -77,7 +85,7 @@ const asyncMakeNewOrder = async (url, coffee, email) => {
 const asyncGetOrderByEmail = async email => {
   clearOrders();
   let orderEmailQueryUrl = `http://dc-coffeerun.herokuapp.com/api/coffeeorders/${email}`;
-  asyncDisplayOrders(orderEmailQueryUrl);
+  asyncDisplayOrder(orderEmailQueryUrl);
 };
 
 const asyncDeleteOrderByEmail = async email => {
