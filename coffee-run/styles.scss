@@ -6,8 +6,15 @@
 }
 
 html {
+  height: auto;
+  width: auto;
+  padding: 0;
+  margin: 0;
   body {
-    background-color: gray;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,6 +34,10 @@ html {
       input {
         margin: 8px;
       }
+      .newOrder {
+        border-bottom: solid;
+        border-top: solid;
+      }
     }
     .middle {
       display: flex;
@@ -34,44 +45,24 @@ html {
       align-items: center;
       flex-direction: column;
       margin: 5%;
-      #movieList {
+      #orderList {
         width: 300px;
         margin: auto;
-        .movie {
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          margin: 8px;
-          .showButton {
-            margin: 16px;
-          }
-          .movieInfo {
-            display: none;
-          }
-          .movieTitle {
-            text-align: center;
-            font-size: 16px;
-          }
-          ul {
-            list-style: none;
-            text-align: center;
-            margin: 8px;
-            padding: 0;
-            img {
-              height: 32px;
-              width: 48px;
-            }
-          }
+        #noOrder {
+          margin: auto;
+          text-align: center;
+        }
+        .order {
+          display: inline;
         }
       }
     }
-    .bottom {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 8px;
-      text-align: center;
-    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    text-align: center;
   }
 }

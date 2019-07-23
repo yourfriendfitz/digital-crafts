@@ -3,8 +3,18 @@
   background-color: darkgray;
 }
 
+html {
+  height: auto;
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
 html body {
-  background-color: gray;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,6 +58,11 @@ html body .top input {
   margin: 8px;
 }
 
+html body .top .newOrder {
+  border-bottom: solid;
+  border-top: solid;
+}
+
 html body .middle {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -65,54 +80,21 @@ html body .middle {
   margin: 5%;
 }
 
-html body .middle #movieList {
+html body .middle #orderList {
   width: 300px;
   margin: auto;
 }
 
-html body .middle #movieList .movie {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 8px;
-}
-
-html body .middle #movieList .movie .showButton {
-  margin: 16px;
-}
-
-html body .middle #movieList .movie .movieInfo {
-  display: none;
-}
-
-html body .middle #movieList .movie .movieTitle {
+html body .middle #orderList #noOrder {
+  margin: auto;
   text-align: center;
-  font-size: 16px;
 }
 
-html body .middle #movieList .movie ul {
-  list-style: none;
-  text-align: center;
-  margin: 8px;
-  padding: 0;
+html body .middle #orderList .order {
+  display: inline;
 }
 
-html body .middle #movieList .movie ul img {
-  height: 32px;
-  width: 48px;
-}
-
-html body .bottom {
+html .bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

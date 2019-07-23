@@ -11,14 +11,23 @@
     <div class="container">
       <div class="top" id="top">
         <h1>Coffee Run</h1>
+        <button id="getOrdersButton">Get All Orders</button>
         <div class="inputs">
-          <input
-            type="text"
-            name="query"
-            id="orderInput"
-            placeholder="Coffee Order"
-          />
-          <button id="addWord">Add Order</button>
+          <div class="newOrder">
+            <input
+              type="text"
+              name="addCoffee"
+              id="orderInput"
+              placeholder="Coffee Order"
+            />
+            <input
+              type="text"
+              name="addEmail"
+              id="orderEmailInput"
+              placeholder="Email"
+            />
+            <button id="addOrder">Add Order</button>
+          </div>
           <input
             type="text"
             name="query"
@@ -29,10 +38,9 @@
         </div>
       </div>
       <div class="middle" id="middle">
-        <div id="movieList"></div>
+        <div id="orderList"></div>
       </div>
-      <div class="bottom" id="bottom">
-      </div>
+      <div class="bottom" id="bottom"></div>
     </div>
     <script src="app.js"></script>
   </body>
