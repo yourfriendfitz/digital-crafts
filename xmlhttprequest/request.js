@@ -1,6 +1,6 @@
 const requestWithinRequest = () => {
-    // you can change the parameters passed to firstUrl and secondUrl to
-    // eliminate hard coding the urls
+  // you can change the parameters passed to firstUrl and secondUrl to
+  // eliminate hard coding the urls
   let firstUrl = "http://www.omdbapi.com/?s=batman&apikey=26332775";
   let req = new XMLHttpRequest();
   req.open("GET", firstUrl);
@@ -13,9 +13,7 @@ const requestWithinRequest = () => {
     // .Search will need to be changed to the API specific key youre
     // trying to access
     firstResponse.Search.forEach(obj => {
-      let secondUrl = `http://www.omdbapi.com/?i=${
-        obj.imdbID
-      }&apikey=26332775`;
+      let secondUrl = `http://www.omdbapi.com/?i=${obj.imdbID}&apikey=26332775`;
       let req = new XMLHttpRequest();
       req.open("GET", secondUrl);
       req.send();
