@@ -20,7 +20,7 @@ const asyncFetchPost = async () => {
     })
   });
   let response = await post.json();
-  await log(post)
+  await log(post);
   log(response);
 };
 
