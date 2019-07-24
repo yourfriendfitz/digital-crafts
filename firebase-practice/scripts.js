@@ -16,6 +16,12 @@ const [hebRadio, krogerRadio, walmartRadio] = [
   document.getElementById("walmart")
 ];
 
+const [hebListElement, krogerListElement, walmartListElement] = [
+  document.getElementById("hebList"),
+  document.getElementById("krogerList"),
+  document.getElementById("walmartList")
+];
+
 const groceryListElement = document.getElementById("groceryList");
 
 const getStoreName = () => {
@@ -53,25 +59,52 @@ const addItemFirestore = (storeName, itemName, itemPrice) => {
   });
 };
 
-const getAllItemsFirestore = () => {
-  let array = [];
-  db.collection("groceries")
+const getAllItemsFirestore = async () => {
+  let firestoreArray = [];
+  await db
+    .collection("groceries")
     .get()
     .then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
-        array.push(doc.data());
+        firestoreArray.push({ storeName: doc.id, item: doc.data() });
       });
     });
-  return array;
+  return firestoreArray;
+};
+
+const createItemElement = (name, price) => {
+  return `
+    <div class="item">
+    <p>${name} - $${price}</p>
+    </div>
+    `;
 };
 
 const displayItems = firestoreArray => {
   firestoreArray.forEach(doc => {
-    doc.items.forEach(item => {
-      const newItem = createItemElement(item.item, item.price);
-      groceryListElement.insertAdjacentHTML("afterbegin", newItem)
-    });
+    if (doc.storeName === "HEB") {
+      doc.item.items.forEach(item => {
+        const newItem = createItemElement(item.item, item.price);
+        hebListElement.insertAdjacentHTML("afterbegin", newItem);
+      });
+    }
+    if (doc.storeName === "Kroger") {
+      doc.item.items.forEach(item => {
+        const newItem = createItemElement(item.item, item.price);
+        krogerListElement.insertAdjacentHTML("afterbegin", newItem);
+      });
+    }
+    if (doc.storeName === "Walmart") {
+      doc.item.items.forEach(item => {
+        const newItem = createItemElement(item.item, item.price);
+        walmartListElement.insertAdjacentHTML("afterbegin", newItem);
+      });
+    }
   });
 };
 
+getItemsButton.addEventListener("click", async () => {
+  groceryListElement.innerHTML = "";
+  await displayItems(await getAllItemsFirestore());
+});
