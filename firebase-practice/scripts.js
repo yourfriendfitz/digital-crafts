@@ -1,5 +1,23 @@
 const log = console.log;
 
+const [getItemsButton, addItemButton] = [
+  document.getElementById("getItemsButton"),
+  document.getElementById("addOrder")
+];
+
+const [itemInput, priceInput] = [
+  document.getElementById("itemInput"),
+  document.getElementById("priceInput")
+];
+
+const newItem = () => {
+  return itemInput.value;
+};
+
+const newPrice = () => {
+  return priceInput.value;
+};
+
 // firebase config is from firebase.js
 firebase.initializeApp(firebaseConfig);
 

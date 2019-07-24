@@ -8,6 +8,33 @@
     <title>Firebase</title>
   </head>
   <body>
+    <div class="container">
+      <div class="top" id="top">
+        <h1>Fitz Grocery</h1>
+        <button id="getItemsButton">Get All List Items</button>
+        <div class="inputs">
+          <div class="newItem">
+            <input
+              type="text"
+              name="addCoffee"
+              id="itemInput"
+              placeholder="Grocery Item"
+            />
+            <input
+              type="text"
+              name="addPrice"
+              id="priceInput"
+              placeholder="Item Price"
+            />
+            <button id="addOrder">Add Item</button>
+          </div>
+        </div>
+      </div>
+      <div class="middle" id="middle">
+        <div id="groceryList"></div>
+      </div>
+      <div class="bottom" id="bottom"></div>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
     <script src="firebase.js"></script>
