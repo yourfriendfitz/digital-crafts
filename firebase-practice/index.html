@@ -13,21 +13,25 @@
         <h1>Fitz Grocery</h1>
         <button id="getItemsButton">Get All List Items</button>
         <div class="inputs">
-          <div class="newItem">
-            <input
-              type="text"
-              name="addCoffee"
-              id="itemInput"
-              placeholder="Grocery Item"
-            />
-            <input
-              type="text"
-              name="addPrice"
-              id="priceInput"
-              placeholder="Item Price"
-            />
-            <button id="addOrder">Add Item</button>
-          </div>
+          <input type="radio" name="storeName" id="heb" value="HEB" />
+          <label for="heb">HEB</label>
+          <input type="radio" name="storeName" id="kroger" value="Kroger" />
+          <label for="kroger">Kroger</label>
+          <input type="radio" name="storeName" id="walmart" value="Walmart" />
+          <label for="walmart">Walmart</label>
+          <input
+            type="text"
+            name="addCoffee"
+            id="itemInput"
+            placeholder="Grocery Item"
+          />
+          <input
+            type="text"
+            name="addPrice"
+            id="priceInput"
+            placeholder="Item Price"
+          />
+          <button id="addOrder">Add Item</button>
         </div>
       </div>
       <div class="middle" id="middle">
