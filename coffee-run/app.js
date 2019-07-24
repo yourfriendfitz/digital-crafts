@@ -73,11 +73,6 @@ const clearOrders = () => {
   orderListElement.innerHTML = "";
 };
 
-const hide = elementId => {
-  const element = document.getElementById(elementId);
-  element.style.display = "none";
-};
-
 const asyncMakeNewOrder = async (url, coffee, email) => {
   await fetch(url, {
     method: "POST",
@@ -85,8 +80,8 @@ const asyncMakeNewOrder = async (url, coffee, email) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      emailAddress: email,
-      coffee: coffee
+      emailAddress: email(),
+      coffee: coffee()
     })
   });
 };
