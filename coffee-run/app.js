@@ -1,25 +1,21 @@
 const log = console.log;
 
-const coffeeInput = document.getElementById("orderInput");
+const [coffeeInput, emailOrderInput, emailSearchInput] = [
+  document.getElementById("orderInput"),
+  document.getElementById("orderEmailInput"),
+  document.getElementById("emailQuery")
+];
 
-const emailOrderInput = document.getElementById("orderEmailInput");
-
-const newOrderButton = document.getElementById("addOrder");
-
-const emailSearchInput = document.getElementById("emailQuery");
-
-const emailSearchButton = document.getElementById("orderEmailSearchButton");
-
-const getAllOrdersButton = document.getElementById("getOrdersButton");
+const [newOrderButton, emailSearchButton, getAllOrdersButton] = [
+  document.getElementById("addOrder"),
+  document.getElementById("orderEmailSearchButton"),
+  document.getElementById("getOrdersButton")
+];
 
 const orderListElement = document.getElementById("orderList");
 
-const allOrdersUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
+const orderUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
 
-const newOrderUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
-
-const orderEmailDeleteUrl =
-  "http://dc-coffeerun.herokuapp.com/api/coffeeorders/emailaddress";
 
 const asyncDisplayOrders = async url => {
   clearOrders();
@@ -37,24 +33,24 @@ const insertOrders = orders => {
 };
 
 const insertOrder = order => {
-  let orderElement = createOrderElement(json);
+  let orderElement = createOrderElement(order);
   orderListElement.insertAdjacentHTML("afterbegin", orderElement);
 };
 
-const asyncDisplayOrder = async url => {
+const asyncDisplayOrder = async (url, email) => {
   clearOrders();
   let response = await fetch(url);
   let order = await response.json();
-  if ((await json) === null) {
+  if ((await order) === null) {
     orderListElement.innerHTML = `
     <div>
-    <h4 id="noOrder">No Orders by ${newEmailQuery}</h4>
+    <h4 id="noOrder">No Orders by ${email}</h4>
     </div>
     `;
     return;
-  } else {
-    insertOrder(order);
   }
+  log(order);
+  insertOrder(order);
 };
 
 const createOrderElement = object => {
@@ -89,7 +85,7 @@ const asyncMakeNewOrder = async (url, coffee, email) => {
 const asyncGetOrderByEmail = async email => {
   clearOrders();
   let orderEmailQueryUrl = `http://dc-coffeerun.herokuapp.com/api/coffeeorders/${email}`;
-  asyncDisplayOrder(orderEmailQueryUrl);
+  asyncDisplayOrder(orderEmailQueryUrl, email);
 };
 
 const asyncDeleteOrderByEmail = async email => {
@@ -100,7 +96,7 @@ const asyncDeleteOrderByEmail = async email => {
       "Content-Type": "application/json"
     }
   });
-  await asyncDisplayOrders(allOrdersUrl);
+  await asyncDisplayOrders(orderUrl);
 };
 
 const newCoffee = () => {
@@ -122,17 +118,16 @@ const clearInputs = () => {
 };
 
 getAllOrdersButton.addEventListener("click", () => {
-  asyncDisplayOrders(allOrdersUrl);
+  asyncDisplayOrders(orderUrl);
 });
 
-newOrderButton.addEventListener("click", () => {
+newOrderButton.addEventListener("click", async () => {
+  asyncMakeNewOrder(orderUrl, newCoffee(), newEmail());
+  await asyncDisplayOrders(orderUrl);
   clearInputs();
-  asyncMakeNewOrder(newOrderUrl, newCoffee(), newEmail()).then(() => {
-    asyncDisplayOrders(allOrdersUrl);
-  });
 });
 
 emailSearchButton.addEventListener("click", () => {
-  clearInputs();
   asyncGetOrderByEmail(newEmailQuery());
+  clearInputs();
 });
