@@ -1,56 +1,61 @@
 const log = console.log;
 
-let coffeeInput = document.getElementById("orderInput");
+const coffeeInput = document.getElementById("orderInput");
 
-let emailOrderInput = document.getElementById("orderEmailInput");
+const emailOrderInput = document.getElementById("orderEmailInput");
 
-let newOrderButton = document.getElementById("addOrder");
+const newOrderButton = document.getElementById("addOrder");
 
-let emailSearchInput = document.getElementById("emailQuery");
+const emailSearchInput = document.getElementById("emailQuery");
 
-let emailSearchButton = document.getElementById("orderEmailSearchButton");
+const emailSearchButton = document.getElementById("orderEmailSearchButton");
 
-let getAllOrdersButton = document.getElementById("getOrdersButton");
+const getAllOrdersButton = document.getElementById("getOrdersButton");
 
-let orderListElement = document.getElementById("orderList");
+const orderListElement = document.getElementById("orderList");
 
-let allOrdersUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
+const allOrdersUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
 
-let newOrderUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
+const newOrderUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
 
-let orderEmailDeleteUrl =
+const orderEmailDeleteUrl =
   "http://dc-coffeerun.herokuapp.com/api/coffeeorders/emailaddress";
 
 let newCoffee;
 let newEmail;
 let newEmailQuery;
 
-const asyncDisplayOrders = async (url, callback) => {
+const asyncDisplayOrders = async (url) => {
   clearOrders();
   let response = await fetch(url);
   let json = await response.json();
-  let orders = await Object.values(json);
-  callback(orders) // should be insert orders
+  let orders = Object.values(json);
+  insertOrders(orders);
 };
+
 
 const insertOrders = orders => {
   orders.forEach(order => {
     let orderElement = createOrderElement(order);
     orderListElement.insertAdjacentHTML("afterbegin", orderElement);
   });
-}
+};
 
+const insertOrder = order => {
+  let orderElement = createOrderElement(json);
+  orderListElement.insertAdjacentHTML("afterbegin", orderElement);
+};
 
-const asyncDisplayOrder = async url => {
+const asyncDisplayOrder = async (url) => {
   clearOrders();
   let response = await fetch(url);
-  let json = await response.json();
+  let order = await response.json();
   if ((await json) === null) {
     orderListElement.innerHTML = `<div><h4 id="noOrder">No Orders by ${newEmailQuery}</h4></div>`;
     return;
+  } else {
+    insertOrder(order);
   }
-  let orderElement = createOrderElement(json);
-  orderListElement.insertAdjacentHTML("afterbegin", orderElement);
 };
 
 const createOrderElement = object => {
