@@ -48,7 +48,6 @@ const asyncDisplayOrder = async (url, email) => {
     `;
     return;
   }
-  log(order);
   insertOrder(order);
 };
 
