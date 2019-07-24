@@ -125,7 +125,7 @@ getAllOrdersButton.addEventListener("click", () => {
 
 newOrderButton.addEventListener("click", async () => {
   await makeNewOrder(orderUrl, newCoffee, newEmail);
-  asyncDisplayOrders(orderUrl);
+  await asyncDisplayOrders(orderUrl);
   clearInputs();
 });
 
