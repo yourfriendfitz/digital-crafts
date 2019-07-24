@@ -16,31 +16,30 @@ const orderListElement = document.getElementById("orderList");
 
 const orderUrl = "http://dc-coffeerun.herokuapp.com/api/coffeeorders/";
 
-
 const asyncDisplayOrders = async url => {
   clearOrders();
-  let response = await fetch(url);
-  let json = await response.json();
-  let orders = Object.values(json);
+  const response = await fetch(url);
+  const json = await response.json();
+  const orders = Object.values(json);
   insertOrders(orders);
 };
 
 const insertOrders = orders => {
   orders.forEach(order => {
-    let orderElement = createOrderElement(order);
+    const orderElement = createOrderElement(order);
     orderListElement.insertAdjacentHTML("afterbegin", orderElement);
   });
 };
 
 const insertOrder = order => {
-  let orderElement = createOrderElement(order);
+  const orderElement = createOrderElement(order);
   orderListElement.insertAdjacentHTML("afterbegin", orderElement);
 };
 
 const asyncDisplayOrder = async (url, email) => {
   clearOrders();
-  let response = await fetch(url);
-  let order = await response.json();
+  const response = await fetch(url);
+  const order = await response.json();
   if ((await order) === null) {
     orderListElement.innerHTML = `
     <div>
@@ -69,8 +68,11 @@ const clearOrders = () => {
   orderListElement.innerHTML = "";
 };
 
-const asyncMakeNewOrder = async (url, coffee, email) => {
-  await fetch(url, {
+const makeNewOrder = (url, coffee, email) => {
+  if ((coffee() === "") | (email() === "")) {
+    return;
+  }
+  fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -82,7 +84,7 @@ const asyncMakeNewOrder = async (url, coffee, email) => {
   });
 };
 
-const asyncGetOrderByEmail = async email => {
+const getOrderByEmail = email => {
   clearOrders();
   let orderEmailQueryUrl = `http://dc-coffeerun.herokuapp.com/api/coffeeorders/${email}`;
   asyncDisplayOrder(orderEmailQueryUrl, email);
@@ -96,7 +98,7 @@ const asyncDeleteOrderByEmail = async email => {
       "Content-Type": "application/json"
     }
   });
-  await asyncDisplayOrders(orderUrl);
+  asyncDisplayOrders(orderUrl);
 };
 
 const newCoffee = () => {
@@ -122,12 +124,12 @@ getAllOrdersButton.addEventListener("click", () => {
 });
 
 newOrderButton.addEventListener("click", async () => {
-  asyncMakeNewOrder(orderUrl, newCoffee(), newEmail());
-  await asyncDisplayOrders(orderUrl);
+  await makeNewOrder(orderUrl, newCoffee, newEmail);
+  asyncDisplayOrders(orderUrl);
   clearInputs();
 });
 
 emailSearchButton.addEventListener("click", () => {
-  asyncGetOrderByEmail(newEmailQuery());
+  getOrderByEmail(newEmailQuery());
   clearInputs();
 });
