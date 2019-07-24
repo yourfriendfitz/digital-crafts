@@ -11,7 +11,6 @@
     <div class="container">
       <div class="top" id="top">
         <h1>Fitz Grocery</h1>
-        <button id="getItemsButton">Get All List Items</button>
         <div class="inputs">
           <input type="radio" name="storeName" id="heb" value="HEB" />
           <label for="heb">HEB</label>
@@ -36,9 +35,18 @@
       </div>
       <div class="middle" id="middle">
         <div id="groceryList">
-          <div id="hebList"><h3>HEB</h3></div>
-          <div class="krogerList"><h3>Kroger</h3></div>
-          <div class="walmartList"><h3>Walmart</h3></div>
+          <div class="list">
+            <h3>HEB</h3>
+            <div id="hebList"></div>
+          </div>
+          <div class="list">
+            <h3>Kroger</h3>
+            <div id="krogerList"></div>
+          </div>
+          <div class="list">
+            <h3>Walmart</h3>
+            <div id="walmartList"></div>
+          </div>
         </div>
       </div>
       <div class="bottom" id="bottom"></div>

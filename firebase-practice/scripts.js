@@ -59,6 +59,16 @@ const addItemFirestore = (storeName, itemName, itemPrice) => {
   });
 };
 
+const deleteItemFirestore = (storeName, itemName, itemPrice) => {
+  const groceryStore = db.collection("groceries").doc(storeName);
+  groceryStore.update({
+    items: firebase.firestore.FieldValue.arrayRemove({
+      item: itemName,
+      price: itemPrice
+    })
+  });
+};
+
 const getAllItemsFirestore = async () => {
   let firestoreArray = [];
   await db
@@ -73,10 +83,11 @@ const getAllItemsFirestore = async () => {
   return firestoreArray;
 };
 
-const createItemElement = (name, price) => {
+const createItemElement = (storeName, itemName, itemPrice) => {
   return `
     <div class="item">
-    <p>${name} - $${price}</p>
+    <p>${itemName} - $${itemPrice}</p>
+    <button onclick="deleteItemFirestore('${storeName}', '${itemName}', ${itemPrice})">Delete Item</button>
     </div>
     `;
 };
@@ -85,26 +96,54 @@ const displayItems = firestoreArray => {
   firestoreArray.forEach(doc => {
     if (doc.storeName === "HEB") {
       doc.item.items.forEach(item => {
-        const newItem = createItemElement(item.item, item.price);
-        hebListElement.insertAdjacentHTML("afterbegin", newItem);
+        if (item.item != null && item.price != null) {
+          hebListElement.insertAdjacentHTML(
+            "beforeend",
+            createItemElement(doc.storeName, item.item, item.price)
+          );
+        }
       });
     }
     if (doc.storeName === "Kroger") {
       doc.item.items.forEach(item => {
-        const newItem = createItemElement(item.item, item.price);
-        krogerListElement.insertAdjacentHTML("afterbegin", newItem);
+        if (item.item != null && item.price != null) {
+          krogerListElement.insertAdjacentHTML(
+            "beforeend",
+            createItemElement(doc.storeName, item.item, item.price)
+          );
+        }
       });
     }
     if (doc.storeName === "Walmart") {
       doc.item.items.forEach(item => {
-        const newItem = createItemElement(item.item, item.price);
-        walmartListElement.insertAdjacentHTML("afterbegin", newItem);
+        if (item.item != null && item.price != null) {
+          walmartListElement.insertAdjacentHTML(
+            "beforeend",
+            createItemElement(doc.storeName, item.item, item.price)
+          );
+        }
       });
     }
   });
 };
 
-getItemsButton.addEventListener("click", async () => {
-  groceryListElement.innerHTML = "";
+const clearLists = () => {
+  hebListElement.innerHTML = "";
+  krogerListElement.innerHTML = "";
+  walmartListElement.innerHTML = "";
+};
+
+const clearInputs = () => {
+  itemInput.value = "";
+  priceInput.value = "";
+};
+
+db.collection("groceries").onSnapshot(async () => {
+  clearLists();
   await displayItems(await getAllItemsFirestore());
+});
+
+addItemButton.addEventListener("click", async () => {
+  addItemFirestore(getStoreName(), newItem(), newPrice());
+  clearInputs();
 });
