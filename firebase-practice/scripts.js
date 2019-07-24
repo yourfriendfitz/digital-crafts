@@ -1,15 +1,6 @@
 const log = console.log;
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCZq-6vpmc4Vl5d2aUJDFjHrBUWHKM0iz0",
-  authDomain: "fitz-grocery.firebaseapp.com",
-  databaseURL: "https://fitz-grocery.firebaseio.com",
-  projectId: "fitz-grocery",
-  storageBucket: "fitz-grocery.appspot.com",
-  messagingSenderId: "10762804784",
-  appId: "1:10762804784:web:0e060d1ed05db970"
-};
-
+// firebase config is from firebase.js
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
