@@ -1,3 +1,5 @@
+import { sign } from "crypto";
+
 const log = console.log;
 
 const [getItemsButton, addItemButton] = [
@@ -23,6 +25,8 @@ const [hebListElement, krogerListElement, walmartListElement] = [
 ];
 
 const groceryListElement = document.getElementById("groceryList");
+
+const userElement = document.getElementById("user");
 
 const getStoreName = () => {
   if (hebRadio.checked) {
@@ -175,7 +179,6 @@ const clearInputs = () => {
   priceInput.value = "";
 };
 
-// firebase is down, retry signIn when working properly
 const signIn = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithRedirect(provider);
@@ -202,6 +205,22 @@ const signIn = () => {
       // ...
     });
 };
+
+const createUserDisplay = userObj => {
+  return `
+  <img src="${userObj.photoURL}">
+  <h6>${userObj.displayName}</h6>
+  `;
+};
+
+window.addEventListener("load", () => {
+  const user = firebase.auth().currentUser;
+  if (user) {
+    const userDisplay = createUserDisplay(user);
+  } else {
+    signIn();
+  }
+});
 
 db.collection("HEB").onSnapshot(async () => {
   clearHEBList();
