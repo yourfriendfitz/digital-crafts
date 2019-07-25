@@ -4,4 +4,8 @@ class User {
     this.age = age;
     this.hobbies = [];
   }
+
+  addHobby = hobbyObj => {
+    this.hobbies.push(hobbyObj);
+  };
 }
