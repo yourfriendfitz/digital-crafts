@@ -131,15 +131,10 @@ const createItemElement = (id, storeName, itemName, itemPrice) => {
     `;
 };
 
-// a.forEach(b => b.forEach(c => log(c.name, c.price)));
-// db.collection("HEB")
-//   .get()
-//   .then(heb => heb.docs.forEach(doc => log(doc.id)));
-
 const displayHEBItems = object => {
   object.HEB.forEach(doc => {
     hebListElement.insertAdjacentHTML(
-      "beforebegin",
+      "afterbegin",
       createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
     );
   });
@@ -148,7 +143,7 @@ const displayHEBItems = object => {
 const displayKrogerItems = object => {
   object.Kroger.forEach(doc => {
     krogerListElement.insertAdjacentHTML(
-      "beforebegin",
+      "afterbegin",
       createItemElement(doc.id, "Kroger", doc.data.item, doc.data.price)
     );
   });
@@ -157,7 +152,7 @@ const displayKrogerItems = object => {
 const displayWalmartItems = object => {
   object.Walmart.forEach(doc => {
     walmartListElement.insertAdjacentHTML(
-      "beforebegin",
+      "afterbegin",
       createItemElement(doc.id, "Walmart", doc.data.item, doc.data.price)
     );
   });
@@ -181,17 +176,17 @@ const clearInputs = () => {
 };
 
 db.collection("HEB").onSnapshot(async () => {
-  clearLists();
+  clearHEBList();
   await displayHEBItems(await getHEBItemsFirestore());
 });
 
 db.collection("Kroger").onSnapshot(async () => {
-  clearLists();
+  clearKrogerList();
   await displayKrogerItems(await getKrogerItemsFirestore());
 });
 
 db.collection("Walmart").onSnapshot(async () => {
-  clearLists();
+  clearWalmartList();
   await displayWalmartItems(await getWalmartItemsFirestore());
 });
 
