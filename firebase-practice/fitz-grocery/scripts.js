@@ -214,7 +214,7 @@ const createUserDisplay = userObj => {
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     const userDiplay = createUserDisplay(user);
-    log(userDiplay);
+    userElement.innerHTML = userDiplay;
   } else {
     signIn();
   }

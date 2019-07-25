@@ -35,6 +35,13 @@ html {
       input {
         margin: 8px;
       }
+      .user {
+        text-align: center;
+        img {
+          height: 100px;
+          border-radius: 50%;
+        }
+      }
       .inputs {
         display: flex;
         justify-content: center;
