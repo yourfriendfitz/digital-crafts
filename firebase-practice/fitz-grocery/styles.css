@@ -59,11 +59,11 @@ html body .top input {
   margin: 8px;
 }
 
-html body .top .user {
+html body .top #user {
   text-align: center;
 }
 
-html body .top .user img {
+html body .top #user img {
   height: 100px;
   border-radius: 50%;
 }
