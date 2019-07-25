@@ -65,59 +65,91 @@ const deleteItemFirestore = (storeName, id) => {
     });
 };
 
-const getAllItemsFirestore = async () => {
-  let firestoreArray = [];
-  await db
-    .collection("groceries")
-    .get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        firestoreArray.push(doc);
-      });
+const getHEBDocs = async () => {
+  const snapshot = await firebase
+    .firestore()
+    .collection("HEB")
+    .get();
+  return snapshot.docs.map(doc => {
+    return new Object({
+      data: doc.data(),
+      id: doc.id
     });
+  });
 };
 
-const createItemElement = (storeName, itemName, itemPrice) => {
+const getKrogerDocs = async () => {
+  const snapshot = await firebase
+    .firestore()
+    .collection("Kroger")
+    .get();
+  return snapshot.docs.map(doc => {
+    return new Object({
+      data: doc.data(),
+      id: doc.id
+    });
+  });
+};
+
+const getWalmartDocs = async () => {
+  const snapshot = await firebase
+    .firestore()
+    .collection("Walmart")
+    .get();
+  return snapshot.docs.map(doc => {
+    return new Object({
+      data: doc.data(),
+      id: doc.id
+    });
+  });
+};
+
+const getAllItemsFirestore = async () => {
+  return {
+    HEB: await getHEBDocs(),
+    Kroger: await getKrogerDocs(),
+    Walmart: await getWalmartDocs()
+  };
+};
+
+const createItemElement = (id, storeName, itemName, itemPrice) => {
   return `
     <div class="item">
     <p>${itemName} - $${itemPrice}</p>
-    <button onclick="deleteItemFirestore('${storeName}', '${itemName}', ${itemPrice})">Delete Item</button>
+    <button onclick="deleteItemFirestore(${storeName}, ${id})">Delete Item</button>
     </div>
     `;
 };
 
-const displayItems = firestoreArray => {
-  firestoreArray.forEach(doc => {
-    if (doc.storeName === "HEB") {
-      doc.item.items.forEach(item => {
-        if (item.item != null && item.price != null) {
-          hebListElement.insertAdjacentHTML(
-            "beforeend",
-            createItemElement(doc.storeName, item.item, item.price)
-          );
-        }
-      });
-    }
-    if (doc.storeName === "Kroger") {
-      doc.item.items.forEach(item => {
-        if (item.item != null && item.price != null) {
-          krogerListElement.insertAdjacentHTML(
-            "beforeend",
-            createItemElement(doc.storeName, item.item, item.price)
-          );
-        }
-      });
-    }
-    if (doc.storeName === "Walmart") {
-      doc.item.items.forEach(item => {
-        if (item.item != null && item.price != null) {
-          walmartListElement.insertAdjacentHTML(
-            "beforeend",
-            createItemElement(doc.storeName, item.item, item.price)
-          );
-        }
-      });
-    }
+// a.forEach(b => b.forEach(c => log(c.name, c.price)));
+// db.collection("HEB")
+//   .get()
+//   .then(heb => heb.docs.forEach(doc => log(doc.id)));
+
+const displayItems = object => {
+  object.HEB.forEach(doc => {
+    doc.map(doc =>
+      hebListElement.insertAdjacentHTML(
+        "beforebegin",
+        createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
+      )
+    );
+  });
+  object.Kroger.forEach(doc => {
+    doc.map(doc =>
+      krogerListElement.insertAdjacentHTML(
+        "beforebegin",
+        createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
+      )
+    );
+  });
+  object.Walmart.forEach(doc => {
+    doc.map(doc =>
+      walmartListElement.insertAdjacentHTML(
+        "beforebegin",
+        createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
+      )
+    );
   });
 };
 
@@ -132,10 +164,10 @@ const clearInputs = () => {
   priceInput.value = "";
 };
 
-db.collection("groceries").onSnapshot(async () => {
-  clearLists();
-  await displayItems(await getAllItemsFirestore());
-});
+// db.collection("groceries").onSnapshot(async () => {
+//   clearLists();
+//   await displayItems(await getAllItemsFirestore());
+// });
 
 addItemButton.addEventListener("click", async () => {
   addItemFirestore(getStoreName(), newItem(), newPrice());
