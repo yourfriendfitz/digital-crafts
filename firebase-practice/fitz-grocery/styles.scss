@@ -23,6 +23,7 @@ html {
       height: 100%;
       width: 100%;
       padding: 0;
+      margin: 48px;
     }
     .top {
       display: flex;
@@ -38,6 +39,12 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        .radios {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
     .middle {
@@ -46,6 +53,9 @@ html {
       align-items: center;
       flex-direction: column;
       margin: 5%;
+      #groceryList {
+        text-align: center;
+      }
     }
   }
   .bottom {
