@@ -70,13 +70,11 @@ const getAllItemsFirestore = async () => {
   await db
     .collection("groceries")
     .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        firestoreArray.push({ storeName: doc.id, item: doc.data() });
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        firestoreArray.push(doc);
       });
     });
-  return firestoreArray;
 };
 
 const createItemElement = (storeName, itemName, itemPrice) => {
