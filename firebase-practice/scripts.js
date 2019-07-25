@@ -163,9 +163,15 @@ const displayWalmartItems = object => {
   });
 };
 
-const clearLists = () => {
+const clearHEBList = () => {
   hebListElement.innerHTML = "";
+};
+
+const clearKrogerList = () => {
   krogerListElement.innerHTML = "";
+};
+
+const clearWalmartList = () => {
   walmartListElement.innerHTML = "";
 };
 
@@ -176,17 +182,17 @@ const clearInputs = () => {
 
 db.collection("HEB").onSnapshot(async () => {
   clearLists();
-  await displayItems(await getAllItemsFirestore());
+  await displayHEBItems(await getHEBItemsFirestore());
 });
 
 db.collection("Kroger").onSnapshot(async () => {
   clearLists();
-  await displayItems(await getAllItemsFirestore());
+  await displayKrogerItems(await getKrogerItemsFirestore());
 });
 
 db.collection("Walmart").onSnapshot(async () => {
   clearLists();
-  await displayItems(await getAllItemsFirestore());
+  await displayWalmartItems(await getWalmartItemsFirestore());
 });
 
 addItemButton.addEventListener("click", async () => {
