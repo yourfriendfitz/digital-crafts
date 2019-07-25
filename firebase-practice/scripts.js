@@ -116,7 +116,7 @@ const createItemElement = (id, storeName, itemName, itemPrice) => {
   return `
     <div class="item">
     <p>${itemName} - $${itemPrice}</p>
-    <button onclick="deleteItemFirestore(${storeName}, ${id})">Delete Item</button>
+    <button onclick="deleteItemFirestore('${storeName}', '${id}')">Delete Item</button>
     </div>
     `;
 };
@@ -128,27 +128,21 @@ const createItemElement = (id, storeName, itemName, itemPrice) => {
 
 const displayItems = object => {
   object.HEB.forEach(doc => {
-    doc.map(doc =>
-      hebListElement.insertAdjacentHTML(
-        "beforebegin",
-        createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
-      )
+    hebListElement.insertAdjacentHTML(
+      "beforebegin",
+      createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
     );
   });
   object.Kroger.forEach(doc => {
-    doc.map(doc =>
-      krogerListElement.insertAdjacentHTML(
-        "beforebegin",
-        createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
-      )
+    krogerListElement.insertAdjacentHTML(
+      "beforebegin",
+      createItemElement(doc.id, "Kroger", doc.data.item, doc.data.price)
     );
   });
   object.Walmart.forEach(doc => {
-    doc.map(doc =>
-      walmartListElement.insertAdjacentHTML(
-        "beforebegin",
-        createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
-      )
+    walmartListElement.insertAdjacentHTML(
+      "beforebegin",
+      createItemElement(doc.id, "Walmart", doc.data.item, doc.data.price)
     );
   });
 };
@@ -164,10 +158,20 @@ const clearInputs = () => {
   priceInput.value = "";
 };
 
-// db.collection("groceries").onSnapshot(async () => {
-//   clearLists();
-//   await displayItems(await getAllItemsFirestore());
-// });
+db.collection("HEB").onSnapshot(async () => {
+  clearLists();
+  await displayItems(await getAllItemsFirestore());
+});
+
+db.collection("Kroger").onSnapshot(async () => {
+  clearLists();
+  await displayItems(await getAllItemsFirestore());
+});
+
+db.collection("Walmart").onSnapshot(async () => {
+  clearLists();
+  await displayItems(await getAllItemsFirestore());
+});
 
 addItemButton.addEventListener("click", async () => {
   addItemFirestore(getStoreName(), newItem(), newPrice());
