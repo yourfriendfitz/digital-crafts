@@ -211,15 +211,13 @@ const createUserDisplay = userObj => {
   `;
 };
 
-window.addEventListener("load", () => {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      const userDiplay = createUserDisplay(user);
-      log(userDiplay)
-    } else {
-      signIn()
-    }
-  });
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    const userDiplay = createUserDisplay(user);
+    log(userDiplay);
+  } else {
+    signIn();
+  }
 });
 
 db.collection("HEB").onSnapshot(async () => {
