@@ -50,23 +50,19 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 const addItemFirestore = (storeName, itemName, itemPrice) => {
-  const groceryStore = db.collection("groceries").doc(storeName);
-  groceryStore.update({
-    items: firebase.firestore.FieldValue.arrayUnion({
-      item: itemName,
-      price: itemPrice
-    })
+  db.collection(storeName).add({
+    item: itemName,
+    price: itemPrice
   });
 };
 
-const deleteItemFirestore = (storeName, itemName, itemPrice) => {
-  const groceryStore = db.collection("groceries").doc(storeName);
-  groceryStore.update({
-    items: firebase.firestore.FieldValue.arrayRemove({
-      item: itemName,
-      price: itemPrice
-    })
-  });
+const deleteItemFirestore = (storeName, id) => {
+  db.collection(storeName)
+    .doc(id)
+    .delete()
+    .catch(function(error) {
+      console.error("Error removing document: ", error);
+    });
 };
 
 const getAllItemsFirestore = async () => {
