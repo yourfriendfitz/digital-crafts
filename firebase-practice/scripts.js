@@ -104,10 +104,20 @@ const getWalmartDocs = async () => {
   });
 };
 
-const getAllItemsFirestore = async () => {
+const getHEBItemsFirestore = async () => {
   return {
-    HEB: await getHEBDocs(),
-    Kroger: await getKrogerDocs(),
+    HEB: await getHEBDocs()
+  };
+};
+
+const getKrogerItemsFirestore = async () => {
+  return {
+    Kroger: await getKrogerDocs()
+  };
+};
+
+const getWalmartItemsFirestore = async () => {
+  return {
     Walmart: await getWalmartDocs()
   };
 };
@@ -126,19 +136,25 @@ const createItemElement = (id, storeName, itemName, itemPrice) => {
 //   .get()
 //   .then(heb => heb.docs.forEach(doc => log(doc.id)));
 
-const displayItems = object => {
+const displayHEBItems = object => {
   object.HEB.forEach(doc => {
     hebListElement.insertAdjacentHTML(
       "beforebegin",
       createItemElement(doc.id, "HEB", doc.data.item, doc.data.price)
     );
   });
+};
+
+const displayKrogerItems = object => {
   object.Kroger.forEach(doc => {
     krogerListElement.insertAdjacentHTML(
       "beforebegin",
       createItemElement(doc.id, "Kroger", doc.data.item, doc.data.price)
     );
   });
+};
+
+const displayWalmartItems = object => {
   object.Walmart.forEach(doc => {
     walmartListElement.insertAdjacentHTML(
       "beforebegin",
