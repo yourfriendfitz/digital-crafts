@@ -212,12 +212,14 @@ const createUserDisplay = userObj => {
 };
 
 window.addEventListener("load", () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    const userDisplay = createUserDisplay(user);
-  } else {
-    signIn();
-  }
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      const userDiplay = createUserDisplay(user);
+      log(userDiplay)
+    } else {
+      signIn()
+    }
+  });
 });
 
 db.collection("HEB").onSnapshot(async () => {
