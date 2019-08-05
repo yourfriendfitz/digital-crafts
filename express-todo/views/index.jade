@@ -1,5 +1,6 @@
 extends layout
 
+
 block content
   .container
     .top
@@ -12,20 +13,26 @@ block content
     .middle#pending
       h3 Pending Tasks
       ul
-        for task, index in pendingTasks
+        for task in pendingTasks
           li
             .task
-              input(type="checkbox")
-              #{task.taskName}
-              button Remove
+              form(class="left" action="/moveTaskCompleted", method="POST")
+                button(type="submit" name="check" value="#{pendingTasks.indexOf(task)}") Move
+              .taskName
+                p #{task.taskName}
+              form(class="right" action="/removePendingTask", method="POST")
+                button(type="submit" name="remove" value="#{pendingTasks.indexOf(task)}") Remove
 
     .bottom#completed
       h3 Completed Tasks
       ul
         for task in completedTasks
           li
-          .task
-          input(type="checkbox")
-          #{task.taskName}
-          button Remove
+            .task
+              form(class="left" action="/moveTaskPending", method="POST")
+                button(type="submit" name="check" value="#{completedTasks.indexOf(task)}") Move
+              .taskName
+                p #{task.taskName}
+              form(class="right" action="/removeCompletedTask", method="POST")
+                button(type="submit" name="remove" value="#{completedTasks.indexOf(task)}") Remove
 

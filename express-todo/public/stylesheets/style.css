@@ -29,36 +29,32 @@ html body {
 
 html body .task {
   width: 350px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -webkit-column-count: 3;
+          column-count: 3;
   background: #2d9bd5;
 }
 
-html body .task input,
-html body .task button {
-  margin: 2vw;
+html body .task .taskName {
+  width: 100px;
+  margin: auto;
 }
 
-html body .task h5 {
-  margin-left: 1vw;
-  margin-right: 1vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  white-space: nowrap;
+html body .task .left {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  margin: auto;
+}
+
+html body .task .right {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  margin: auto;
 }
 
 html body h3 {
@@ -118,18 +114,6 @@ html body .middle {
   margin: 5%;
 }
 
-html body .middle ul {
-  display: -ms-grid;
-  display: grid;
-  text-align: center;
-  padding: 0;
-}
-
-html body .middle li {
-  list-style: none;
-  padding: 4px;
-}
-
 html body .bottom {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -145,5 +129,17 @@ html body .bottom {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 5%;
+}
+
+html body ul {
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+  padding: 0;
+}
+
+html body li {
+  list-style: none;
+  padding: 4px;
 }
 /*# sourceMappingURL=style.css.map */
