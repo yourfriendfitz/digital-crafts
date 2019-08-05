@@ -16,6 +16,16 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
+let movies = [];
+
+app.post("/movies", (req, res) => {
+  let movieTitle = req.body.movieTitle;
+  let movieYear = req.body.movieYear;
+  console.log(movieTitle);
+  console.log(movieYear);
+  res.send("Movie Saved!");
+});
+
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
