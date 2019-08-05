@@ -118,6 +118,18 @@ html body .middle {
   margin: 5%;
 }
 
+html body .middle ul {
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+  padding: 0;
+}
+
+html body .middle li {
+  list-style: none;
+  padding: 4px;
+}
+
 html body .bottom {
   display: -webkit-box;
   display: -ms-flexbox;

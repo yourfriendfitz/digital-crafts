@@ -6,17 +6,26 @@ block content
       #title
         h1 Todo with Express + Jade
       h3 Enter Task
-      form(action="/", method="POST")
+      form(action="/addTask", method="POST")
         input(type="text" id="enter-task-input" placeholder="New Task" name="taskName")
         input(type="submit" id="add-task")
     .middle#pending
       h3 Pending Tasks
       ul
-        for task in pendingTasks
-          li #{task.taskName} with a priority of #{task.priority}
+        for task, index in pendingTasks
+          li
+            .task
+              input(type="checkbox")
+              #{task.taskName}
+              button Remove
+
     .bottom#completed
       h3 Completed Tasks
       ul
         for task in completedTasks
-          li #{task.taskName} with a priority of #{task.priority}
+          li
+          .task
+          input(type="checkbox")
+          #{task.taskName}
+          button Remove
 

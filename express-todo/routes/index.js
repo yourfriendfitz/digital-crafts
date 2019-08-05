@@ -19,9 +19,15 @@ router.get("/", function(req, res, next) {
   });
 });
 
-router.post("/", function(req, res) {
+router.post("/addTask", function(req, res) {
   const task = new Task(req.body.taskName)
   pendingTasks.push(task)
+  res.redirect("/")
+});
+
+router.post("/moveTask", function(req, res) {
+  const task = req.body.check
+  completedTasks.push(task)
   res.redirect("/")
 });
 
