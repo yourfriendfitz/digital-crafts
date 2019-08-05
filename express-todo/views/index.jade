@@ -1,5 +1,22 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    .top
+      #title
+        h1 Todo with Express + Jade
+      h3 Enter Task
+      form(action="/", method="POST")
+        input(type="text" id="enter-task-input" placeholder="New Task" name="taskName")
+        input(type="submit" id="add-task")
+    .middle#pending
+      h3 Pending Tasks
+      ul
+        for task in pendingTasks
+          li #{task.taskName} with a priority of #{task.priority}
+    .bottom#completed
+      h3 Completed Tasks
+      ul
+        for task in completedTasks
+          li #{task.taskName} with a priority of #{task.priority}
+

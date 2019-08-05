@@ -39,9 +39,7 @@ html {
       white-space: nowrap;
     }
     .top {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
       margin: 5%;
       h3,
       input,
