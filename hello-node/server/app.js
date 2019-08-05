@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
+var bodyParser = require("body-parser");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -18,14 +19,7 @@ app.set("view engine", "jade");
 
 let movies = [];
 
-app.post("/movies", (req, res) => {
-  let movieTitle = req.body.movieTitle;
-  let movieYear = req.body.movieYear;
-  console.log(movieTitle);
-  console.log(movieYear);
-  res.send("Movie Saved!");
-});
-
+app.use(bodyParser.json());
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -47,6 +41,7 @@ app.use("/movies/:genre/year/:year", function(req, res, next) {
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
