@@ -9,7 +9,7 @@ class Trip {
     this.returnDate = returnDate;
   }
   update(propName, newValue) {
-    this.propName = newValue;
+    this[propName] = newValue;
   }
   updateDestination(destinationObj) {
     this.destination = {
