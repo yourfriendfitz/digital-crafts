@@ -28,14 +28,6 @@ block content
           input(type="text" id="enter-task-input" placeholder="Date of Return" name="return")
           input(type="text" id="enter-task-input" placeholder="Image URL" name="url")
           input(type="submit" id="add-trip")
-      .search
-        h3 Search By City or State
-        form(action="/search/city", method="POST")
-          input(type="text" id="citySearch" placeholder="City" name="city")
-          input(type="submit" id="searchCitySubmit")
-        form(action="/search/state", method="POST")
-          input(type="text" id="stateSearch" placeholder="State" name="state")
-          input(type="submit" id="searchStateSubmit")
 
     .middle
       h3 Trips

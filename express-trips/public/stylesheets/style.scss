@@ -5,6 +5,10 @@
   background-color: darkgray;
 }
 
+#index {
+  display: none;
+}
+
 html,
 body {
   height: inherit;
@@ -23,6 +27,11 @@ body {
           background-color: lightgray;
         }
       }
+      .search {
+        form {
+          margin-top: 16px;
+        }
+      }
     }
     .middle {
       text-align: center;
@@ -32,6 +41,10 @@ body {
         background-color: lightgray;
         border-radius: 16px;
         margin: 16px;
+        .tripButtons {
+          display: flex;
+          justify-content: space-around;
+        }
         .tripImg {
           display: grid;
           margin: 16px;

@@ -3,6 +3,10 @@
   background-color: darkgray;
 }
 
+#index {
+  display: none;
+}
+
 html,
 body {
   height: inherit;
@@ -39,6 +43,11 @@ body .container .top form input {
   background-color: lightgray;
 }
 
+html .container .top .search form,
+body .container .top .search form {
+  margin-top: 16px;
+}
+
 html .container .middle,
 body .container .middle {
   text-align: center;
@@ -53,6 +62,15 @@ body .container .middle .trip {
   background-color: lightgray;
   border-radius: 16px;
   margin: 16px;
+}
+
+html .container .middle .trip .tripButtons,
+body .container .middle .trip .tripButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 html .container .middle .trip .tripImg,

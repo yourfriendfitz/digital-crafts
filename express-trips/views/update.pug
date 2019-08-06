@@ -1,0 +1,34 @@
+extends layout
+
+mixin trip(tripObj)
+  .trip
+    .tripInfo
+      h5 #{tripObj.destination.city}, #{tripObj.destination.state}
+      h6 #{tripObj.startDate} - #{tripObj.returnDate}
+    .tripButtons
+      form(action="/removeTrip", method="POST")
+        button(type="submit" id="delete-trip" name="remove" value=`${trips.indexOf(tripObj)}`) Delete
+    .tripImg
+      img(src=`${tripObj.imageUrl}`)
+
+block content
+  .container
+    .top
+      #title
+        h1 Trips with Express + Pug
+      h3 Update Trip Info
+      .tripForm
+        form(action=`/updateTrip/${trips.indexOf(trip)}`, method="POST")
+          input(type="text" id="city" placeholder="City" name="city" value=`${trip.destination.city}`)
+          input(type="text" id="state" placeholder="State" name="state" value=`${trip.destination.state}`)
+          input(type="text" id="begin" placeholder="Date of Departurn" name="begin" value=`${trip.startDate}`)
+          input(type="text" id="return" placeholder="Date of Return" name="return" value=`${trip.returnDate}`)
+          input(type="text" id="url" placeholder="Image URL" name="url" value=`${trip.imageUrl}`)
+          input(type="submit" id="add-trip")
+
+    .middle
+      h3 Trips
+        +trip(trip)
+
+
+    .bottom
