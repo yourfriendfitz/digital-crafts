@@ -15,9 +15,10 @@ block content
       ul
         
           li
-            .task
+            
             for task in tasks
               if task.isCompleted === false
+              .task
                 form(class="left" action="/moveTaskCompleted", method="POST")
                   button(type="submit" name="check" value="#{tasks.indexOf(task)}") Move
                 .taskName
@@ -30,9 +31,9 @@ block content
       h3 Completed Tasks
       ul
           li
-            .task
             for task in tasks
               if task.isCompleted === true
+              .task
                 form(class="left" action="/moveTaskPending", method="POST")
                   button(type="submit" name="check" value="#{tasks.indexOf(task)}") Move
                 .taskName

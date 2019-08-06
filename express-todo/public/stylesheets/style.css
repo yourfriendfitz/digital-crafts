@@ -33,7 +33,7 @@ html body .task {
   display: grid;
   -webkit-column-count: 3;
           column-count: 3;
-  background: #2d9bd5;
+  background-color: #2d9bd5;
 }
 
 html body .task .taskName {
