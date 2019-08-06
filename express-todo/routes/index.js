@@ -1,24 +1,8 @@
 var express = require("express");
 var router = express.Router();
+const Task = require("../public/modules/task")
 
 let tasks = [];
-
-class Task {
-  constructor(name) {
-    this.taskName = name;
-    this.dateCreated = new Date(Date.now()).toLocaleTimeString();
-    this.dateCompleted = "In Progress";
-    this.isCompleted = false;
-  }
-  complete() {
-    this.dateCompleted = new Date(Date.now()).toLocaleTimeString();
-    this.isCompleted = true;
-  }
-  revert() {
-    this.dateCompleted = "In Progress";
-    this.isCompleted = false;
-  }
-}
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
