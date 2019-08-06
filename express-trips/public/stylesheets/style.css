@@ -1,4 +1,48 @@
 :root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: darkgray;
+}
+
+html,
+body {
+  height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+html .container,
+body .container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+html .container .top,
+body .container .top {
+  text-align: center;
+}
+
+html .container .top form,
+body .container .top form {
+  display: -ms-grid;
+  display: grid;
+}
+
+html .container .top form input,
+body .container .top form input {
+  padding: 8px;
+  background-color: lightgray;
+}
+
+html .container .middle,
+body .container .middle {
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
 }
 /*# sourceMappingURL=style.css.map */

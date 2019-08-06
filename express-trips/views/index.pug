@@ -1,4 +1,31 @@
 extends layout
 
+mixin trip(tripObj)
+  .trip
+    .tripInfo
+      h5 #{tripObj.destination.city}, #{tripObj.destination.state}
+      h6 #{tripObj.startDate} - #{tripObj.returnDate}
+    .tripImg
+      img(src=`${tripObj.imageUrl}`)
+
+
 block content
-  
+  .container
+    .top
+      #title
+        h1 Trips with Express + Pug
+      h3 Enter Trip
+      form(action="/addTrip", method="POST")
+        input(type="text" id="enter-task-input" placeholder="City" name="city")
+        input(type="text" id="enter-task-input" placeholder="State" name="state")
+        input(type="text" id="enter-task-input" placeholder="Date of Departurn" name="begin")
+        input(type="text" id="enter-task-input" placeholder="Date of Return" name="return")
+        input(type="text" id="enter-task-input" placeholder="Image URL" name="url")
+        input(type="submit" id="add-trip")
+    .middle#pending
+      h3 Trips
+        for trip in trips
+          +trip(trip)
+
+
+    .bottom#completed
