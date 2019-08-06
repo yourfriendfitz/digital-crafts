@@ -48,13 +48,13 @@ router.post("/moveTaskPending", function(req, res) {
 });
 
 router.post("/removePendingTask", function(req, res) {
-  const task = tasks[req.body.check];
+  const task = tasks[req.body.remove];
   tasks.splice(task, 1);
   res.redirect("/");
 });
 
 router.post("/removeCompletedTask", function(req, res) {
-  const task = tasks[req.body.check];
+  const task = tasks[req.body.remove];
   tasks.splice(task, 1);
   res.redirect("/");
 });
