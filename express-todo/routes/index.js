@@ -2,12 +2,22 @@ var express = require("express");
 var router = express.Router();
 var fs = require("fs");
 
-let pendingTasks = [];
-let completedTasks = [];
+let tasks = [];
 
 class Task {
   constructor(name) {
     this.taskName = name;
+    this.dateCreated = new Date(Date.now()).toLocaleTimeString();
+    this.dateCompleted = "In Progress";
+    this.isCompleted = false;
+  }
+  complete() {
+    this.dateCompleted = new Date(Date.now()).toLocaleTimeString();
+    this.isCompleted = true;
+  }
+  revert() {
+    this.dateCompleted = "In Progress";
+    this.isCompleted = false;
   }
 }
 
@@ -22,33 +32,35 @@ router.get("/", function(req, res, next) {
 
 router.post("/addTask", function(req, res) {
   const task = new Task(req.body.taskName);
-  pendingTasks.push(task);
+  tasks.push(task);
   res.redirect("/");
 });
 
 router.post("/moveTaskCompleted", function(req, res) {
   const task = req.body.check;
-  completedTasks.push(pendingTasks[task]);
-  pendingTasks.splice(task, 1);
+  tasks.splice(task, 1);
+  task.complete();
+  tasks.push(task);
   res.redirect("/");
 });
 
 router.post("/moveTaskPending", function(req, res) {
   const task = req.body.check;
-  pendingTasks.push(completedTasks[task]);
-  completedTasks.splice(task, 1);
-  res.redirect("/");
+  tasks.splice(task, 1);
+  task.revert();
+  tasks.push(task);
+  task.res.redirect("/");
 });
 
 router.post("/removePendingTask", function(req, res) {
-  const task = pendingTasks[req.body.remove];
-  pendingTasks.splice(pendingTasks[task], 1);
+  const task = req.body.remove;
+  tasks.splice(task, 1);
   res.redirect("/");
 });
 
 router.post("/removeCompletedTask", function(req, res) {
-  const task = completedTasks[req.body.remove];
-  completedTasks.splice(completedTasks[task], 1);
+  const task = req.body.remove;
+  tasks.splice(task, 1);
   res.redirect("/");
 });
 

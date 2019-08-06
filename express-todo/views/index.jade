@@ -3,6 +3,7 @@ extends layout
 
 block content
   .container
+  for task in tasks
     .top
       #title
         h1 Todo with Express + Jade
@@ -12,27 +13,30 @@ block content
         input(type="submit" id="add-task")
     .middle#pending
       h3 Pending Tasks
+      if task.isCompleted === false
       ul
-        for task in pendingTasks
+        
           li
             .task
               form(class="left" action="/moveTaskCompleted", method="POST")
-                button(type="submit" name="check" value="#{pendingTasks.indexOf(task)}") Move
+                button(type="submit" name="check" value="#{task}") Move
               .taskName
                 p #{task.taskName}
+                p Started: #{task.dateCreated}
+
               form(class="right" action="/removePendingTask", method="POST")
-                button(type="submit" name="remove" value="#{pendingTasks.indexOf(task)}") Remove
+                button(type="submit" name="remove" value="#{task}") Remove
 
     .bottom#completed
       h3 Completed Tasks
       ul
-        for task in completedTasks
           li
             .task
               form(class="left" action="/moveTaskPending", method="POST")
-                button(type="submit" name="check" value="#{completedTasks.indexOf(task)}") Move
+                button(type="submit" name="check" value="#{task}") Move
               .taskName
                 p #{task.taskName}
+                p Finished: #{task.dateCompleted}
               form(class="right" action="/removeCompletedTask", method="POST")
-                button(type="submit" name="remove" value="#{completedTasks.indexOf(task)}") Remove
+                button(type="submit" name="remove" value="#{task}") Remove
 
