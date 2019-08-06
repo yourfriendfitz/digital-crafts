@@ -37,17 +37,13 @@ router.post("/addTask", function(req, res) {
 
 router.post("/moveTaskCompleted", function(req, res) {
   const task = tasks[req.body.check];
-  tasks.splice(task, 1);
   task.complete();
-  tasks.push(task);
   res.redirect("/");
 });
 
 router.post("/moveTaskPending", function(req, res) {
   const task = tasks[req.body.check];
-  tasks.splice(task, 1);
   task.revert();
-  tasks.push(task);
   res.redirect("/");
 });
 
