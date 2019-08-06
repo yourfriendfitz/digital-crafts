@@ -25,8 +25,7 @@ class Task {
 router.get("/", function(req, res, next) {
   res.render("index", {
     title: "Express Todo",
-    pendingTasks: pendingTasks,
-    completedTasks: completedTasks
+    tasks: tasks
   });
 });
 
@@ -37,7 +36,7 @@ router.post("/addTask", function(req, res) {
 });
 
 router.post("/moveTaskCompleted", function(req, res) {
-  const task = req.body.check;
+  const task = tasks[req.body.check];
   tasks.splice(task, 1);
   task.complete();
   tasks.push(task);
@@ -45,21 +44,21 @@ router.post("/moveTaskCompleted", function(req, res) {
 });
 
 router.post("/moveTaskPending", function(req, res) {
-  const task = req.body.check;
+  const task = tasks[req.body.check];
   tasks.splice(task, 1);
   task.revert();
   tasks.push(task);
-  task.res.redirect("/");
+  res.redirect("/");
 });
 
 router.post("/removePendingTask", function(req, res) {
-  const task = req.body.remove;
+  const task = tasks[req.body.check];
   tasks.splice(task, 1);
   res.redirect("/");
 });
 
 router.post("/removeCompletedTask", function(req, res) {
-  const task = req.body.remove;
+  const task = tasks[req.body.check];
   tasks.splice(task, 1);
   res.redirect("/");
 });

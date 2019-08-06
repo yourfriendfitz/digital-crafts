@@ -3,7 +3,6 @@ extends layout
 
 block content
   .container
-  for task in tasks
     .top
       #title
         h1 Todo with Express + Jade
@@ -13,30 +12,32 @@ block content
         input(type="submit" id="add-task")
     .middle#pending
       h3 Pending Tasks
-      if task.isCompleted === false
       ul
         
           li
             .task
-              form(class="left" action="/moveTaskCompleted", method="POST")
-                button(type="submit" name="check" value="#{task}") Move
-              .taskName
-                p #{task.taskName}
-                p Started: #{task.dateCreated}
-
-              form(class="right" action="/removePendingTask", method="POST")
-                button(type="submit" name="remove" value="#{task}") Remove
+            for task in tasks
+              if task.isCompleted === false
+                form(class="left" action="/moveTaskCompleted", method="POST")
+                  button(type="submit" name="check" value="#{tasks.indexOf(task)}") Move
+                .taskName
+                  p #{task.taskName}
+                  p Started: #{task.dateCreated}
+                form(class="right" action="/removePendingTask", method="POST")
+                  button(type="submit" name="remove" value="#{tasks.indexOf(task)}") Remove
 
     .bottom#completed
       h3 Completed Tasks
       ul
           li
             .task
-              form(class="left" action="/moveTaskPending", method="POST")
-                button(type="submit" name="check" value="#{task}") Move
-              .taskName
-                p #{task.taskName}
-                p Finished: #{task.dateCompleted}
-              form(class="right" action="/removeCompletedTask", method="POST")
-                button(type="submit" name="remove" value="#{task}") Remove
+            for task in tasks
+              if task.isCompleted === true
+                form(class="left" action="/moveTaskPending", method="POST")
+                  button(type="submit" name="check" value="#{tasks.indexOf(task)}") Move
+                .taskName
+                  p #{task.taskName}
+                  p Finished: #{task.dateCompleted}
+                form(class="right" action="/removeCompletedTask", method="POST")
+                  button(type="submit" name="remove" value="#{tasks.indexOf(task)}") Remove
 
