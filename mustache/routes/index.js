@@ -24,7 +24,7 @@ router.get("/addUser", function(req, res, next) {
 router.post("/addUser", function(req, res, next) {
   const [name, age] = [req.body.name, req.body.age];
   users.push({ name: name, age: age });
-  res.redirect("/addUser");
+  res.redirect("/users");
 });
 
 module.exports = router;
