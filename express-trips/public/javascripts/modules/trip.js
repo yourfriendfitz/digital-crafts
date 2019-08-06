@@ -9,9 +9,13 @@ class Trip {
     this.returnDate = returnDate;
   }
   update(propName, newValue) {
-      this.propName = newValue
+    this.propName = newValue;
   }
   updateDestination(destinationObj) {
-      this.destination = destinationObj
+    this.destination = {
+      city: destinationObj.city,
+      state: destinationObj.state
+    };
   }
 }
+module.exports = Trip;
