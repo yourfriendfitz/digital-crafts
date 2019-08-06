@@ -45,4 +45,25 @@ body .container .middle {
   display: -ms-grid;
   display: grid;
 }
+
+html .container .middle .trip,
+body .container .middle .trip {
+  display: -ms-grid;
+  display: grid;
+  background-color: lightgray;
+  border-radius: 16px;
+  margin: 16px;
+}
+
+html .container .middle .trip .tripImg,
+body .container .middle .trip .tripImg {
+  display: -ms-grid;
+  display: grid;
+  margin: 16px;
+}
+
+html .container .middle .trip .tripImg img,
+body .container .middle .trip .tripImg img {
+  border-radius: 16px;
+}
 /*# sourceMappingURL=style.css.map */
