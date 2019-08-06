@@ -4,24 +4,24 @@ mixin pendingTask(taskObj)
   if !taskObj.isCompleted
     .task
         form(class="left" action="/moveTaskCompleted", method="POST")
-          button(type="submit" name="check" value="#{tasks.indexOf(taskObj)}") Move
+          button(type="submit" name="check" value=`${tasks.indexOf(taskObj)}`) Complete
         .taskName
           p #{taskObj.taskName}
           p Started: #{taskObj.dateCreated}
           p #{taskObj.isCompleted}
         form(class="right" action="/removePendingTask", method="POST")
-          button(type="submit" name="remove" value="#{tasks.indexOf(taskObj)}") Remove
+          button(type="submit" name="remove" value=`${tasks.indexOf(taskObj)}`) Remove
 mixin completedTask(taskObj)
   if taskObj.isCompleted
     .task
         form(class="left" action="/moveTaskPending", method="POST")
-          button(type="submit" name="check" value="#{tasks.indexOf(taskObj)}") Move
+          button(type="submit" name="check" value=`${tasks.indexOf(taskObj)}`) Revert
         .taskName
           p #{taskObj.taskName}
           p Completed: #{taskObj.dateCompleted}
           p #{taskObj.isCompleted}
         form(class="right" action="/removePendingTask", method="POST")
-          button(type="submit" name="remove" value="#{tasks.indexOf(taskObj)}") Remove
+          button(type="submit" name="remove" value=`${tasks.indexOf(taskObj)}`) Remove
 
 block content
   .container
