@@ -1,6 +1,16 @@
 extends layout
 
+mixin movie(movieObj)
+  .movie
+    .movieInfo
+      h5 #{movieObj.Title}
+      h6 #{movieObj.Year}
+    .moviePoster
+      img(src=`${movieObj.Poster}`)
+
 block content
   .container
-    p content
+    for movie in movies
+      +movie(movie)
+
 
