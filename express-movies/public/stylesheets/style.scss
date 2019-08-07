@@ -38,6 +38,19 @@ html {
         text-align: center;
       }
     }
+    .api {
+      display: grid;
+      justify-content: center;
+      button {
+        padding: 8px;
+        border-radius: 8px;
+        margin: 16px;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
     .movies {
       display: grid;
       margin: 16px;

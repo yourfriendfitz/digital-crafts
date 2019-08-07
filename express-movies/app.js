@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var moviesRouter = require("./routes/movies");
+var apiRouter = require("./routes/api");
 
 var app = express();
 
@@ -20,7 +21,7 @@ omdbMovies.forEach(movie => {
     movie.Title,
     movie.Year,
     "Comedy/Family",
-    movie.Poster,
+    movie.Poster
   );
   movies.push(newMovie);
 });
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/movies", moviesRouter);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

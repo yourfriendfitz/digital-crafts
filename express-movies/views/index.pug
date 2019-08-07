@@ -23,6 +23,9 @@ block content
         input(type="text" placeholder="Genre" name="genre")
         input(type="text" placeholder="Image URL" name="url")
         input(type="submit" id="add-movie")
+    .api
+      button
+        a(href="/api/movies") Movies API
     .movies
       for movie in movies
         +movie(movie)

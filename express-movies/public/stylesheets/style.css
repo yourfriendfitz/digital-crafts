@@ -50,6 +50,25 @@ html .container .addMovie a {
   text-align: center;
 }
 
+html .container .api {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+html .container .api button {
+  padding: 8px;
+  border-radius: 8px;
+  margin: 16px;
+}
+
+html .container .api button a {
+  text-decoration: none;
+  color: black;
+}
+
 html .container .movies {
   display: -ms-grid;
   display: grid;
