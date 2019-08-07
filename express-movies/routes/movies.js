@@ -19,7 +19,7 @@ router.post("/", function(req, res, next) {
 });
 
 router.post("/delete-movie", function(req, res, next) {
-  movies.splice(movies[req.body.remove], 1);
+  movies.splice(req.body.remove, 1);
   res.redirect("/");
 });
 
