@@ -27,7 +27,7 @@ const uploadFile = (req, callback) => {
   new formidable.IncomingForm()
     .parse(req)
     .on("fileBegin", (name, file) => {
-      file.path = "./public/images/uploads" + file.name;
+      file.path = "./public/images/uploads/" + file.name;
     })
     .on("file", (name, file) => {
       callback(file.name);
