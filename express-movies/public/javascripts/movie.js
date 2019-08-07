@@ -1,7 +1,7 @@
 class Movie {
-  constructor(title, description, genre, posterUrl) {
+  constructor(title, year, genre, posterUrl) {
     this.title = title;
-    this.description = description;
+    this.year = year;
     this.genre = genre;
     this.posterUrl = posterUrl;
   }
@@ -9,3 +9,5 @@ class Movie {
     this[propName] = newValue;
   }
 }
+
+module.exports = Movie;

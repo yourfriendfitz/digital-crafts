@@ -3,10 +3,10 @@ extends layout
 mixin movie(movieObj)
   .movie
     .movieInfo
-      h5 #{movieObj.Title}
-      h6 #{movieObj.Year}
+      h5 #{movieObj.title}
+      h6 #{movieObj.year}
     .moviePoster
-      img(src=`${movieObj.Poster}`)
+      img(src=`${movieObj.posterUrl}`)
 
 block content
   .container

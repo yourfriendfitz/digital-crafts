@@ -8,7 +8,21 @@ var indexRouter = require("./routes/index");
 
 var app = express();
 
-global.movies = require("./public/javascripts/movies");
+global.Movie = require("./public/javascripts/movie");
+
+global.movies = [];
+
+const omdbMovies = require("./public/javascripts/movies");
+
+omdbMovies.forEach(movie => {
+  const newMovie = new Movie(
+    movie.Title,
+    movie.Year,
+    "Comedy/Family",
+    movie.Poster
+  );
+  movies.push(newMovie);
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
