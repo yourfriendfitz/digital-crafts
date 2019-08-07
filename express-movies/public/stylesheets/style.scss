@@ -28,16 +28,25 @@ html {
     width: 320px;
     margin: auto;
     padding: 32px;
+    border-radius: 16px;
     .addMovie {
       display: grid;
       form {
         display: grid;
+      }
+      a {
+        text-align: center;
       }
     }
     .movies {
       display: grid;
       margin: 16px;
       text-align: center;
+      .movieButtons {
+        display: flex;
+        justify-content: space-around;
+        margin: 16px;
+      }
     }
   }
 }

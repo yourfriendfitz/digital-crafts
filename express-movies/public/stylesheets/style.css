@@ -33,6 +33,7 @@ html .container {
   width: 320px;
   margin: auto;
   padding: 32px;
+  border-radius: 16px;
 }
 
 html .container .addMovie {
@@ -45,10 +46,23 @@ html .container .addMovie form {
   display: grid;
 }
 
+html .container .addMovie a {
+  text-align: center;
+}
+
 html .container .movies {
   display: -ms-grid;
   display: grid;
   margin: 16px;
   text-align: center;
+}
+
+html .container .movies .movieButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 16px;
 }
 /*# sourceMappingURL=style.css.map */
