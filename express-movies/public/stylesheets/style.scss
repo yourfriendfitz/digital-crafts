@@ -7,22 +7,37 @@
 html {
   padding: 0;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
   body {
     height: 100vh;
     overflow: hidden;
     margin: auto;
-    background-image: url(https://open-stand.org/wp-content/uploads/2016/04/International-Union-of-Cinemas-Calls-for-Open-Standards-in-the-Cinema-Industry.jpg);
-    background-size: contain;
-    background-repeat: round;
+    background-image: url(https://www.europapark.de/sites/default/files/styles/gallery/public/field_hero_slideshow/movie/europa-park_magic-cinema3.jpg?itok=tdjuVEEH&timestamp=1513932705);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
   }
   .container {
     overflow-y: scroll;
     display: grid;
     justify-content: center;
-    margin-top: 32px;
     background-color: lightgray;
+    height: 800px;
     width: 320px;
-    height: inherit;
     margin: auto;
+    padding: 32px;
+    .addMovie {
+      display: grid;
+      form {
+        display: grid;
+      }
+    }
+    .movies {
+      display: grid;
+      margin: 16px;
+      text-align: center;
+    }
   }
 }

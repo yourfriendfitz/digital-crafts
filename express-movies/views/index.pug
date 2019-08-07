@@ -5,12 +5,21 @@ mixin movie(movieObj)
     .movieInfo
       h5 #{movieObj.title}
       h6 #{movieObj.year}
+      h6 #{movieObj.genre}
     .moviePoster
       img(src=`${movieObj.posterUrl}`)
 
 block content
   .container
-    for movie in movies
-      +movie(movie)
+    .addMovie
+      form(action="/addMovie", method="POST")
+        input(type="text" placeholder="Title" name="title")
+        input(type="text" placeholder="Year" name="year")
+        input(type="text" placeholder="Genre" name="genre")
+        input(type="text" placeholder="Image URL" name="url")
+        input(type="submit" id="add-movie")
+    .movies
+      for movie in movies
+        +movie(movie)
 
 
