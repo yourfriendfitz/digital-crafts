@@ -36,9 +36,8 @@ const uploadFile = (req, callback) => {
 
 router.post("/upload", function(req, res, next) {
   uploadFile(req, photoUrl => {
-    res.send("UPLOAD");
+    res.redirect("/");
   });
-  // res.render("movie", { movie: movie, movies: movies });
 });
 
 router.post("/:movieId", function(req, res, next) {
