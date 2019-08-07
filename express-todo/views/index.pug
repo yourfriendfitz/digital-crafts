@@ -3,25 +3,25 @@ extends layout
 mixin pendingTask(taskObj)
   if !taskObj.isCompleted
     .task
-        form(class="left" action="/moveTaskCompleted", method="POST")
-          button(type="submit" name="check" value=`${tasks.indexOf(taskObj)}`) Complete
-        .taskName
-          p #{taskObj.taskName}
-          p Started: #{taskObj.dateCreated}
-          p #{taskObj.isCompleted}
-        form(class="right" action="/removePendingTask", method="POST")
-          button(type="submit" name="remove" value=`${tasks.indexOf(taskObj)}`) Remove
+      form(class="left" action="/moveTaskCompleted", method="POST")
+        button(type="submit" name="check" value=`${tasks.indexOf(taskObj)}`) Complete
+      .taskName
+        p #{taskObj.taskName}
+        p Started: #{taskObj.dateCreated}
+        p #{taskObj.isCompleted}
+      form(class="right" action="/removePendingTask", method="POST")
+        button(type="submit" name="remove" value=`${tasks.indexOf(taskObj)}`) Remove
 mixin completedTask(taskObj)
   if taskObj.isCompleted
     .task
-        form(class="left" action="/moveTaskPending", method="POST")
-          button(type="submit" name="check" value=`${tasks.indexOf(taskObj)}`) Revert
-        .taskName
-          p #{taskObj.taskName}
-          p Completed: #{taskObj.dateCompleted}
-          p #{taskObj.isCompleted}
-        form(class="right" action="/removePendingTask", method="POST")
-          button(type="submit" name="remove" value=`${tasks.indexOf(taskObj)}`) Remove
+      form(class="left" action="/moveTaskPending", method="POST")
+        button(type="submit" name="check" value=`${tasks.indexOf(taskObj)}`) Revert
+      .taskName
+        p #{taskObj.taskName}
+        p Completed: #{taskObj.dateCompleted}
+        p #{taskObj.isCompleted}
+      form(class="right" action="/removePendingTask", method="POST")
+        button(type="submit" name="remove" value=`${tasks.indexOf(taskObj)}`) Remove
 
 block content
   .container
@@ -35,14 +35,14 @@ block content
     .middle#pending
       h3 Pending Tasks
       ul
-          li
-            for task in tasks
-              +pendingTask(task)
+        li
+          for task in tasks
+            +pendingTask(task)
 
     .bottom#completed
       h3 Completed Tasks
       ul
-          li
-            for task in tasks
-              +completedTask(task)
+        li
+          for task in tasks
+            +completedTask(task)
 
