@@ -18,12 +18,13 @@ router.post("/", function(req, res, next) {
 });
 
 router.post("/delete-movie", function(req, res, next) {
-  movies.splice(movies[req.body.remove]);
+  movies.splice(movies[req.body.remove], 1);
   res.redirect("/");
 });
 
 router.post("/:movieId", function(req, res, next) {
   const movie = movies[req.params.movieId];
+  console.log(movies)
   res.render("movie", { movie: movie, movies: movies });
 });
 
