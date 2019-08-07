@@ -22,9 +22,9 @@ router.post("/delete-movie", function(req, res, next) {
   res.redirect("/");
 });
 
-router.get("/movies/:movieId", function(req, res, next) {
+router.post("/:movieId", function(req, res, next) {
   const movie = movies[req.params.movieId];
-  res.render("movie", { movie: movie });
+  res.render("movie", { movie: movie, movies: movies });
 });
 
 module.exports = router;
