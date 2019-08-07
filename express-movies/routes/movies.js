@@ -6,7 +6,7 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Express Movies", movies: movies });
 });
 
-router.post("/addMovie", function(req, res, next) {
+router.post("/", function(req, res, next) {
   const movie = new Movie(
     req.body.title,
     req.body.year,
@@ -15,6 +15,16 @@ router.post("/addMovie", function(req, res, next) {
   );
   movies.push(movie);
   res.redirect("/");
+});
+
+router.post("/delete-movie", function(req, res, next) {
+  movies.splice(movies[req.body.remove]);
+  res.redirect("/");
+});
+
+router.get("/movies/:movieId", function(req, res, next) {
+  const movie = movies[req.params.movieId];
+  res.render("movie", { movie: movie });
 });
 
 module.exports = router;

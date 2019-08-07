@@ -1,0 +1,22 @@
+extends layout
+
+mixin movie(movieObj)
+    .movie
+        .movieInfo
+            h5 #{movieObj.title}
+            h6 #{movieObj.year}
+            h6 #{movieObj.genre}
+        .movieButtons
+            form(action="/delete-movie", method="POST")
+                button(type="submit" id="update-trip" name="remove" value=`${movies.indexOf(movieObj)}`) Delete
+        .moviePoster
+            img(src=`${movieObj.posterUrl}`)
+        .movieDescription
+            p #{movieObj.description}
+
+block content
+    .container
+        .addMovie
+            a(href="/movies") Go Back
+        .movies
+            +movie(movie)

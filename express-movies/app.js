@@ -20,7 +20,7 @@ omdbMovies.forEach(movie => {
     movie.Title,
     movie.Year,
     "Comedy/Family",
-    movie.Poster
+    movie.Poster,
   );
   movies.push(newMovie);
 });
