@@ -17,6 +17,8 @@ mixin movie(movieObj)
 block content
     .container
         .addMovie
-            a(href="/movies") Go Back
+            .backButton
+                button#back
+                    a(href="/movies") Go Back
         .movies
             +movie(movie)

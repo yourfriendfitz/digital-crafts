@@ -46,8 +46,19 @@ html .container .addMovie form {
   display: grid;
 }
 
+html .container .addMovie .backButton {
+  margin: auto;
+}
+
+html .container .addMovie #back {
+  outline: none;
+}
+
 html .container .addMovie a {
+  width: 100%;
+  text-decoration: none;
   text-align: center;
+  color: black;
 }
 
 html .container .api {
@@ -62,6 +73,7 @@ html .container .api button {
   padding: 8px;
   border-radius: 8px;
   margin: 16px;
+  outline: none;
 }
 
 html .container .api button a {

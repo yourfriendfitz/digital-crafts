@@ -34,8 +34,17 @@ html {
       form {
         display: grid;
       }
+      .backButton {
+        margin: auto;
+      }
+      #back {
+        outline: none;
+      }
       a {
+        width: 100%;
+        text-decoration: none;
         text-align: center;
+        color: black;
       }
     }
     .api {
@@ -45,6 +54,7 @@ html {
         padding: 8px;
         border-radius: 8px;
         margin: 16px;
+        outline: none;
         a {
           text-decoration: none;
           color: black;
