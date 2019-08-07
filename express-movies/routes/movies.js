@@ -30,7 +30,7 @@ const uploadFile = (req, callback) => {
       file.path = "./public/images/uploads/" + file.name;
     })
     .on("file", (name, file) => {
-      callback(file.name);
+      callback(`images/uploads/${file.name}`);
     });
 };
 
