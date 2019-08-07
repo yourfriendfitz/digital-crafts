@@ -1,0 +1,37 @@
+extends layout
+
+mixin movie(movieObj)
+  .movie
+    .movieInfo
+      h5 #{movieObj.title}
+      h6 #{movieObj.year}
+      h6 #{movieObj.genre}
+    .movieButtons
+      form(action=`/movies/${movies.indexOf(movieObj)}`, method="POST")
+        button(type="submit" id="update-trip" name="update" value=`${movies.indexOf(movieObj)}`) More Info
+      form(action="/movies/delete-movie", method="POST")
+        button(type="submit" id="update-trip" name="remove" value=`${movies.indexOf(movieObj)}`) Delete
+    .moviePoster
+      img(src=`${movieObj.posterUrl}`)
+
+block content
+  .container
+    .addMovie
+      form(action="/movies", method="POST")
+        input(type="text" placeholder="Title" name="title")
+        input(type="text" placeholder="Year" name="year")
+        input(type="text" placeholder="Genre" name="genre")
+        input(type="text" placeholder="Image URL" name="url" value=`${photoUrl}`)
+        input(type="submit" id="add-movie")
+    .addFile
+      form(action="movies/upload", method="POST" enctype="multipart/form-data")
+        input(type="file" name="photo")
+        button(type="submit") Upload
+    .api
+      button
+        a(href="/api/movies") Movies API
+    .movies
+      for movie in movies
+        +movie(movie)
+
+

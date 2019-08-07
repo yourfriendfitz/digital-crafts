@@ -36,7 +36,11 @@ const uploadFile = (req, callback) => {
 
 router.post("/upload", function(req, res, next) {
   uploadFile(req, photoUrl => {
-    res.redirect("/");
+    res.render("uploadIndex", {
+      title: "Express Movies",
+      movies: movies,
+      photoUrl: photoUrl
+    });
   });
 });
 
