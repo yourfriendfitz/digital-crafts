@@ -10,6 +10,8 @@ var apiRouter = require("./routes/api");
 
 var app = express();
 
+global.__basedir = __dirname
+
 global.Movie = require("./public/javascripts/movie");
 
 global.movies = [];
