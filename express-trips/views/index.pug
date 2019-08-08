@@ -17,6 +17,9 @@ mixin trip(tripObj)
 block content
   .container
     .top
+      .signout
+        form(action="/signout", method="POST")
+          button(type="submit" id="delete-trip" name="remove") Signout
       #title
         h1 Trips with Express + Pug
       h3 Enter Trip

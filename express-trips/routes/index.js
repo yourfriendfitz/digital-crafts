@@ -44,7 +44,7 @@ router.post("/login", function(req, res) {
     return user.name === req.body.name && user.password === req.body.password;
   });
   if (currentUser) {
-    req.session.user = authUser;
+    req.session.user = currentUser;
   } else {
     res.redirect("/login");
   }
@@ -57,6 +57,9 @@ router.get("/", [authenticate, logCb], function(req, res, next) {
     title: "Express Trips",
     user: currentUser
   });
+  console.log(users);
+  console.log(currentUser);
+  console.log(currentUser.trips);
 });
 
 router.post("/addTrip", function(req, res) {
@@ -77,11 +80,14 @@ router.post("/updateTrip", function(req, res) {
   const trip = currentUser.trips.find(trip => {
     return trip.id === req.body.update;
   });
+  console.log(trip);
   res.render("update", { trip: trip });
 });
 
 router.post("/updateTrip/:id", function(req, res) {
-  const trip = trips[req.params.id];
+  const trip = currentUser.trips.find(trip => {
+    return trip.id === req.params.id;
+  });
   trip.updateDestination({
     city: req.body.city,
     state: req.body.state
@@ -113,5 +119,17 @@ router.post("/search/state", function(req, res) {
   });
   res.render("search", { trips: tripArray });
 });
+
+router.post('/logout',(req,res) => {
+  if(req.session) {
+      req.session.destroy(error => {
+          if(error) {
+              next(error)
+          } else {
+              res.redirect('/login')
+          }
+      }) 
+  }
+})
 
 module.exports = router;
