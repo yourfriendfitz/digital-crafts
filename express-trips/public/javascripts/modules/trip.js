@@ -1,3 +1,5 @@
+const uuid = require("uuid/v1");
+
 class Trip {
   constructor(destinationObj, imageUrl, startDate, returnDate) {
     this.destination = {
@@ -7,6 +9,7 @@ class Trip {
     this.imageUrl = imageUrl;
     this.startDate = startDate;
     this.returnDate = returnDate;
+    this.id = uuid();
   }
   update(propName, newValue) {
     this[propName] = newValue;

@@ -7,9 +7,9 @@ mixin trip(tripObj)
       h6 #{tripObj.startDate} - #{tripObj.returnDate}
     .tripButtons
       form(action="/updateTrip", method="POST")
-        button(type="submit" id="update-trip" name="update" value=`${trips.indexOf(tripObj)}`) Edit
+        button(type="submit" id="update-trip" name="update" value=`${tripObj.id}`) Edit
       form(action="/removeTrip", method="POST")
-        button(type="submit" id="delete-trip" name="remove" value=`${trips.indexOf(tripObj)}`) Delete
+        button(type="submit" id="delete-trip" name="remove" value=`${tripObj.id}`) Delete
     .tripImg
       img(src=`${tripObj.imageUrl}`)
 
@@ -39,7 +39,7 @@ block content
 
     .middle
       h3 Trips
-        for trip in trips
+        for trip in user.trips
           +trip(trip)
 
 

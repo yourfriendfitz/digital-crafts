@@ -7,7 +7,7 @@ mixin trip(tripObj)
       h6 #{tripObj.startDate} - #{tripObj.returnDate}
     .tripButtons
       form(action="/removeTrip", method="POST")
-        button(type="submit" id="delete-trip" name="remove" value=`${trips.indexOf(tripObj)}`) Delete
+        button(type="submit" id="delete-trip" name="remove" value=`${tripObj.id}`) Delete
     .tripImg
       img(src=`${tripObj.imageUrl}`)
 
