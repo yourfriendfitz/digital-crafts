@@ -9,7 +9,6 @@ var indexRouter = require("./routes/index");
 
 var app = express();
 
-global.trips = [];
 global.users = [];
 
 // view engine setup
