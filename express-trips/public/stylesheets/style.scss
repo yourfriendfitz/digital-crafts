@@ -28,8 +28,9 @@ body {
         }
       }
       .api {
+        display: grid;
+        margin: 48px;
         button {
-          width: 265px;
           padding: 8px;
           border-radius: 8px;
         }
