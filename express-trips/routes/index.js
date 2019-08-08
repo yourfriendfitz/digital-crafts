@@ -21,6 +21,9 @@ router.post("/addTrip", function(req, res) {
     req.body.return
   );
   trips.push(trip);
+  if (req.session) {
+    req.session.trip = trip;
+  }
   res.redirect("/");
 });
 
