@@ -1,3 +1,5 @@
+const uuid = require("uuid/v1");
+
 class Movie {
   constructor(
     title,
@@ -11,6 +13,7 @@ class Movie {
     this.genre = genre;
     this.posterUrl = posterUrl;
     this.description = description;
+    this.id = uuid();
   }
   update(propName, newValue) {
     this[propName] = newValue;
