@@ -132,4 +132,9 @@ router.post('/signout',(req,res) => {
   }
 })
 
+router.get("/api/trips", function(req, res, next) {
+  res.json(currentUser.trips);
+});
+
+
 module.exports = router;

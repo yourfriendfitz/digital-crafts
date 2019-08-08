@@ -20,6 +20,8 @@ block content
       .signout
         form(action="/signout", method="POST")
           button(type="submit" id="delete-trip" name="remove") Signout
+      .api
+        a(href="api/trips") Trips API
       #title
         h1 Trips with Express + Pug
       h3 Enter Trip
