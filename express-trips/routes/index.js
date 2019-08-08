@@ -120,7 +120,7 @@ router.post("/search/state", function(req, res) {
   res.render("search", { trips: tripArray });
 });
 
-router.post('/logout',(req,res) => {
+router.post('/signout',(req,res) => {
   if(req.session) {
       req.session.destroy(error => {
           if(error) {

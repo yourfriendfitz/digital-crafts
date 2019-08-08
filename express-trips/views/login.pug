@@ -7,7 +7,9 @@ block content
       #title
         h1 Trips with Express + Pug
       h3 Login
-      a(href="/user") Register
+      .register
+        button
+            a(href="/user") Register
       .tripForm
         form(action="/login", method="POST")
           input(type="text" placeholder="Name" name="name")

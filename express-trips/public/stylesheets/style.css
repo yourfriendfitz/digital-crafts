@@ -31,6 +31,28 @@ body .container .top {
   text-align: center;
 }
 
+html .container .top .signout,
+body .container .top .signout {
+  margin: 48px;
+}
+
+html .container .top .signout button,
+body .container .top .signout button {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+html .container .top .register,
+body .container .top .register {
+  margin: 16px;
+}
+
+html .container .top .register a,
+body .container .top .register a {
+  text-decoration: none;
+  color: black;
+}
+
 html .container .top form,
 body .container .top form {
   display: -ms-grid;

@@ -20,6 +20,20 @@ body {
     align-items: center;
     .top {
       text-align: center;
+      .signout {
+        margin: 48px;
+        button {
+          padding: 8px;
+          border-radius: 8px;
+        }
+      }
+      .register {
+        margin: 16px;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
       form {
         display: grid;
         input {
