@@ -144,9 +144,11 @@ router.post("/signout", (req, res) => {
   }
 });
 
-router.get("/api/trips", function(req, res, next) {
-  const currentUser = getUser(req);
-  res.json(currentUser.trips);
+router.get("/api/trips/:id", function(req, res, next) {
+  const user = users.find(user => {
+    return user.id === req.params.id;
+  });
+  res.json(user.trips);
 });
 
 module.exports = router;
