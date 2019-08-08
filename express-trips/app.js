@@ -4,12 +4,15 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
+const User = require("./public/javascripts/modules/user");
 
 var indexRouter = require("./routes/index");
 
 var app = express();
 
 global.users = [];
+
+users.push(new User("fitz", "password"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
