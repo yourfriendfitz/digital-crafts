@@ -42,6 +42,21 @@ body .container .top .signout button {
   border-radius: 8px;
 }
 
+html .container .top .api button,
+body .container .top .api button {
+  width: 265px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+html .container .top .api a,
+body .container .top .api a {
+  text-decoration: none;
+  color: black;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 html .container .top .register,
 body .container .top .register {
   margin: 16px;
