@@ -19,7 +19,12 @@ router.post("/", function(req, res, next) {
 });
 
 router.post("/delete-movie", function(req, res, next) {
-  movies.splice(req.body.remove, 1);
+  const movieToDel = movies.filter(movie => {
+    if (movie.id === req.body.remove) {
+      return movie;
+    }
+  });
+  movies.splice(movieToDel, 1);
   res.redirect("/");
 });
 
@@ -45,9 +50,13 @@ router.post("/upload", function(req, res, next) {
 });
 
 router.post("/:movieId", function(req, res, next) {
-  const movie = movies[req.params.movieId];
-  console.log(movies);
-  res.render("movie", { movie: movie, movies: movies });
+  console.log(req.params.movieId);
+  const movie = movies.filter(movie => {
+    if (movie.id === req.params.movieId) {
+      return movie;
+    }
+  });
+  res.render("movie", { movie: movie[0], movies: movies });
 });
 
 module.exports = router;

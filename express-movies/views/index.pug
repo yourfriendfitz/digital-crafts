@@ -7,10 +7,10 @@ mixin movie(movieObj)
       h6 #{movieObj.year}
       h6 #{movieObj.genre}
     .movieButtons
-      form(action=`/movies/${movies.indexOf(movieObj)}`, method="POST")
-        button(type="submit" id="update-trip" name="update" value=`${movies.indexOf(movieObj)}`) More Info
+      form(action=`/movies/${movieObj.id}`, method="POST")
+        button(type="submit" id="update-trip" name="update" value=`${movieObj.id}`) More Info
       form(action="/movies/delete-movie", method="POST")
-        button(type="submit" id="update-trip" name="remove" value=`${movies.indexOf(movieObj)}`) Delete
+        button(type="submit" id="update-trip" name="remove" value=`${movieObj.id}`) Delete
     .moviePoster
       img(src=`${movieObj.posterUrl}`)
 
