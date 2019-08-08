@@ -3,6 +3,16 @@ var router = express.Router();
 const Trip = require("../public/javascripts/modules/trip");
 const User = require("../public/javascripts/modules/user");
 
+const authenticate = (req, res, next) => {
+  if (req.session) {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect("/login");
+    }
+  }
+};
+
 router.get("/user", function(req, res, next) {
   res.render("register", {
     title: "Express Trips"
@@ -34,17 +44,11 @@ router.post("/login", function(req, res) {
 });
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
-  if (req.session) {
-    if (req.session.user) {
-      res.render("index", {
-        title: "Express Trips",
-        trips: trips
-      });
-    } else {
-      res.redirect("/login");
-    }
-  }
+router.get("/", authenticate, function(req, res, next) {
+  res.render("index", {
+    title: "Express Trips",
+    trips: trips
+  });
 });
 
 router.post("/addTrip", function(req, res) {
