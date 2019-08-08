@@ -12,7 +12,7 @@ router.get("/user", function(req, res, next) {
 router.post("/user", function(req, res) {
   const user = new User(req.body.name, req.body.password);
   users.push(user);
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 router.get("/login", function(req, res, next) {
@@ -21,12 +21,30 @@ router.get("/login", function(req, res, next) {
   });
 });
 
+router.post("/login", function(req, res) {
+  const authUser = users.find(user => {
+    return user.name === req.body.name && user.password === req.body.password;
+  });
+  if (authUser) {
+    req.session.user = authUser;
+  } else {
+    res.redirect("/login");
+  }
+  res.redirect("/");
+});
+
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("index", {
-    title: "Express Trips",
-    trips: trips
-  });
+  if (req.session) {
+    if (req.session.user) {
+      res.render("index", {
+        title: "Express Trips",
+        trips: trips
+      });
+    } else {
+      res.redirect("/login");
+    }
+  }
 });
 
 router.post("/addTrip", function(req, res) {
