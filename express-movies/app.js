@@ -16,7 +16,7 @@ global.Movie = require("./public/javascripts/movie");
 
 global.movies = [];
 
-const omdbMovies = require("./public/javascripts/movies");
+const omdbMovies = require("./public/javascripts/shrek");
 
 omdbMovies.forEach(movie => {
   const newMovie = new Movie(
