@@ -3,12 +3,6 @@ var router = express.Router();
 const Trip = require("../public/javascripts/modules/trip");
 const User = require("../public/javascripts/modules/user");
 
-const getUser = () => {
-  users.find(user => {
-    return user === req.session.user;
-  });
-};
-
 const authenticate = (req, res, next) => {
   if (req.session) {
     if (req.session.user) {
@@ -17,6 +11,15 @@ const authenticate = (req, res, next) => {
       res.redirect("/login");
     }
   }
+};
+
+const getUser = req => {
+  return users.find(user => {
+    return (
+      user.name === req.session.user.name &&
+      user.password === req.session.user.password
+    );
+  });
 };
 
 const logCb = async (req, res, next) => {
@@ -57,18 +60,16 @@ router.post("/login", function(req, res) {
 
 /* GET home page. */
 router.get("/", [authenticate, logCb], function(req, res, next) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
+  console.log(currentUser);
   res.render("index", {
     title: "Express Trips",
     user: currentUser
   });
-  console.log(users);
-  console.log(currentUser);
-  console.log(currentUser.trips);
 });
 
 router.post("/addTrip", function(req, res) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   const trip = new Trip(
     {
       city: req.body.city,
@@ -83,7 +84,7 @@ router.post("/addTrip", function(req, res) {
 });
 
 router.post("/updateTrip", function(req, res) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   const trip = currentUser.trips.find(trip => {
     return trip.id === req.body.update;
   });
@@ -92,7 +93,7 @@ router.post("/updateTrip", function(req, res) {
 });
 
 router.post("/updateTrip/:id", function(req, res) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   const trip = currentUser.trips.find(trip => {
     return trip.id === req.params.id;
   });
@@ -107,7 +108,7 @@ router.post("/updateTrip/:id", function(req, res) {
 });
 
 router.post("/removeTrip", function(req, res) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   const trip = currentUser.trips.find(trip => {
     return trip.id === req.body.remove;
   });
@@ -116,7 +117,7 @@ router.post("/removeTrip", function(req, res) {
 });
 
 router.post("/search/city", function(req, res) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   const tripArray = currentUser.trips.filter(trip => {
     return trip.destination.city == req.body.city;
   });
@@ -124,7 +125,7 @@ router.post("/search/city", function(req, res) {
 });
 
 router.post("/search/state", function(req, res) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   const tripArray = currentUser.trips.filter(trip => {
     return trip.destination.state == req.body.state;
   });
@@ -144,7 +145,7 @@ router.post("/signout", (req, res) => {
 });
 
 router.get("/api/trips", function(req, res, next) {
-  const currentUser = getUser();
+  const currentUser = getUser(req);
   res.json(currentUser.trips);
 });
 
