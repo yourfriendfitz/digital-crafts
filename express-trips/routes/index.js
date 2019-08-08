@@ -1,6 +1,25 @@
 var express = require("express");
 var router = express.Router();
 const Trip = require("../public/javascripts/modules/trip");
+const User = require("../public/javascripts/modules/user");
+
+router.get("/user", function(req, res, next) {
+  res.render("register", {
+    title: "Express Trips"
+  });
+});
+
+router.post("/user", function(req, res) {
+  const user = new User(req.body.name, req.body.password);
+  users.push(user);
+  res.redirect("/");
+});
+
+router.get("/login", function(req, res, next) {
+  res.render("login", {
+    title: "Express Trips"
+  });
+});
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
