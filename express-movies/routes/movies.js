@@ -24,7 +24,7 @@ router.post("/delete-movie", function(req, res, next) {
       return movie;
     }
   });
-  movies.splice(movieToDel[0], 1);
+  movies.splice(movies.indexOf(movieToDel[0]), 1);
   res.redirect("/");
 });
 
