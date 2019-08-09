@@ -93,6 +93,10 @@
   padding: 8px;
 }
 
+.container .innerContainer .content .messages .message h6 {
+  text-align: left;
+}
+
 .container .innerContainer .content .messages .userMessage {
   display: -ms-grid;
   display: grid;
@@ -102,6 +106,10 @@
   border-bottom: 1px solid black;
   background-color: aqua;
   padding: 8px;
+}
+
+.container .innerContainer .content .messages .userMessage h6 {
+  text-align: right;
 }
 
 .container .innerContainer .input {
