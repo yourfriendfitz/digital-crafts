@@ -1,17 +1,72 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+#hidden {
+  display: none;
+}
+
 .container {
   display: grid;
   justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: lightgray;
+  overflow: hidden;
   .innerContainer {
     display: grid;
     justify-content: center;
+    #loginHeader {
+      margin-top: 300px;
+    }
+    .header {
+      display: grid;
+      justify-content: center;
+      text-align: center;
+      border-bottom: 2px solid gray;
+    }
+    .content {
+      display: grid;
+      justify-content: center;
+      height: 80vh;
+      overflow-y: scroll;
+      form {
+        margin: 16px;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        input {
+          margin-top: 16px;
+        }
+      }
+      .messages {
+        display: grid;
+        width: 300px;
+        height: fit-content;
+      }
+    }
+    .input {
+      border-top: 2px solid gray;
+      display: grid;
+      justify-content: center;
+      form {
+        input {
+          width: 300px;
+          padding: 8px;
+        }
+        button {
+          padding: 8px;
+        }
+      }
+    }
   }
 }

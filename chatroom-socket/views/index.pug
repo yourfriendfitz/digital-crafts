@@ -1,0 +1,34 @@
+extends layout
+
+mixin message(messageObj)
+    .message
+        h6 #{messageObj.user}
+        p #{messageObj.message}
+
+mixin userMessage(messageObj)
+    .userMessage
+        h6 #{messageObj.user}
+        p #{messageObj.message}
+
+block content
+    .container
+        .innerContainer
+            .header
+                h3 Socket Chat
+            .content
+                .messages#messages
+                    for message in chatroom.messages
+                        for user in chatroom.users
+                            if user.id === uid
+                                +userMessage(message)
+                            else
+                                +message(message)
+
+            .input
+                form(action="")
+                    input(id ="m" autocomplete="off")
+                    input(id="hidden" value=`${uid}`)
+                    button Send
+    script(src="../socket.io/socket.io.js")
+    script(src="https://code.jquery.com/jquery-1.11.1.js")
+    script(src="../chat.js")

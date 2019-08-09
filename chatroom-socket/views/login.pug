@@ -1,0 +1,14 @@
+extends layout
+
+
+block content
+  .container
+    .innerContainer
+        .header#loginHeader
+            h1 Socket Chat
+            h3 Login
+        .login
+            form(action="/login", method="POST")
+                input(type="text" placeholder="Name" name="user")
+                input(type="submit")
+        .content

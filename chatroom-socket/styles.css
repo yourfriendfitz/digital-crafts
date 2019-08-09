@@ -1,8 +1,16 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+#hidden {
+  display: none;
 }
 
 .container {
@@ -11,9 +19,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: lightgray;
+  overflow: hidden;
 }
 
 .container .innerContainer {
@@ -22,5 +34,72 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.container .innerContainer #loginHeader {
+  margin-top: 300px;
+}
+
+.container .innerContainer .header {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  border-bottom: 2px solid gray;
+}
+
+.container .innerContainer .content {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.container .innerContainer .content form {
+  margin: 16px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .innerContainer .content form input {
+  margin-top: 16px;
+}
+
+.container .innerContainer .content .messages {
+  display: -ms-grid;
+  display: grid;
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.container .innerContainer .input {
+  border-top: 2px solid gray;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .innerContainer .input form input {
+  width: 300px;
+  padding: 8px;
+}
+
+.container .innerContainer .input form button {
+  padding: 8px;
 }
 /*# sourceMappingURL=styles.css.map */
