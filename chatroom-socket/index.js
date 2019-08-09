@@ -89,7 +89,8 @@ io.on("connection", function(socket) {
     user.messages.push(new Message(msg.message));
     chatroom.messages.push({
       user: user.name,
-      message: msg.message
+      message: msg.message,
+      uid: user.id
     });
     console.log(user);
     console.log(user.messages);
@@ -102,6 +103,7 @@ io.on("connection", function(socket) {
   socket.on("chat message", function(msg) {
     const user = getUser(msg);
     msg.user = user.name;
+    msg.uid = user.id;
     io.emit("chat message", msg);
   });
 });

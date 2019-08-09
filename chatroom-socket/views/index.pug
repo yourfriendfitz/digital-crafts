@@ -18,11 +18,10 @@ block content
             .content
                 .messages#messages
                     for message in chatroom.messages
-                        for user in chatroom.users
-                            if user.id === uid
-                                +userMessage(message)
-                            else
-                                +message(message)
+                        if message.uid === uid
+                            +userMessage(message)
+                        else
+                            +message(message)
 
             .input
                 form(action="")

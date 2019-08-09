@@ -85,6 +85,25 @@
   height: fit-content;
 }
 
+.container .innerContainer .content .messages .message {
+  display: -ms-grid;
+  display: grid;
+  border-bottom: 1px solid black;
+  background-color: darkgray;
+  padding: 8px;
+}
+
+.container .innerContainer .content .messages .userMessage {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  border-bottom: 1px solid black;
+  background-color: aqua;
+  padding: 8px;
+}
+
 .container .innerContainer .input {
   border-top: 2px solid gray;
   display: -ms-grid;
