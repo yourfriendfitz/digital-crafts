@@ -65,7 +65,8 @@ app.get("/", function(req, res) {
 app.get("/chat", authenticate, function(req, res, next) {
   res.render("index", {
     chatroom: chatroom,
-    uid: req.session.user.id
+    uid: req.session.user.id,
+    name: req.session.user.name
   });
 });
 
@@ -74,6 +75,18 @@ app.post("/login", function(req, res, next) {
   req.session.user = user;
   chatroom.users.push(user);
   res.redirect("/chat");
+});
+
+app.post("/signout", (req, res) => {
+  if (req.session) {
+    req.session.destroy(error => {
+      if (error) {
+        next(error);
+      } else {
+        res.redirect("/");
+      }
+    });
+  }
 });
 
 io.on("connection", function(socket) {

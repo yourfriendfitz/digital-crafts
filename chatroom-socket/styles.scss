@@ -81,5 +81,13 @@
         }
       }
     }
+    .signout {
+      form {
+        display: grid;
+        button {
+          padding: 4px;
+        }
+      }
+    }
   }
 }

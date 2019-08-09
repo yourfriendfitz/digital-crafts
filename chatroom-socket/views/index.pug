@@ -15,6 +15,7 @@ block content
         .innerContainer
             .header
                 h3 Socket Chat
+                h5 You are Logged in as #{name}
             .content
                 .messages#messages
                     for message in chatroom.messages
@@ -24,10 +25,13 @@ block content
                             +message(message)
 
             .input
-                form(action="")
+                form(action="" id="chat")
                     input(id ="m" autocomplete="off")
                     input(id="hidden" value=`${uid}`)
                     button Send
+            .signout
+                form(action="/signout", method="POST")
+                    button(type="submit" id="delete-trip" name="remove") Signout
     script(src="../socket.io/socket.io.js")
     script(src="https://code.jquery.com/jquery-1.11.1.js")
     script(src="../chat.js")

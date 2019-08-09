@@ -1,7 +1,7 @@
 const uid = document.querySelector("#hidden").value;
 $(function() {
   var socket = io();
-  $("form").submit(function(e) {
+  $("#chat").submit(function(e) {
     e.preventDefault(); // prevents page reloading
     socket.emit("chat message", {
       message: $("#m").val(),

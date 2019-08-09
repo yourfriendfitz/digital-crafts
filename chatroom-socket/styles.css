@@ -121,4 +121,13 @@
 .container .innerContainer .input form button {
   padding: 8px;
 }
+
+.container .innerContainer .signout form {
+  display: -ms-grid;
+  display: grid;
+}
+
+.container .innerContainer .signout form button {
+  padding: 4px;
+}
 /*# sourceMappingURL=styles.css.map */
