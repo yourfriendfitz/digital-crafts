@@ -42,9 +42,15 @@ body .container .top .signout button {
   border-radius: 8px;
 }
 
+html .container .top .api,
+body .container .top .api {
+  display: -ms-grid;
+  display: grid;
+  margin: 48px;
+}
+
 html .container .top .api button,
 body .container .top .api button {
-  width: 265px;
   padding: 8px;
   border-radius: 8px;
 }
