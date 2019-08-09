@@ -8,10 +8,21 @@
     <title>Socket IO Chat</title>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="container">
+      <div class="innerContainer">
+        <div class="header">
+          <h3>Socket Chat</h3>
+        </div>
+        <div class="content">
+          <div id="messages"></div>
+        </div>
+        <div class="input">
+          <form action="">
+            <input id="m" autocomplete="off" /><button>Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
