@@ -22,7 +22,7 @@ block content
           button(type="submit" id="delete-trip" name="remove") Signout
       .api
         button
-          a(href="api/trips") Trips API
+          a(href=`api/trips/${user.id}`) Trips API
       #title
         h1 Trips with Express + Pug
       h3 Enter Trip
