@@ -2,16 +2,13 @@ extends layout
 
 
 block content
-    .container
-        .content
-            #title
+    .container-fluid
+        .container
+            #title.text-center
                 h1 Blogs with Express + Pug
-            h3 Login
-            .register
-                button
-                    a(href="/user") Register
-            .login
-                form(action="/login", method="POST")∏
-                    input(type="text" placeholder="Name" name="name")
-                    input(type="password" placeholder="Password" name="password")
-                    input(type="submit")∏
+                h3 Login
+            .form-group
+                form(action="/login", method="POST")
+                    input(class="form-control" type="text" placeholder="Name" name="name" required)
+                    input(class="form-control" type="password" placeholder="Password" name="password" required)
+                    input(class="form-control" type="submit")

@@ -1,0 +1,31 @@
+extends layout
+
+mixin post(postObj)
+    .well
+        h5 #{postObj.post.title}
+        p #{postObj.post.body}
+        .form-group
+            form(action="/updateBlog" method="POST")
+                input.hiddenInput(value=`${postObj.postPK}` name="idx")
+                input(class="form-control" type="submit")
+            form(action="/deleteBlog" method="POST")
+                input.hiddenInput(value=`${postObj.postPK}` name="idx")
+                input(class="form-control" type="submit")
+
+
+block content
+    .container-fluid.overflow-hidden
+        .container
+            #title.text-center
+                h1 Blogs with Express + Pug
+            .form-group
+                form(action=`/updateBlog/${idx}` method="POST")
+                    input(class="form-control" type="text" placeholder="Title: Max 30 Character" name="title" required)
+                    textarea(class="form-control" placeholder="Body: Max 160 Characters" name="body" required)
+                    input.hiddenInput(value=`${uid}` name="uid")
+                    input(class="form-control" type="submit")
+            .container.overflow-auto
+                for post in posts
+                    +post(post)
+
+
