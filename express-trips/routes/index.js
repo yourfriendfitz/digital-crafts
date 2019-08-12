@@ -3,6 +3,11 @@ var router = express.Router();
 const Trip = require("../public/javascripts/modules/trip");
 const User = require("../public/javascripts/modules/user");
 
+const pgp = require("pg-promise")();
+const connectionString = "postgres://localhost:5432/tripsdb";
+const db = pgp(connectionString);
+console.log(db);
+
 const authenticate = (req, res, next) => {
   if (req.session) {
     if (req.session.user) {
@@ -149,6 +154,12 @@ router.get("/api/trips/:id", function(req, res, next) {
     return user.id === req.params.id;
   });
   res.json(user.trips);
+});
+
+router.get("/dbtrips", async function(req, res, next) {
+  const trips = await db.any("SELECT title,body FROM trips");
+  console.log(trips);
+  res.redirect("/")
 });
 
 module.exports = router;
