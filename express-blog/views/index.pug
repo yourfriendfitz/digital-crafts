@@ -4,6 +4,7 @@ mixin post(postObj)
   .well
     h5 #{postObj.post.title}
     p #{postObj.post.body}
+    h6 #{postObj.post.timestamp}
     .form-group
       form(action="/updateBlog" method="POST")
         input.hiddenInput(value=`${postObj.postPK}` name="idx")
@@ -17,6 +18,9 @@ block content
     .container
       #title.text-center
         h1 Blogs with Express + Pug
+        .navbar
+          button.btn-link Community
+            a(href="/blog")
       .form-group
         form(action="/addBlog" method="POST")
           input(class="form-control" type="text" placeholder="Title: Max 30 Character" name="title" required)

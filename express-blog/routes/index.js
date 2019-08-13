@@ -16,6 +16,11 @@ const getPosts = async uid => {
   return postsArray;
 };
 
+const getPostsCommunity = async () => {
+  const posts = await db.any(`SELECT * FROM posts`);
+  return posts;
+};
+
 const getPost = async idx => {
   const posts = await db.any(`SELECT * FROM posts WHERE idx = '${idx}'`);
   const postsArray = posts.map(post => {
@@ -53,24 +58,38 @@ router.get("/", (req, res) => {
 
 router.get("/blog", authenticate, async function(req, res, next) {
   const user = req.session.user;
-  console.log(user);
-  const posts = await getPosts(user.id);
-  console.log(posts)
-  res.render("index", { uid: user.id, posts: posts });
+  const posts = await getPosts(user.uid);
+  res.render("index", { uid: user.uid, posts: posts });
 });
 
 router.get("/login", (req, res) => {
   res.render("login");
 });
 
+const getUser = async req => {
+  const user = await db.oneOrNone(`
+  SELECT * FROM users WHERE username = '${req.body.name}' AND password = '${
+    req.body.password
+  }'
+  `);
+  console.log(user);
+  return user;
+};
+
 router.post("/login", async function(req, res, next) {
-  req.session.user = new User(req.body.name, req.body.password);
-  await db.none(
-    `INSERT INTO users VALUES ('${req.session.user.id}', '${
-      req.session.user.name
-    }', '${req.session.user.password}')`
-  );
-  res.redirect("/blog");
+  const user = await getUser(req);
+  if (user) {
+    req.session.user = user;
+    res.redirect("/blog");
+  } else {
+    req.session.user = new User(req.body.name, req.body.password);
+    await db.none(
+      `INSERT INTO users VALUES ('${req.session.user.id}', '${
+        req.session.user.name
+      }', '${req.session.user.password}')`
+    );
+    res.redirect("/blog");
+  }
 });
 
 router.post("/addBlog", async (req, res) => {
@@ -96,6 +115,12 @@ router.post("/updateBlog/:idx", async (req, res) => {
 router.post("/deleteBlog", async (req, res) => {
   await deletePost(req.body.idx);
   res.redirect("/blog");
+});
+
+router.get("/community", authenticate, async function(req, res, next) {
+  const user = req.session.user;
+  const posts = await getPostsCommunity();
+  res.render("community", { uid: user.uid, posts: posts });
 });
 
 module.exports = router;

@@ -1,0 +1,25 @@
+extends layout
+
+mixin post(postObj)
+    .well
+        h5 #{postObj.post.title}
+        p #{postObj.post.body}
+        h6 #{postObj.post.timestamp}
+        .form-group
+            form(action=`/comment/${postObj.postPK}` method="POST")
+                textarea(class="form-control" placeholder="Body: Max 160 Characters" name="body" required)
+                button.btn-block(class="form-control" type="submit") Post Comment
+
+block content
+    .container-fluid.overflow-hidden
+        .container
+            #title.text-center
+                h1 Blogs with Express + Pug
+                .navbar
+                    button.btn-block Blog
+                        a(href="/blog")
+            .container.overflow-hidden
+                for post in posts
+                    +post(post)
+
+
