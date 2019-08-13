@@ -16,8 +16,7 @@ block content
             #title.text-center
                 h1 Blogs with Express + Pug
                 .navbar
-                    button.btn-block Blog
-                        a(href="/blog")
+                    a(href="/blog") Blog
             .container.overflow-hidden
                 for post in posts
                     +post(post)
