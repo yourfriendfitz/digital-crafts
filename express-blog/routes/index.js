@@ -37,54 +37,40 @@ const deletePost = async idx => {
 const authenticate = async (req, res, next) => {
   if (req.session) {
     if (req.session.user) {
-      const users = await db.any("SELECT * FROM users");
-      const currentUser = users.find(user => {
-        return (
-          user.username === req.session.name &&
-          user.password === req.session.password
-        );
-      });
-      if (currentUser) {
-        const posts = await getPosts(currentUser.uid);
-        res.render("index", { uid: currentUser.uid, posts: posts });
-      } else {
-        res.redirect("/login");
-      }
+      next();
+    } else {
+      res.redirect("/login");
     }
+  } else {
+    res.redirect("/login");
   }
-
 };
 
 /* GET home page. */
-router.get("/", authenticate, function(req, res, next) {
-  res.render("index");
+router.get("/", (req, res) => {
+  res.render("login");
+});
+
+router.get("/blog", authenticate, async function(req, res, next) {
+  const user = req.session.user;
+  console.log(user);
+  const posts = await getPosts(user.id);
+  console.log(posts)
+  res.render("index", { uid: user.id, posts: posts });
 });
 
 router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.post("/login", async function(req, res) {
-  const users = await db.any("SELECT * FROM users");
-  const currentUser = users.find(user => {
-    return (
-      user.username === req.body.name && user.password === req.body.password
-    );
-  });
-  if (currentUser) {
-    req.session.user = currentUser;
-    const posts = await getPosts(currentUser.uid);
-    res.render("index", { uid: currentUser.uid, posts: posts });
-  } else {
-    const posts = [];
-    const user = new User(req.body.name, req.body.password);
-    await db.none(
-      `INSERT INTO users VALUES ('${user.id}', '${user.name}', '${
-        user.password
-      }');`
-    );
-    res.render("index", { uid: user.id, posts: posts });
-  }
+router.post("/login", async function(req, res, next) {
+  req.session.user = new User(req.body.name, req.body.password);
+  await db.none(
+    `INSERT INTO users VALUES ('${req.session.user.id}', '${
+      req.session.user.name
+    }', '${req.session.user.password}')`
+  );
+  res.redirect("/blog");
 });
 
 router.post("/addBlog", async (req, res) => {
@@ -92,8 +78,7 @@ router.post("/addBlog", async (req, res) => {
   await db.none(
     `INSERT INTO posts VALUES ('${req.body.uid}', '${JSON.stringify(post)}');`
   );
-  const posts = await getPosts(req.body.uid);
-  res.render("index", { uid: req.body.uid, posts: posts });
+  res.redirect("/blog");
 });
 
 router.post("/updateBlog", async (req, res) => {
@@ -105,12 +90,12 @@ router.post("/updateBlog/:idx", async (req, res) => {
   const post = new Post(req.body.title, req.body.body);
   await updatePost(post, req.params.idx);
   const posts = await getPosts(req.body.uid);
-  res.redirect("/");
+  res.redirect("/blog");
 });
 
 router.post("/deleteBlog", async (req, res) => {
   await deletePost(req.body.idx);
-  res.redirect("/");
+  res.redirect("/blog");
 });
 
 module.exports = router;

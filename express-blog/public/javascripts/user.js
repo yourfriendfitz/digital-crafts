@@ -5,7 +5,6 @@ class User {
     this.name = name;
     this.password = pass;
     this.id = uuid();
-    this.trips = [];
   }
 }
 
