@@ -8,7 +8,6 @@ const connectionString =
   "postgres://mvpjsxoe:Ge9JZEuTbbDfYXo3sVgVBcu1iBHD0RNQ@hanno.db.elephantsql.com:5432/mvpjsxoe";
 const db = pgp(connectionString);
 
-
 const getPosts = async uid => {
   const posts = await db.any(`SELECT * FROM posts WHERE uid = '${uid}'`);
   const postsArray = posts.map(post => {
@@ -36,18 +35,24 @@ const deletePost = async idx => {
 };
 
 const authenticate = async (req, res, next) => {
-  const users = await db.any("SELECT * FROM users");
-  users.filter(user => {
-    return (
-      user.username === req.body.name && user.password === req.body.password
-    );
-  });
-  if (users.length != 0) {
-    const posts = await getPosts(users[0].uid);
-    res.render("index", { uid: users[0].uid, posts: posts });
-  } else {
-    res.redirect("/login");
+  if (req.session) {
+    if (req.session.user) {
+      const users = await db.any("SELECT * FROM users");
+      const currentUser = users.find(user => {
+        return (
+          user.username === req.session.name &&
+          user.password === req.session.password
+        );
+      });
+      if (currentUser) {
+        const posts = await getPosts(currentUser.uid);
+        res.render("index", { uid: currentUser.uid, posts: posts });
+      } else {
+        res.redirect("/login");
+      }
+    }
   }
+
 };
 
 /* GET home page. */
@@ -61,15 +66,15 @@ router.get("/login", (req, res) => {
 
 router.post("/login", async function(req, res) {
   const users = await db.any("SELECT * FROM users");
-  console.log(users)
-  users.filter(user => {
+  const currentUser = users.find(user => {
     return (
       user.username === req.body.name && user.password === req.body.password
     );
   });
-  if (users.length != 0) {
-    const posts = await getPosts(users[0].uid);
-    res.render("index", { uid: users[0].uid, posts: posts });
+  if (currentUser) {
+    req.session.user = currentUser;
+    const posts = await getPosts(currentUser.uid);
+    res.render("index", { uid: currentUser.uid, posts: posts });
   } else {
     const posts = [];
     const user = new User(req.body.name, req.body.password);
