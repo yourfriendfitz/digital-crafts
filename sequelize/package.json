@@ -1,0 +1,13 @@
+{
+  "name": "sequelize",
+  "version": "1.0.0",
+  "description": "sequelize practice",
+  "main": "app.js",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.14.0"
+  }
+}
