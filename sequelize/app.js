@@ -21,4 +21,32 @@ app.get("/trips", async (req, res) => {
   res.json(trips);
 });
 
+app.get("/trips/:tripId", async (req, res) => {
+  const tripId = req.params.tripId;
+  const tripToDelete = await models.Trip.destroy({
+    where: {
+      id: tripId
+    }
+  });
+  res.json(tripToDelete);
+});
+
+app.post("/update-trip", async (req, res) => {
+  const name = req.body.name;
+  const description = req.body.description;
+  const tripId = parseInt(req.body.tripId);
+  const update = await models.Trip.update(
+    {
+      name: name,
+      description: description
+    },
+    {
+      where: {
+        id: tripId
+      }
+    }
+  );
+  res.json(update)
+});
+
 app.listen(3000);
