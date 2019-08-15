@@ -27,6 +27,12 @@ app.get("/post/:postId", async (req, res) => {
 app.get("/comments/:commentId", async (req, res) => {
   const commentId = req.params.commentId;
   const comment = await models.Comment.findOne({
+    include: [
+      {
+        model: models.Post,
+        as: "post"
+      }
+    ],
     where: {
       id: commentId
     }
