@@ -28,8 +28,12 @@ app.post("/create-post", async (req, res) => {
     body: body,
     isPublished: isPublished
   });
-  const response = await post.save();
-  res.json(response);
+  try {
+    const response = await post.save();
+    res.json(response);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 app.post("/create-comment", async (req, res) => {
