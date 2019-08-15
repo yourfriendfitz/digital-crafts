@@ -14,9 +14,11 @@ module.exports = {
       ["postId"], // < column name
       {
         type: "FOREIGN KEY", //type of constraint
-        references: "Posts", // table referenced
-        field: "id",
-        name: "post-id-fk-in-comments"
+        references: {
+          table: "Posts", // table referenced
+          field: "id",
+          name: "post-id-fk-in-comments"
+        }
       }
     );
   },
@@ -29,5 +31,9 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
+    return queryInterface.remoiveConstraint(
+      "Comments",
+      "post-id-fk-in-comments"
+    );
   }
 };
