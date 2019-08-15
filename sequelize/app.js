@@ -24,6 +24,16 @@ app.get("/post/:postId", async (req, res) => {
   }
 });
 
+app.get("/comments/:commentId", async (req, res) => {
+  const commentId = req.params.commentId;
+  const comment = await models.Comment.findOne({
+    where: {
+      id: commentId
+    }
+  });
+  res.json(comment);
+});
+
 app.post("/create-post", async (req, res) => {
   const title = req.body.title;
   const body = req.body.body;
