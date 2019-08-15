@@ -4,9 +4,18 @@ const models = require("./models");
 
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/post/:postId", (req, res) => {
-  const post = req.params.postId; // need to actually query the db for the post
-  res.render("post", { post: post });
+app.get("/post/:postId", async (req, res) => {
+  const postId = parseInt(req.params.postId);
+  try {
+    const post = await models.Post.findOne({
+      where: {
+        id: postId
+      }
+    });
+    res.json(post);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 app.post("/create-post", async (req, res) => {
