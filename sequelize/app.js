@@ -18,4 +18,18 @@ app.post("/create-post", async (req, res) => {
   res.json(response);
 });
 
+app.post("/create-comment", async (req, res) => {
+  const subject = req.body.subject;
+  const body = req.body.body;
+  const postId = parseInt(req.body.postId);
+
+  const comment = models.Comment.build({
+    subject: subject,
+    body: body,
+    postId: postId
+  });
+  const response = await comment.save();
+  res.json(response);
+});
+
 app.listen(3000);
