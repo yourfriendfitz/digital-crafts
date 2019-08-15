@@ -8,6 +8,12 @@ app.get("/post/:postId", async (req, res) => {
   const postId = parseInt(req.params.postId);
   try {
     const post = await models.Post.findOne({
+      include: [
+        {
+          model: models.Comment,
+          as: "comments"
+        }
+      ],
       where: {
         id: postId
       }
