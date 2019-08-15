@@ -9,7 +9,16 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-   
+    return queryInterface.addConstraint(
+      "Comments", // table name
+      ["postId"], // < column name
+      {
+        type: "FOREIGN KEY", //type of constraint
+        references: "Posts", // table referenced
+        field: "id",
+        name: "post-id-fk-in-comments"
+      }
+    );
   },
 
   down: (queryInterface, Sequelize) => {
