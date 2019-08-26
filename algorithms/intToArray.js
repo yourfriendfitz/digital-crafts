@@ -11,3 +11,13 @@ const intToDigitsArray = num => {
 };
 
 intToDigitsArray(num);
+
+const arr = [1, 2, 2, 3, 3, 4];
+let duplicates = 0;
+arr.reduce((a, b) => {
+  if (a === b) {
+    duplicates++;
+  } else {
+    return;
+  }
+});
