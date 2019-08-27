@@ -1,0 +1,12 @@
+{
+  "name": "mvc",
+  "version": "1.0.0",
+  "description": "MVC exmaple",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "promise": "^8.0.3"
+  }
+}
