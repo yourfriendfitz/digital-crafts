@@ -3,4 +3,6 @@ const router = express.Router();
 const ApiController = require("./apiController");
 const controller = new ApiController();
 
-router.get("/", controller.getAll);
+router.get("/", (req, res) => {
+  controller.getAll(req, res);
+});
