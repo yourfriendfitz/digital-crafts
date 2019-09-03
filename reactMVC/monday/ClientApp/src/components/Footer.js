@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Foot = styled.div`
+  display: grid;
+  justify-content: center;
   width: 100vw;
   color: gray;
 `;
