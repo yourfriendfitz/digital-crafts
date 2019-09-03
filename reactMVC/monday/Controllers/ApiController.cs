@@ -16,10 +16,5 @@ namespace monday.Controllers
         {
             return "This is my default action...";
         }
-
-        public string Example()
-        {
-            return "This is another action";
-        }
     }
 }
