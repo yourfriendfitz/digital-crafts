@@ -38,7 +38,9 @@ export class NavMenu extends Component {
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-              monday
+              <span>
+                Book Barn<span aria-label="none" role="img">📚</span>
+              </span>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse
@@ -50,6 +52,11 @@ export class NavMenu extends Component {
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/">
                     Home
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/books">
+                    Books
                   </NavLink>
                 </NavItem>
               </ul>
