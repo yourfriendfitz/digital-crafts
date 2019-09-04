@@ -21,6 +21,18 @@ const Image = styled.img`
   width: 160px;
 `;
 
+const Link = styled.a`
+  margin: 8px;
+  outline: none;
+`;
+
+const Button = styled.button`
+  border-radius: 8px;
+  :focus {
+    outline: none;
+  }
+`;
+
 const Books = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -41,7 +53,9 @@ const Books = () => {
             <Image
               src={`https://raw.githubusercontent.com/benoitvallon/100-best-books/master/static/${book.imageLink}`}
             />
-            <a href={book.link}>Wikipedia</a>
+            <Link target="_blank" href={book.link}>
+              <Button>Wikipedia</Button>
+            </Link>
           </Book>
         ))}
       </List>
