@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container } from "reactstrap";
+import { BooksContext } from "./BooksContext";
 
 const List = styled.div`
   display: grid;
@@ -43,23 +44,27 @@ const Books = () => {
       .then(data => setData(data));
   }, []);
   return (
-    <Container>
-      <List>
-        {data.map((book, i) => (
-          <Book key={i}>
-            <h1>{book.title}</h1>
-            <h5>{book.author}</h5>
-            <h6>{book.year}</h6>
-            <Image
-              src={`https://raw.githubusercontent.com/benoitvallon/100-best-books/master/static/${book.imageLink}`}
-            />
-            <Link target="_blank" href={book.link}>
-              <Button>Wikipedia</Button>
-            </Link>
-          </Book>
-        ))}
-      </List>
-    </Container>
+    <BooksContext.Consumer>
+      {({ favorites, onAddFavorite }) => (
+        <Container>
+          <List>
+            {data.map((book, i) => (
+              <Book key={i}>
+                <h1>{book.title}</h1>
+                <h5>{book.author}</h5>
+                <h6>{book.year}</h6>
+                <Image
+                  src={`https://raw.githubusercontent.com/benoitvallon/100-best-books/master/static/${book.imageLink}`}
+                />
+                <Link target="_blank" href={book.link}>
+                  <Button>Wikipedia</Button>
+                </Link>
+              </Book>
+            ))}
+          </List>
+        </Container>
+      )}
+    </BooksContext.Consumer>
   );
 };
 export default Books;
