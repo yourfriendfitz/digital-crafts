@@ -4,7 +4,7 @@ import { Layout } from "./components/Layout";
 import { Home } from "./components/Home";
 import Books from "./components/Books";
 import { BooksStore } from "./components/BooksContext";
-
+import BookForm from "./components/BookForm";
 import "./custom.css";
 
 export default class App extends Component {
@@ -16,6 +16,7 @@ export default class App extends Component {
         <BooksStore>
           <Route exact path="/" component={Home} />
           <Route exact path="/books" component={Books} />
+          <Route exact path="/books/add" component={BookForm} />
         </BooksStore>
       </Layout>
     );

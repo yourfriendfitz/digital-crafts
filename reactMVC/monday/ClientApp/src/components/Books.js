@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from "react";
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle
+} from "reactstrap";
 import styled from "styled-components";
 import { Container } from "reactstrap";
 import { BooksContext } from "./BooksContext";
@@ -6,20 +13,6 @@ import { BooksContext } from "./BooksContext";
 const List = styled.div`
   display: grid;
   justify-content: center;
-`;
-const Book = styled.div`
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  background-color: gray;
-  border-radius: 8px;
-  margin: 8px;
-`;
-
-const Image = styled.img`
-  margin: auto;
-  height: 240px;
-  width: 160px;
 `;
 
 const Link = styled.a`
@@ -37,9 +30,7 @@ const Button = styled.button`
 const Books = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/benoitvallon/100-best-books/master/books.json"
-    )
+    fetch("https://boiling-escarpment-07603.herokuapp.com/books")
       .then(res => res.json())
       .then(data => setData(data));
   }, []);
@@ -49,17 +40,26 @@ const Books = () => {
         <Container>
           <List>
             {data.map((book, i) => (
-              <Book key={i}>
-                <h1>{book.title}</h1>
-                <h5>{book.author}</h5>
-                <h6>{book.year}</h6>
-                <Image
-                  src={`https://raw.githubusercontent.com/benoitvallon/100-best-books/master/static/${book.imageLink}`}
-                />
-                <Link target="_blank" href={book.link}>
-                  <Button>Wikipedia</Button>
-                </Link>
-              </Book>
+              <div key={i}>
+                <Card className="m-3">
+                  <CardImg
+                    top
+                    width="100%"
+                    src={book.imageUrl}
+                    alt="Card image cap"
+                  />
+                  <CardBody className="text-center">
+                    <CardTitle>{book.title}</CardTitle>
+                    <CardSubtitle className="m-2">{book.author}</CardSubtitle>
+                    <Link
+                      target="_blank"
+                      href={`https://en.wikipedia.org/wiki/${book.title}`}
+                    >
+                      <Button>Wikipedia</Button>
+                    </Link>
+                  </CardBody>
+                </Card>
+              </div>
             ))}
           </List>
         </Container>
