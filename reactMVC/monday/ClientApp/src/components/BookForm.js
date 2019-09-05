@@ -10,6 +10,7 @@ import {
 import Book from "./Book";
 import library from "./library.jpeg";
 
+
 const FormTitle = styled.h1`
   margin: auto;
 `;
@@ -33,22 +34,11 @@ const Button = styled.button`
   display: grid;
 `;
 
-const BooksDropdownItems = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://boiling-escarpment-07603.herokuapp.com/books")
-      .then(res => res.json())
-      .then(data => setData(data));
-  }, []);
-  return (
-    <DropdownMenu>
-    {data.map((book, i) => (
-      <DropdownItem onClick={this.handleSelect} value={book.id}>{book.title}</DropdownItem>
-      ))}
-  </DropdownMenu>
-
-  );
-};
+const Selected = styled.p`
+  margin: auto;
+  color: red;
+  margin-bottom: 16px;
+`;
 
 export default class BookForm extends Component {
   constructor(props) {
@@ -67,26 +57,56 @@ export default class BookForm extends Component {
   }
   handleSubmit = () => {
     const book = this.state.book;
-    console.log(book);
-    console.log(this.state);
     Book.addBook(book);
+    this.setState({ title: "", author: "", imageUrl: "" });
   };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleDelete = () => {
+    const id = this.state.bookId;
+    Book.deleteBook(id);
+  };
+
+  handleChange = async e => {
+    await this.setState({ [e.target.name]: e.target.value });
     this.setState({
       book: new Book(this.state.title, this.state.author, this.state.imageUrl)
     });
   };
 
-  handleSelect = e => {
-    Book.deleteBook
-  }
-
   toggle = () => {
     this.setState(state => ({
       dropdownOpen: !state.dropdownOpen
     }));
+  };
+
+  handleSelect = e => {
+    this.setState({
+      bookId: e.target.dataset.id,
+      bookSelected: e.target.dataset.title
+    });
+  };
+
+  BooksDropdownItems = () => {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+      fetch("https://boiling-escarpment-07603.herokuapp.com/books")
+        .then(res => res.json())
+        .then(data => setData(data));
+    }, []);
+    return (
+      <DropdownMenu className="text-center">
+        {data.map((book, i) => (
+          <DropdownItem
+            key={i}
+            onClick={this.handleSelect}
+            data-id={book.id}
+            data-title={book.title}
+          >
+            {book.title}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    );
   };
 
   render() {
@@ -108,18 +128,21 @@ export default class BookForm extends Component {
                   name="title"
                   placeholder="Title"
                   onChange={this.handleChange}
+                  value={this.state.title}
                 />
                 <Input
                   type="text"
                   name="author"
                   placeholder="Author"
                   onChange={this.handleChange}
+                  value={this.state.author}
                 />
                 <Input
                   type="url"
                   name="imageUrl"
                   placeholder="Image URL"
                   onChange={this.handleChange}
+                  value={this.state.imageUrl}
                 />
                 <Button onClick={this.handleSubmit}>Submit</Button>
               </Form>
@@ -137,9 +160,10 @@ export default class BookForm extends Component {
                   toggle={this.toggle}
                 >
                   <DropdownToggle caret>Dropdown</DropdownToggle>
-                  <BooksDropdownItems/>
+                  <this.BooksDropdownItems />
                 </Dropdown>
-                <Button onClick={this.handleSubmit}>Delete</Button>
+                <Selected>{this.state.bookSelected}</Selected>
+                <Button onClick={this.handleDelete}>Delete</Button>
               </Form>
             </FormContainer>
           </CardBody>

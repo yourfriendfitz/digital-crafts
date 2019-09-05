@@ -14,28 +14,30 @@ export default class Book {
   static addBook = async Book => {
     try {
       console.log(JSON.stringify(Book));
-      const req = await fetch("https://boiling-escarpment-07603.herokuapp.com/books/add", {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify(Book)
-      });
+      const req = await fetch(
+        "https://boiling-escarpment-07603.herokuapp.com/books/add",
+        {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(Book)
+        }
+      );
       return req.json();
     } catch (err) {
       console.log(err);
     }
   };
 
-  static deleteBook = async (id) => {
+  static deleteBook = async id => {
     try {
-      const req = await fetch(`https://boiling-escarpment-07603.herokuapp.com/books/delete/${id}`, {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "DELETE",
-        body: id
-      });
+      const req = await fetch(
+        `https://boiling-escarpment-07603.herokuapp.com/books/delete/${id}`,
+        {
+          method: "POST"
+        }
+      );
       return req.json();
     } catch (err) {
       console.log(err);
