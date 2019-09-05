@@ -1,26 +1,95 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 export class Home extends Component {
   static displayName = Home.name;
 
-  render () {
+  render() {
     return (
-      <div>
-        <h1>Hello, world!</h1>
-        <p>Welcome to your new single-page application, built with:</p>
-        <ul>
-          <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-          <li><a href='https://facebook.github.io/react/'>React</a> for client-side code</li>
-          <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-        </ul>
-        <p>To help you get started, we have also set up:</p>
-        <ul>
-          <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-          <li><strong>Development server integration</strong>. In development mode, the development server from <code>create-react-app</code> runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-          <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration produces minified, efficiently bundled JavaScript files.</li>
-        </ul>
-        <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
-      </div>
+      <Form>
+        <FormGroup>
+          <Label for="exampleEmail">Email</Label>
+          <Input
+            type="email"
+            name="email"
+            id="exampleEmail"
+            placeholder="with a placeholder"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword">Password</Label>
+          <Input
+            type="password"
+            name="password"
+            id="examplePassword"
+            placeholder="password placeholder"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleSelect">Select</Label>
+          <Input type="select" name="select" id="exampleSelect">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleSelectMulti">Select Multiple</Label>
+          <Input
+            type="select"
+            name="selectMulti"
+            id="exampleSelectMulti"
+            multiple
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleText">Text Area</Label>
+          <Input type="textarea" name="text" id="exampleText" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleFile">File</Label>
+          <Input type="file" name="file" id="exampleFile" />
+          <FormText className="text-center" color="muted">
+            This is some placeholder block-level help text for the above input.
+            It's a bit lighter and easily wraps to a new line.
+          </FormText>
+        </FormGroup>
+        <FormGroup tag="fieldset">
+          <legend>Radio Buttons</legend>
+          <FormGroup check>
+            <Label check>
+              <Input type="radio" name="radio1" /> Option one is this and
+              that—be sure to include why it's great
+            </Label>
+          </FormGroup>
+          <FormGroup check>
+            <Label check>
+              <Input type="radio" name="radio1" /> Option two can be something
+              else and selecting it will deselect option one
+            </Label>
+          </FormGroup>
+          <FormGroup check disabled>
+            <Label check>
+              <Input type="radio" name="radio1" disabled /> Option three is
+              disabled
+            </Label>
+          </FormGroup>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input type="checkbox" /> Check me out
+          </Label>
+        </FormGroup>
+        <Button className="mt-2 mb-2" block>Submit</Button>
+      </Form>
     );
   }
 }
