@@ -1,15 +1,11 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Card, CardImg, CardBody } from "reactstrap";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import { Dropdown, DropdownToggle } from "reactstrap";
+import { DropdownItem, DropdownMenu } from "reactstrap";
+import { useState, useEffect } from "react";
 import Book from "./Book";
 import library from "./library.jpeg";
-
 
 const FormTitle = styled.h1`
   margin: auto;
@@ -51,8 +47,10 @@ export default class BookForm extends Component {
       year: 2019,
       imageUrl: "",
       dropdownOpen: false,
-      bookSelected: false,
-      bookId: 0
+      bookSelected: "",
+      isBookSelected: false,
+      bookId: 0,
+      books: []
     };
   }
   handleSubmit = () => {
@@ -64,6 +62,7 @@ export default class BookForm extends Component {
   handleDelete = () => {
     const id = this.state.bookId;
     Book.deleteBook(id);
+    this.setState({ bookSelected: "", isBookSelected: false });
   };
 
   handleChange = async e => {
@@ -86,13 +85,13 @@ export default class BookForm extends Component {
     });
   };
 
-  BooksDropdownItems = () => {
+  DropdownItems = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
       fetch("https://boiling-escarpment-07603.herokuapp.com/books")
         .then(res => res.json())
         .then(data => setData(data));
-    }, []);
+    });
     return (
       <DropdownMenu className="text-center">
         {data.map((book, i) => (
@@ -160,7 +159,7 @@ export default class BookForm extends Component {
                   toggle={this.toggle}
                 >
                   <DropdownToggle caret>Dropdown</DropdownToggle>
-                  <this.BooksDropdownItems />
+                  <this.DropdownItems />
                 </Dropdown>
                 <Selected>{this.state.bookSelected}</Selected>
                 <Button onClick={this.handleDelete}>Delete</Button>
