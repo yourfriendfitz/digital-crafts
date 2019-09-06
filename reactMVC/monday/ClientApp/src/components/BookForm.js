@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Card, CardImg, CardBody } from "reactstrap";
 import { Dropdown, DropdownToggle } from "reactstrap";
@@ -45,55 +45,53 @@ const OuterContainer = styled.div`
   align-items: center;
 `;
 
-export default class BookForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      book: new Book(),
-      title: "",
-      genre: "",
-      author: "",
-      year: 2019,
-      imageUrl: "",
-      dropdownOpen: false,
-      bookSelected: "",
-      isBookSelected: false,
-      bookId: 0
-    };
-  }
-  handleSubmit = () => {
-    const book = this.state.book;
+const BookForm = () => {
+  const [book, setBook] = useState({
+    title: "",
+    genre: "",
+    author: "",
+    year: 2019,
+    imageUrl: "",
+    bookSelected: "",
+    isBookSelected: false,
+    bookId: 0
+  });
+
+  const [bookToAdd, setBookToAdd] = useState();
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleSubmit = () => {
+    const book = bookToAdd;
     Book.addBook(book);
-    this.setState({ title: "", author: "", imageUrl: "" });
+    setBook({ title: "", author: "", imageUrl: "" });
   };
 
-  handleDelete = () => {
-    const id = this.state.bookId;
+  const handleDelete = () => {
+    const id = book.bookId;
     Book.deleteBook(id);
-    this.setState({ bookSelected: "", isBookSelected: false });
+    setBook({ bookSelected: "", isBookSelected: false });
   };
 
-  handleChange = async e => {
-    await this.setState({ [e.target.name]: e.target.value });
-    this.setState({
-      book: new Book(this.state.title, this.state.author, this.state.imageUrl)
-    });
+  const handleChange = async e => {
+    const newBook = { ...book };
+    newBook[e.target.name] = e.target.value;
+    await setBook({ ...newBook });
+    setBookToAdd(new Book(book.title, book.author, book.imageUrl));
   };
 
-  toggle = () => {
-    this.setState(state => ({
-      dropdownOpen: !state.dropdownOpen
-    }));
+  const toggle = () => {
+    setDropdownOpen(!dropdownOpen);
   };
 
-  handleSelect = e => {
-    this.setState({
+  const handleSelect = e => {
+    setBook({
       bookId: e.target.dataset.id,
       bookSelected: e.target.dataset.title
     });
   };
 
-  DropdownItems = () => {
+  const DropdownItems = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
       fetch("https://boiling-escarpment-07603.herokuapp.com/books")
@@ -102,82 +100,81 @@ export default class BookForm extends Component {
     });
     return (
       <DropdownMenu className="text-center">
-        {data.map((book, i) => (
+        {data.map((bookObj, i) => (
           <DropdownItem
             key={i}
-            onClick={this.handleSelect}
-            data-id={book.id}
-            data-title={book.title}
+            onClick={handleSelect}
+            data-id={bookObj.id}
+            data-title={bookObj.title}
           >
-            {book.title}
+            {bookObj.title}
           </DropdownItem>
         ))}
       </DropdownMenu>
     );
   };
 
-  render() {
-    return (
-      <OuterContainer>
-        <CardContainer>
-          <Card>
-            <CardImg top width="100%" src={library} alt="Card image cap" />
-            <CardBody>
-              <FormContainer>
-                <Form>
-                  <FormTitle>
-                    Add a Book{" "}
-                    <span role="img" aria-label="none">
-                      📚
-                    </span>
-                  </FormTitle>
-                  <Input
-                    type="text"
-                    name="title"
-                    placeholder="Title"
-                    onChange={this.handleChange}
-                    value={this.state.title}
-                  />
-                  <Input
-                    type="text"
-                    name="author"
-                    placeholder="Author"
-                    onChange={this.handleChange}
-                    value={this.state.author}
-                  />
-                  <Input
-                    type="url"
-                    name="imageUrl"
-                    placeholder="Image URL"
-                    onChange={this.handleChange}
-                    value={this.state.imageUrl}
-                  />
-                  <Button onClick={this.handleSubmit}>Submit</Button>
-                </Form>
+  return (
+    <OuterContainer>
+      <CardContainer>
+        <Card>
+          <CardImg top width="100%" src={library} alt="Card image cap" />
+          <CardBody>
+            <FormContainer>
+              <Form>
+                <FormTitle>
+                  Add a Book{" "}
+                  <span role="img" aria-label="none">
+                    📚
+                  </span>
+                </FormTitle>
+                <Input
+                  type="text"
+                  name="title"
+                  placeholder="Title"
+                  onChange={handleChange}
+                  value={book.title}
+                />
+                <Input
+                  type="text"
+                  name="author"
+                  placeholder="Author"
+                  onChange={handleChange}
+                  value={book.author}
+                />
+                <Input
+                  type="url"
+                  name="imageUrl"
+                  placeholder="Image URL"
+                  onChange={handleChange}
+                  value={book.imageUrl}
+                />
+                <Button onClick={handleSubmit}>Submit</Button>
+              </Form>
 
-                <Form>
-                  <FormTitle>
-                    Delete a Book{" "}
-                    <span role="img" aria-label="none">
-                      📚
-                    </span>
-                  </FormTitle>
-                  <Dropdown
-                    className="text-center m-3"
-                    isOpen={this.state.dropdownOpen}
-                    toggle={this.toggle}
-                  >
-                    <DropdownToggle caret>Dropdown</DropdownToggle>
-                    <this.DropdownItems />
-                  </Dropdown>
-                  <Selected>{this.state.bookSelected}</Selected>
-                  <Button onClick={this.handleDelete}>Delete</Button>
-                </Form>
-              </FormContainer>
-            </CardBody>
-          </Card>
-        </CardContainer>
-      </OuterContainer>
-    );
-  }
-}
+              <Form>
+                <FormTitle>
+                  Delete a Book{" "}
+                  <span role="img" aria-label="none">
+                    📚
+                  </span>
+                </FormTitle>
+                <Dropdown
+                  className="text-center m-3"
+                  isOpen={dropdownOpen}
+                  toggle={toggle}
+                >
+                  <DropdownToggle caret>Dropdown</DropdownToggle>
+                  <DropdownItems />
+                </Dropdown>
+                <Selected>{book.bookSelected}</Selected>
+                <Button onClick={handleDelete}>Delete</Button>
+              </Form>
+            </FormContainer>
+          </CardBody>
+        </Card>
+      </CardContainer>
+    </OuterContainer>
+  );
+};
+export default BookForm;
