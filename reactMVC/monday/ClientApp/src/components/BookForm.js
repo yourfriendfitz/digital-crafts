@@ -36,6 +36,15 @@ const Selected = styled.p`
   margin-bottom: 16px;
 `;
 
+const CardContainer = styled.div`
+  max-width: 320px;
+`;
+const OuterContainer = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default class BookForm extends Component {
   constructor(props) {
     super(props);
@@ -49,8 +58,7 @@ export default class BookForm extends Component {
       dropdownOpen: false,
       bookSelected: "",
       isBookSelected: false,
-      bookId: 0,
-      books: []
+      bookId: 0
     };
   }
   handleSubmit = () => {
@@ -110,64 +118,66 @@ export default class BookForm extends Component {
 
   render() {
     return (
-      <div>
-        <Card>
-          <CardImg top width="100%" src={library} alt="Card image cap" />
-          <CardBody>
-            <FormContainer>
-              <Form>
-                <FormTitle>
-                  Add a Book{" "}
-                  <span role="img" aria-label="none">
-                    📚
-                  </span>
-                </FormTitle>
-                <Input
-                  type="text"
-                  name="title"
-                  placeholder="Title"
-                  onChange={this.handleChange}
-                  value={this.state.title}
-                />
-                <Input
-                  type="text"
-                  name="author"
-                  placeholder="Author"
-                  onChange={this.handleChange}
-                  value={this.state.author}
-                />
-                <Input
-                  type="url"
-                  name="imageUrl"
-                  placeholder="Image URL"
-                  onChange={this.handleChange}
-                  value={this.state.imageUrl}
-                />
-                <Button onClick={this.handleSubmit}>Submit</Button>
-              </Form>
+      <OuterContainer>
+        <CardContainer>
+          <Card>
+            <CardImg top width="100%" src={library} alt="Card image cap" />
+            <CardBody>
+              <FormContainer>
+                <Form>
+                  <FormTitle>
+                    Add a Book{" "}
+                    <span role="img" aria-label="none">
+                      📚
+                    </span>
+                  </FormTitle>
+                  <Input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    onChange={this.handleChange}
+                    value={this.state.title}
+                  />
+                  <Input
+                    type="text"
+                    name="author"
+                    placeholder="Author"
+                    onChange={this.handleChange}
+                    value={this.state.author}
+                  />
+                  <Input
+                    type="url"
+                    name="imageUrl"
+                    placeholder="Image URL"
+                    onChange={this.handleChange}
+                    value={this.state.imageUrl}
+                  />
+                  <Button onClick={this.handleSubmit}>Submit</Button>
+                </Form>
 
-              <Form>
-                <FormTitle>
-                  Delete a Book{" "}
-                  <span role="img" aria-label="none">
-                    📚
-                  </span>
-                </FormTitle>
-                <Dropdown
-                  className="text-center m-3"
-                  isOpen={this.state.dropdownOpen}
-                  toggle={this.toggle}
-                >
-                  <DropdownToggle caret>Dropdown</DropdownToggle>
-                  <this.DropdownItems />
-                </Dropdown>
-                <Selected>{this.state.bookSelected}</Selected>
-                <Button onClick={this.handleDelete}>Delete</Button>
-              </Form>
-            </FormContainer>
-          </CardBody>
-        </Card>
-      </div>
+                <Form>
+                  <FormTitle>
+                    Delete a Book{" "}
+                    <span role="img" aria-label="none">
+                      📚
+                    </span>
+                  </FormTitle>
+                  <Dropdown
+                    className="text-center m-3"
+                    isOpen={this.state.dropdownOpen}
+                    toggle={this.toggle}
+                  >
+                    <DropdownToggle caret>Dropdown</DropdownToggle>
+                    <this.DropdownItems />
+                  </Dropdown>
+                  <Selected>{this.state.bookSelected}</Selected>
+                  <Button onClick={this.handleDelete}>Delete</Button>
+                </Form>
+              </FormContainer>
+            </CardBody>
+          </Card>
+        </CardContainer>
+      </OuterContainer>
     );
   }
 }

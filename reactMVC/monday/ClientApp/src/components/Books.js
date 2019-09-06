@@ -27,6 +27,10 @@ const Button = styled.button`
   }
 `;
 
+const CardContainer = styled.div`
+max-width: 320px;
+`
+
 const Books = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -40,7 +44,7 @@ const Books = () => {
         <Container>
           <List>
             {data.map((book, i) => (
-              <div key={i}>
+              <CardContainer key={i}>
                 <Card className="m-3">
                   <CardImg
                     top
@@ -59,7 +63,7 @@ const Books = () => {
                     </Link>
                   </CardBody>
                 </Card>
-              </div>
+              </CardContainer>
             ))}
           </List>
         </Container>
