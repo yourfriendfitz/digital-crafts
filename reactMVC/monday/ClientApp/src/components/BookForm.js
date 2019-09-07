@@ -39,6 +39,7 @@ const Selected = styled.p`
 const CardContainer = styled.div`
   max-width: 320px;
 `;
+
 const OuterContainer = styled.div`
   display: grid;
   justify-content: center;
@@ -46,52 +47,33 @@ const OuterContainer = styled.div`
 `;
 
 const BookForm = () => {
-  const [book, setBook] = useState({
-    title: "",
-    genre: "",
-    author: "",
-    year: 2019,
-    imageUrl: "",
-    bookSelected: "",
-    isBookSelected: false,
-    bookId: 0,
-    books: []
-  });
-  useEffect(
-    () => {
-      fetch("https://boiling-escarpment-07603.herokuapp.com/books")
-        .then(res => res.json())
-        .then(data => setBook({ ...book, books: data }));
-    },
-    { ...book }
-  );
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(0);
 
-  const handleSubmit = () => {
-    Book.addBook(new Book(book.title, book.author, book.imageUrl));
+  const handleSubmit = async () => {
+    await Book.addBook(new Book(book.title, book.author, book.imageUrl));
     const newBook = { ...book };
     newBook.title = "";
     newBook.author = "";
     newBook.imageUrl = "";
     setBook({ ...newBook });
+    setSubmitted(submitted + 1);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     const id = book.bookId;
-    Book.deleteBook(id);
+    await Book.deleteBook(id);
     const newBook = { ...book };
     newBook.bookSelected = "";
     newBook.isBookSelected = false;
     setBook({ ...newBook });
+    setSubmitted(submitted + 1);
   };
 
   const handleChange = e => {
-    console.log(book);
     const newBook = { ...book };
     newBook[e.target.name] = e.target.value;
     setBook({ ...newBook });
-    console.log(book);
   };
 
   const toggle = () => {
@@ -104,9 +86,29 @@ const BookForm = () => {
       e.target.dataset.id,
       e.target.dataset.title
     ];
-    newBook.isBookSelected = false;
+    newBook.isBookSelected = true;
     setBook({ ...newBook });
   };
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const [book, setBook] = useState({
+    title: "",
+    genre: "",
+    author: "",
+    year: 2019,
+    imageUrl: "",
+    bookSelected: "",
+    isBookSelected: false,
+    bookId: 0,
+    books: []
+  });
+  
+  useEffect(() => {
+    fetch("https://boiling-escarpment-07603.herokuapp.com/books")
+      .then(res => res.json())
+      .then(data => setBook(book => ({ ...book, books: data })));
+  }, [submitted]);
 
   const DropdownItems = () => {
     return (

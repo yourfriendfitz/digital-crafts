@@ -8,8 +8,17 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
+
+const Text = styled.p`
+  color: #08d9d6;
+`;
+
+const TextDark = styled.span`
+  color: #ff2e63;
+`;
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -33,13 +42,14 @@ export class NavMenu extends Component {
     return (
       <header>
         <Navbar
-          className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
+          className="navbar-expand-sm navbar-toggleable-sm ng-white box-shadow mb-3"
           light
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-              <span>
-                Book Barn<span aria-label="none" role="img">📚</span>
+              <span aria-label="none" role="img">
+                <TextDark>Book Barn</TextDark>
+                📚
               </span>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -51,17 +61,17 @@ export class NavMenu extends Component {
               <ul className="navbar-nav flex-grow">
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/">
-                    Home
+                    <Text>Home</Text>
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/books">
-                    Books
+                    <Text>Books</Text>
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/books/add">
-                    Utilities
+                    <Text>Utilities</Text>
                   </NavLink>
                 </NavItem>
               </ul>

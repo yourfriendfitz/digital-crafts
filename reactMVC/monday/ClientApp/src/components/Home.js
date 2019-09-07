@@ -19,7 +19,7 @@ const TitleInImage = styled.h3`
 `;
 
 const TitleInImageDiv = styled.div`
-  background-color: black;
+  background-color: #08d9d6;
   border-radius: 8px;
   margin: 8px;
 `;

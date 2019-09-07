@@ -13,7 +13,7 @@ export default class Book {
   }
   static addBook = async Book => {
     try {
-      console.log(JSON.stringify(Book));
+      console.log(Book);
       const req = await fetch(
         "https://boiling-escarpment-07603.herokuapp.com/books/add",
         {
