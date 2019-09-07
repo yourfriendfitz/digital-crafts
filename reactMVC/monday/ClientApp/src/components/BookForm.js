@@ -54,30 +54,44 @@ const BookForm = () => {
     imageUrl: "",
     bookSelected: "",
     isBookSelected: false,
-    bookId: 0
+    bookId: 0,
+    books: []
   });
-
-  const [bookToAdd, setBookToAdd] = useState();
+  useEffect(
+    () => {
+      fetch("https://boiling-escarpment-07603.herokuapp.com/books")
+        .then(res => res.json())
+        .then(data => setBook({ ...book, books: data }));
+    },
+    { ...book }
+  );
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleSubmit = () => {
-    const book = bookToAdd;
-    Book.addBook(book);
-    setBook({ title: "", author: "", imageUrl: "" });
+    Book.addBook(new Book(book.title, book.author, book.imageUrl));
+    const newBook = { ...book };
+    newBook.title = "";
+    newBook.author = "";
+    newBook.imageUrl = "";
+    setBook({ ...newBook });
   };
 
   const handleDelete = () => {
     const id = book.bookId;
     Book.deleteBook(id);
-    setBook({ bookSelected: "", isBookSelected: false });
+    const newBook = { ...book };
+    newBook.bookSelected = "";
+    newBook.isBookSelected = false;
+    setBook({ ...newBook });
   };
 
-  const handleChange = async e => {
+  const handleChange = e => {
+    console.log(book);
     const newBook = { ...book };
     newBook[e.target.name] = e.target.value;
-    await setBook({ ...newBook });
-    setBookToAdd(new Book(book.title, book.author, book.imageUrl));
+    setBook({ ...newBook });
+    console.log(book);
   };
 
   const toggle = () => {
@@ -85,22 +99,19 @@ const BookForm = () => {
   };
 
   const handleSelect = e => {
-    setBook({
-      bookId: e.target.dataset.id,
-      bookSelected: e.target.dataset.title
-    });
+    const newBook = { ...book };
+    [newBook.bookId, newBook.bookSelected] = [
+      e.target.dataset.id,
+      e.target.dataset.title
+    ];
+    newBook.isBookSelected = false;
+    setBook({ ...newBook });
   };
 
   const DropdownItems = () => {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-      fetch("https://boiling-escarpment-07603.herokuapp.com/books")
-        .then(res => res.json())
-        .then(data => setData(data));
-    });
     return (
       <DropdownMenu className="text-center">
-        {data.map((bookObj, i) => (
+        {book.books.map((bookObj, i) => (
           <DropdownItem
             key={i}
             onClick={handleSelect}
