@@ -3,7 +3,6 @@ import { Route } from "react-router";
 import { Layout } from "./components/Layout";
 import { Home } from "./components/Home";
 import Books from "./components/Books";
-import styled from "styled-components";
 import BookForm from "./components/BookForm";
 import "./custom.css";
 
