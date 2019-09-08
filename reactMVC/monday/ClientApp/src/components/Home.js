@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Container } from "reactstrap"
 import styled from "styled-components";
+import * as Palette from "./Palette"
 import library from "./library.jpeg";
 
-const Content = styled.div`
+const Content = styled(Container)`
   height: 80vh;
   display: grid;
   justify-content: center;
@@ -13,15 +15,15 @@ const Content = styled.div`
 `;
 
 const TitleInImage = styled.h3`
-  color: white;
+  color: ${Palette.Text};
+  font-weight: bold;
   margin: 8px;
   text-align: center;
 `;
 
-const TitleInImageDiv = styled.div`
-  background-color: #08d9d6;
+const TitleInImageDiv = styled(Container)`
+  background-color: rgba(224,225,221, 0.7);
   border-radius: 8px;
-  margin: 8px;
 `;
 
 export class Home extends Component {
