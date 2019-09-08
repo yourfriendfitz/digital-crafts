@@ -1,5 +1,7 @@
-const Primary = "#f2f6f5";
-const Secondary = "#c8dad3";
-const AltPrimary = "#93b5b3";
-const AltSecondary = "#63707e";
-export { Primary, Secondary, AltPrimary, AltSecondary };
+const Primary = "#E0E1DD";
+const Secondary = "#778DA9";
+const AltPrimary = "#415A77";
+const AltSecondary = "#1B263B";
+const Text = "#0D1B2A";
+const Alert = "#963939";
+export { Primary, Secondary, AltPrimary, AltSecondary, Text, Alert };
