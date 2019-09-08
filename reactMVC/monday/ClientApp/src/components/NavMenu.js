@@ -8,16 +8,17 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import * as Palette from "./Palette"
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
 
 const Text = styled.p`
-  color: #08d9d6;
+  color: ${Palette.Text};
 `;
 
 const TextDark = styled.span`
-  color: #ff2e63;
+  color: ${Palette.Text};
 `;
 
 export class NavMenu extends Component {
