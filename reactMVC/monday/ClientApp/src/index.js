@@ -10,15 +10,17 @@ import registerServiceWorker from "./registerServiceWorker";
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 const rootElement = document.getElementById("root");
 
-const GrayDiv = styled.div`
+const Container = styled.div`
   background-color: ${Palette.Primary};
+  display: grid;
+
 `;
 
 ReactDOM.render(
   <BrowserRouter basename={baseUrl}>
-    <GrayDiv className="container-fluid overflow-auto vh-100">
+    <Container className="overflow-auto p-0 m-0 vh-100">
       <App />
-    </GrayDiv>
+    </Container>
   </BrowserRouter>,
   rootElement
 );
