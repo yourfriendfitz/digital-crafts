@@ -1,53 +1,63 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Container, Form, FormGroup, Input, Button } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle } from "reactstrap";
 import { Dropdown, DropdownToggle } from "reactstrap";
 import { DropdownItem, DropdownMenu } from "reactstrap";
+import * as Palette from "./Palette";
 import { useState, useEffect } from "react";
 import Book from "./Book";
 import library from "./library.jpeg";
 
-const FormTitle = styled.h1`
+const FormTitle = styled(CardTitle)`
   margin: auto;
+  color: ${Palette.Text};
 `;
 
-const Form = styled.div`
-  display: grid;
-  margin: 16px;
-  width: 300px;
-`;
-
-const FormContainer = styled.div`
-  display: grid;
-  justify-content: center;
-`;
-
-const Input = styled.input`
+const StyledGroup = styled(FormGroup)`
   display: grid;
 `;
 
-const Button = styled.button`
-  display: grid;
+const StyledDropdownMenu = styled(DropdownMenu)`
+  background-color: ${Palette.Primary};
+`;
+
+const StyledButton = styled(Button)`
+  :focus {
+    outline: none;
+  }
+  margin-top: 8px;
+  background-color: ${Palette.AltPrimary};
+`;
+
+const StyledDropdownToggle = styled(DropdownToggle)`
+  background-color: ${Palette.AltPrimary};
+`;
+
+const StyledInput = styled(Input)`
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: ${Palette.Primary};
 `;
 
 const Selected = styled.p`
   margin: auto;
-  color: red;
+  color: ${Palette.Alert};
   margin-bottom: 16px;
 `;
 
-const CardContainer = styled.div`
-  max-width: 320px;
-`;
-
-const OuterContainer = styled.div`
+const OuterContainer = styled(Container)`
   display: grid;
   justify-content: center;
   align-items: center;
+  max-width: 350px;
+`;
+
+const ColoredCard = styled(Card)`
+  background-color: ${Palette.Secondary};
 `;
 
 const BookForm = () => {
-
   const [submitted, setSubmitted] = useState(0);
 
   const handleSubmit = async () => {
@@ -103,7 +113,7 @@ const BookForm = () => {
     bookId: 0,
     books: []
   });
-  
+
   useEffect(() => {
     fetch("https://boiling-escarpment-07603.herokuapp.com/books")
       .then(res => res.json())
@@ -112,7 +122,7 @@ const BookForm = () => {
 
   const DropdownItems = () => {
     return (
-      <DropdownMenu className="text-center">
+      <StyledDropdownMenu className="text-center">
         {book.books.map((bookObj, i) => (
           <DropdownItem
             key={i}
@@ -123,70 +133,74 @@ const BookForm = () => {
             {bookObj.title}
           </DropdownItem>
         ))}
-      </DropdownMenu>
+      </StyledDropdownMenu>
     );
   };
 
   return (
-    <OuterContainer>
-      <CardContainer>
-        <Card>
-          <CardImg top width="100%" src={library} alt="Card image cap" />
-          <CardBody>
-            <FormContainer>
-              <Form>
-                <FormTitle>
-                  Add a Book{" "}
-                  <span role="img" aria-label="none">
-                    📚
-                  </span>
-                </FormTitle>
-                <Input
-                  type="text"
-                  name="title"
-                  placeholder="Title"
-                  onChange={handleChange}
-                  value={book.title}
-                />
-                <Input
-                  type="text"
-                  name="author"
-                  placeholder="Author"
-                  onChange={handleChange}
-                  value={book.author}
-                />
-                <Input
-                  type="url"
-                  name="imageUrl"
-                  placeholder="Image URL"
-                  onChange={handleChange}
-                  value={book.imageUrl}
-                />
-                <Button onClick={handleSubmit}>Submit</Button>
-              </Form>
+    <OuterContainer className="col-sm">
+      <ColoredCard>
+        <CardImg top width="100%" src={library} alt="Card image cap" />
+        <CardBody>
+          <Form>
+            <StyledGroup>
+              <FormTitle>
+                Add a Book{" "}
+                <span role="img" aria-label="none">
+                  📚
+                </span>
+              </FormTitle>
+              <StyledInput
+                type="text"
+                name="title"
+                placeholder="Title"
+                onChange={handleChange}
+                value={book.title}
+              />
+              <StyledInput
+                type="text"
+                name="author"
+                placeholder="Author"
+                onChange={handleChange}
+                value={book.author}
+              />
+              <StyledInput
+                type="url"
+                name="imageUrl"
+                placeholder="Image URL"
+                onChange={handleChange}
+                value={book.imageUrl}
+              />
+              <StyledButton block onClick={handleSubmit}>
+                Submit
+              </StyledButton>
+            </StyledGroup>
+          </Form>
 
-              <Form>
-                <FormTitle>
-                  Delete a Book{" "}
-                  <span role="img" aria-label="none">
-                    📚
-                  </span>
-                </FormTitle>
-                <Dropdown
-                  className="text-center m-3"
-                  isOpen={dropdownOpen}
-                  toggle={toggle}
-                >
-                  <DropdownToggle caret>Dropdown</DropdownToggle>
-                  <DropdownItems />
-                </Dropdown>
-                <Selected>{book.bookSelected}</Selected>
-                <Button onClick={handleDelete}>Delete</Button>
-              </Form>
-            </FormContainer>
-          </CardBody>
-        </Card>
-      </CardContainer>
+          <Form>
+            <StyledGroup>
+              <FormTitle>
+                Delete a Book{" "}
+                <span role="img" aria-label="none">
+                  📚
+                </span>
+              </FormTitle>
+              <Dropdown
+                className="text-center m-3"
+                isOpen={dropdownOpen}
+                toggle={toggle}
+              >
+                <StyledDropdownToggle caret>Dropdown</StyledDropdownToggle>
+                <DropdownItems />
+              </Dropdown>
+              <Selected>{book.bookSelected}</Selected>
+              <StyledButton block onClick={handleDelete}>
+                Delete
+              </StyledButton>
+            </StyledGroup>
+          </Form>
+        </CardBody>
+      </ColoredCard>
     </OuterContainer>
   );
 };
