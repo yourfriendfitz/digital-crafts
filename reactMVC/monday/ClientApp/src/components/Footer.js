@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Container } from "reactstrap"
 import styled from "styled-components";
 
-const Foot = styled.div`
+const Foot = styled(Container)`
   display: grid;
   justify-content: center;
+  align-items: center;
   width: 100vw;
   color: gray;
 `;
