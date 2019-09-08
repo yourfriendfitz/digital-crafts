@@ -13,7 +13,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
 
-const Text = styled.p`
+const Text = styled.span`
   color: ${Palette.Text};
 `;
 
