@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
 import styled from "styled-components";
-import { Container } from "reactstrap";
+import * as Palette from "./Palette"
+import { Container as BootstrapContainer } from "reactstrap";
 
 const List = styled.div`
   display: grid;
@@ -13,16 +14,32 @@ const Link = styled.a`
   outline: none;
 `;
 
-const Button = styled.button`
-  border-radius: 8px;
+const StyledButton = styled(Button)`
   :focus {
     outline: none;
   }
+  background-color: ${Palette.AltPrimary};
+  color: ${Palette.Primary};
 `;
 
+const ColoredCard = styled(Card)`
+background-color: ${Palette.Secondary}
+`
+
+const ColoredCardTitle = styled(CardTitle)`
+color: ${Palette.Text}
+`
+
+const ColoredCardSubtitle = styled(CardSubtitle)`
+color: ${Palette.Text}
+`
+
 const CardContainer = styled.div`
-  max-width: 320px;
 `;
+
+const Container = styled(BootstrapContainer)`
+max-width: 350px;
+`
 
 const Books = () => {
   const [data, setData] = useState([]);
@@ -36,7 +53,7 @@ const Books = () => {
       <List>
         {data.map((book, i) => (
           <CardContainer key={i}>
-            <Card className="m-3">
+            <ColoredCard className="m-3">
               <CardImg
                 top
                 width="100%"
@@ -44,16 +61,16 @@ const Books = () => {
                 alt="Card image cap"
               />
               <CardBody className="text-center">
-                <CardTitle>{book.title}</CardTitle>
-                <CardSubtitle className="m-2">{book.author}</CardSubtitle>
+                <ColoredCardTitle>{book.title}</ColoredCardTitle>
+                <ColoredCardSubtitle className="m-2">{book.author}</ColoredCardSubtitle>
                 <Link
                   target="_blank"
                   href={`https://en.wikipedia.org/wiki/${book.title}`}
                 >
-                  <Button>Wikipedia</Button>
+                  <StyledButton>Wikipedia</StyledButton>
                 </Link>
               </CardBody>
-            </Card>
+            </ColoredCard>
           </CardContainer>
         ))}
       </List>
