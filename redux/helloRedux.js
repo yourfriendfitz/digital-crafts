@@ -21,6 +21,11 @@ const reducer = (state = initialState, { type, payload }) => {
 const store = createStore(reducer);
 
 // dispatch actions
+const actionName = (payload) => ({
+    type: type,
+    payload
+})
+
 
 // subscriptions
 
