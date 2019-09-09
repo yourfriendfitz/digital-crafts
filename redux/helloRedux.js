@@ -5,7 +5,8 @@ const createStore = redux.createStore;
 // create initial state
 const initialState = {
   counter: 0,
-  isLoggedIn: false
+  isLoggedIn: false,
+  logicalTime: 0
 };
 //  use initialState
 const reducer = (state = initialState, { type, payload }) => {
@@ -14,10 +15,12 @@ const reducer = (state = initialState, { type, payload }) => {
       state.counter === 0
         ? state.counter++
         : (state.counter = state.counter * 2);
+      state.logicalTime++;
       return { ...state, ...payload };
 
     case "AUTH":
       state.isLoggedIn = !state.isLoggedIn;
+      state.logicalTime++;
       return { ...state, ...payload };
 
     default:
