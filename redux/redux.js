@@ -1,4 +1,4 @@
-import { createStore } from 'redux'
+const createStore = require("redux")
 
 /**
  * This is a reducer, a pure function with (state, action) => state signature.
