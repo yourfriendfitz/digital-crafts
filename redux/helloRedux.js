@@ -5,21 +5,18 @@ const createStore = redux.createStore;
 // create initial state
 const initialState = {
   counter: 0,
-  isLoggedIn: false,
   logicalTime: 0
 };
 //  use initialState
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "INCREMENT":
-      state.counter === 0
-        ? state.counter++
-        : (state.counter = state.counter * 2);
+      state.counter++;
       state.logicalTime++;
       return { ...state, ...payload };
 
-    case "AUTH":
-      state.isLoggedIn = !state.isLoggedIn;
+    case "DECREMENT":
+      state.counter--;
       state.logicalTime++;
       return { ...state, ...payload };
 
@@ -37,17 +34,13 @@ const incrementAction = payload => ({
   payload
 });
 
-const authAction = payload => ({
-  type: "AUTH",
+const decrementAction = payload => ({
+  type: "DECREMENT",
   payload
 });
 
 // subscriptions
 
 store.subscribe(() => console.log(store.getState()));
-setInterval(() => {
-  store.dispatch(incrementAction({ date: new Date().toDateString() }));
-}, 5000);
-setInterval(() => {
-  store.dispatch(authAction({ date: new Date().toDateString() }));
-}, 10000);
+store.dispatch(incrementAction({ date: new Date().toDateString() }));
+store.dispatch(decrementAction({ date: new Date().toDateString() }));
