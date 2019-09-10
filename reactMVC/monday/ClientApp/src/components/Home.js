@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Container } from "reactstrap"
+import { Container } from "reactstrap";
 import styled from "styled-components";
-import * as Palette from "./Palette"
+import * as Palette from "./Palette";
 import library from "./library.jpeg";
 
 const Content = styled(Container)`
@@ -12,6 +12,7 @@ const Content = styled(Container)`
   background-image: url(${library});
   background-size: cover;
   border-radius: 8px;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
 `;
 
 const TitleInImage = styled.h3`
@@ -22,7 +23,8 @@ const TitleInImage = styled.h3`
 `;
 
 const TitleInImageDiv = styled(Container)`
-  background-color: rgba(224,225,221, 0.7);
+  background-color: rgba(224, 225, 221, 0.7);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 `;
 

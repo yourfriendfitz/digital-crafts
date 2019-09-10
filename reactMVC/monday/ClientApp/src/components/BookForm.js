@@ -54,7 +54,13 @@ const OuterContainer = styled(Container)`
 `;
 
 const ColoredCard = styled(Card)`
-  background-color: ${Palette.Secondary};
+  background-image: linear-gradient(
+    to right bottom,
+    ${Palette.Secondary},
+    ${Palette.AltPrimary}
+  );
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 `;
 
 const BookForm = () => {
