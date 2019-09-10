@@ -10,7 +10,7 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, ...payload };
 
     case "DEL":
-      const newCart = state.cart.filter(item => item.id != payload);
+      const newCart = state.cart.filter(item => item.id !== payload);
       state.cart = [...newCart];
       return { ...state, ...payload };
 
