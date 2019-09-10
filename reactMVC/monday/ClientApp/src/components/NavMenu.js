@@ -67,7 +67,7 @@ const NavMenu = props => {
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/cart">
                   <Text>
-                    Cart {props.cart.length}
+                    Cart ({props.cart.length})
                   </Text>
                 </NavLink>
               </NavItem>
