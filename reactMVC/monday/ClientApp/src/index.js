@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import styled from "styled-components";
 import * as Palette from "./components/Palette";
-import registerServiceWorker from "./registerServiceWorker";
+import registerServiceWorker, { forceSWupdate } from "./registerServiceWorker";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import cartReducer from "./store/cart";
@@ -45,3 +45,4 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+forceSWupdate();
