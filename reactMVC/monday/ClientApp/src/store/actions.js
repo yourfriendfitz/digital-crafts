@@ -7,4 +7,12 @@ const addAction = payload => ({
   type: actionTypes.ADD,
   payload
 });
-export { delAction, addAction };
+const authAction = (payload = {}) => ({
+  type: actionTypes.AUTH,
+  payload
+});
+const unauthAction = (payload = {}) => ({
+  type: actionTypes.UNAUTH,
+  payload
+});
+export { delAction, addAction, authAction, unauthAction };

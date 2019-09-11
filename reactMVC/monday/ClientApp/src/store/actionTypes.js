@@ -1,3 +1,5 @@
 const ADD = "ADD";
 const DEL = "DEL";
-export { ADD, DEL };
+const AUTH = "AUTH"
+const UNAUTH = "UNAUTH"
+export { ADD, DEL, AUTH, UNAUTH };
