@@ -1,10 +1,10 @@
 import * as actionTypes from "./actionTypes";
 const delAction = payload => ({
-  type: actionTypes.ADD,
+  type: actionTypes.DEL,
   payload
 });
 const addAction = payload => ({
-  type: actionTypes.DEL,
+  type: actionTypes.ADD,
   payload
 });
 export { delAction, addAction };
