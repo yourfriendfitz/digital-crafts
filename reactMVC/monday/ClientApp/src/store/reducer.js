@@ -1,3 +1,4 @@
+import * as actionTypes from "./actionTypes";
 const initialState = {
   isAuth: false,
   cart: []
@@ -5,11 +6,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "ADD":
+    case actionTypes.ADD:
       state.cart = [...state.cart, payload];
       return { ...state, ...payload };
 
-    case "DEL":
+    case actionTypes.DEL:
       const newCart = state.cart.filter(item => item.id !== payload);
       state.cart = [...newCart];
       return { ...state, ...payload };
