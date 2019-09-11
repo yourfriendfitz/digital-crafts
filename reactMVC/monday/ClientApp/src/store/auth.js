@@ -5,13 +5,12 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionTypes.ADD:
-      state.cart = [...state.cart, payload];
+    case actionTypes.AUTH:
+      state.isAuth = true;
       return { ...state, ...payload };
 
-    case actionTypes.DEL:
-      const newCart = state.cart.filter(item => item.id !== payload);
-      state.cart = [...newCart];
+    case actionTypes.UNAUTH:
+      state.isAuth = false;
       return { ...state, ...payload };
 
     default:
