@@ -6,9 +6,15 @@ import App from "./App";
 import styled from "styled-components";
 import * as Palette from "./components/Palette";
 import registerServiceWorker from "./registerServiceWorker";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./store/reducer";
+import cartReducer from "./store/cart";
+import authReducer from "./store/auth";
+
+const rootReducer = combineReducers({
+  authRed: authReducer,
+  cartRed: cartReducer
+});
 
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 const rootElement = document.getElementById("root");
@@ -23,7 +29,7 @@ const Container = styled.div`
 `;
 
 const store = createStore(
-  reducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
