@@ -7,6 +7,7 @@ import {
 import * as Palette from "./Palette";
 import library from "./library.jpeg";
 import { connect } from "react-redux";
+import * as actions from "../store/actions"
 
 const Button = styled(BootstrapButton)`
   :focus {
@@ -75,11 +76,6 @@ const Cart = props => {
   );
 };
 
-const delAction = payload => ({
-  type: "DEL",
-  payload
-});
-
 const mapStateToProps = state => {
   return {
     cart: state.cart
@@ -87,7 +83,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onDel: id => dispatch(delAction(id))
+    onDel: id => dispatch(actions.delAction(id))
   };
 };
 export default connect(

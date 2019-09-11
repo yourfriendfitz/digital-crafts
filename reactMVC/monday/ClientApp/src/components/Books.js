@@ -11,6 +11,7 @@ import styled from "styled-components";
 import * as Palette from "./Palette";
 import { Container as BootstrapContainer } from "reactstrap";
 import { connect } from "react-redux";
+import * as actions from "../store/actions"
 
 const List = styled.div`
   display: grid;
@@ -96,14 +97,11 @@ const Books = props => {
   );
 };
 
-const addAction = payload => ({
-  type: "ADD",
-  payload
-});
+
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAdd: (book) => dispatch(addAction(book))
+    onAdd: (book) => dispatch(actions.addAction(book))
   };
 };
 
