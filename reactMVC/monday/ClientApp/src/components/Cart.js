@@ -7,7 +7,7 @@ import {
 import * as Palette from "./Palette";
 import library from "./library.jpeg";
 import { connect } from "react-redux";
-import * as actions from "../store/actions"
+import * as actions from "../store/actions";
 
 const Button = styled(BootstrapButton)`
   :focus {
@@ -17,17 +17,19 @@ const Button = styled(BootstrapButton)`
 `;
 
 const Container = styled(BootstrapContainer)`
+`;
+
+const Banner = styled(BootstrapContainer)`
+  height: 100px;
+  border-radius: 8px;
+  background-image: url(${library});
+  background-position: right;
+  background-size: cover;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
   display: grid;
   justify-content: center;
   align-items: center;
-  max-width: 350px;
-`;
-
-const Img = styled.img`
-  height: 250px;
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  margin: auto;
 `;
 
 const BookImg = styled.img`
@@ -55,6 +57,19 @@ const Grid = styled.div`
   padding: 16px;
 `;
 
+const TitleInImage = styled.h3`
+  color: ${Palette.Text};
+  font-weight: bold;
+  margin: 8px;
+  text-align: center;
+`;
+
+const TitleInImageDiv = styled(BootstrapContainer)`
+  background-color: rgba(224, 225, 221, 0.7);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+`;
+
 const Cart = props => {
   const CartItems = () => {
     return props.cart.map((book, i) => (
@@ -70,7 +85,11 @@ const Cart = props => {
 
   return (
     <Container>
-      <Img src={library} alt="library" />
+      <Banner className="container-fluid">
+        <TitleInImageDiv>
+          <TitleInImage>Your Cart</TitleInImage>
+        </TitleInImageDiv>
+      </Banner>
       <CartItems />
     </Container>
   );
