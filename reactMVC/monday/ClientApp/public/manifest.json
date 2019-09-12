@@ -2,19 +2,19 @@
   "name": "Book Barn",
   "short_name": "Book Barn",
   "icons": [
-      {
-          "src": "/android-chrome-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-      },
-      {
-          "src": "/android-chrome-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
-      }
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ],
-  "start_url": "./index.html",
+  "start_url": "bookbarn.azurewebsites.net/login",
   "theme_color": "#778da9",
   "background_color": "#778da9",
-  "display": "minimal-ui"
+  "display": "fullscreen"
 }
