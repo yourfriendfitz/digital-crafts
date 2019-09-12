@@ -46,4 +46,3 @@ ReactDOM.render(
 
 registerServiceWorker();
 forceSWupdate();
-window.location.reload(true);
