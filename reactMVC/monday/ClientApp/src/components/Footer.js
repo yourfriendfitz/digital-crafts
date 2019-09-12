@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import styled from "styled-components";
-import text from "./sample.txt";
 
 const Foot = styled(Container)`
   display: grid;
@@ -16,6 +15,6 @@ export class Footer extends Component {
   static displayName = Footer.name;
 
   render() {
-    return <Foot>{text}</Foot>;
+    return <Foot>This is the footer</Foot>;
   }
 }
