@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Container } from "reactstrap"
+import { Container } from "reactstrap";
 import styled from "styled-components";
+import text from "./sample.txt";
 
 const Foot = styled(Container)`
   display: grid;
@@ -8,12 +9,13 @@ const Foot = styled(Container)`
   align-items: center;
   width: 100vw;
   color: gray;
+  opacity: 0;
 `;
 
 export class Footer extends Component {
   static displayName = Footer.name;
 
   render() {
-    return <Foot>This is the Footer</Foot>;
+    return <Foot>{text}</Foot>;
   }
 }
