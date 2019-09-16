@@ -3,7 +3,9 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 app.use(express.json());
-app.use(urlEncoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
+
+users = [{ username: "fitz", password: "password" }];
 
 app.post("/login", function(req, res) {
   const username = req.body.username;
@@ -16,6 +18,7 @@ app.post("/login", function(req, res) {
   if (persistedUser) {
     const token = jwt.sign({ username }, "privateKey");
     console.log(token);
+    res.json(token);
   } else {
     res.send("invalid");
   }
