@@ -6,6 +6,7 @@ import { Container as BootstrapContainer } from "reactstrap";
 import { connect } from "react-redux";
 import * as actions from "../store/actions";
 import library from "./library.jpeg";
+import * as fetch from "../util/fetch";
 
 const Button = styled(BootstrapButton)`
   :focus {
@@ -54,9 +55,14 @@ const Input = styled(BootstrapInput)`
 `;
 
 const Login = props => {
-  const handleLogin = () => {
-    props.onAuth();
-    props.history.push("/");
+  const handleLogin = async () => {
+    try {
+      await fetch.webToken();
+      props.onAuth();
+      props.history.push("/");
+    } catch {
+      props.history.push("/login");
+    }
   };
   return (
     <Content>

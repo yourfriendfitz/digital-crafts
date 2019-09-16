@@ -23,3 +23,5 @@ const sendWebToken = async token => {
   const json = await response.json();
   return json;
 };
+
+export { webToken, sendWebToken };

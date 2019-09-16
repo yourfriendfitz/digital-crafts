@@ -11,7 +11,17 @@ const users = [{ username: "fitz", password: "password" }];
 const profile = { name: "fitz", age: 25 };
 
 const authenticate = (req, res, next) => {
-  const headers = req.headers["Authorization"];
+  if (req.headers.authorization) {
+    const authHeader = req.headers.authorization;
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, "privateKey");
+    const username = decoded.username;
+    const authUser = users.find(user => user.username === username);
+    authUser ? next() : res.json({ error: "unauthorized" });
+    next();
+  } else {
+    res.json({ error: "headers missing" });
+  }
 };
 
 app.post("/login", function(req, res) {
@@ -31,8 +41,8 @@ app.post("/login", function(req, res) {
   }
 });
 
-app.get("/profile", (req, res) => {
-  res.json(profile);
+app.get("/profile", authenticate, (req, res) => {
+  res.json({ message: "Welcome, Authorized User", ...profile });
 });
 
 app.listen(1000, console.log("running on 1000"));
