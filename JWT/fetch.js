@@ -10,3 +10,16 @@ const webToken = async () => {
   const json = await response.json();
   localStorage.setItem("JWT", json.token);
 };
+
+const sendWebToken = async token => {
+  const response = await fetch("http://localhost:1000/profile", {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  });
+  const json = await response.json();
+  return json;
+};

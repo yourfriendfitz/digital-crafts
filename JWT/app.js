@@ -7,7 +7,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-users = [{ username: "fitz", password: "password" }];
+const users = [{ username: "fitz", password: "password" }];
+const profile = { name: "fitz", age: 25 };
+
+const authenticate = (req, res, next) => {
+  const headers = req.headers["Authorization"];
+};
 
 app.post("/login", function(req, res) {
   const username = req.body.username;
@@ -24,6 +29,10 @@ app.post("/login", function(req, res) {
   } else {
     res.send("invalid");
   }
+});
+
+app.get("/profile", (req, res) => {
+  res.json(profile);
 });
 
 app.listen(1000, console.log("running on 1000"));
